@@ -8,7 +8,9 @@ let mapleader =" "
 " Enable the mouse
 set mouse=a
 " use only the normal ctrl c ctrl v clipboard (+) ( linux has also the selection (*) clipboard)
-set clipboard+=unnamedplus
+" NOTE - only works after installing vim gtk
+" check for +clipboard in vim --version | grep clipboard to see if you're good to go
+set clipboard=unnamedplus
 " For being able to 'hide' current working file and go to another
 set hidden
 syntax on " Syntax Higlighting
@@ -52,6 +54,10 @@ vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 " Also map leader + s
 map <leader>s <C-S>
+" Second try -- nope.
+nmap <c-s> :w<CR>
+imap <c-s> <Esc>:w<CR>a
+
 
 " Map ctrl z to undo and ctrl y to redo
 " For insert mode, you still need to run a normal mode command.
@@ -59,6 +65,13 @@ map <leader>s <C-S>
 " to run a single normal mode command while remaining in insert mode
 inoremap <C-Z> <C-O>u
 inoremap <C-Y> <C-O><C-R>
+
+" Key maps to emulate the system clipboard shortcuts would be
+" Capital P to instert before current character
+inoremap <C-v> <ESC>"+Pa
+vnoremap <C-c> "+y
+vnoremap <C-d> "+d
+
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
