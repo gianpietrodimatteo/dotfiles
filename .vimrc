@@ -31,18 +31,21 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Save backup(original) files, swap files and in separate directories
 " // means that the path to the edited file will be saved in the files
 " set backupdir=~/temp/.backup//
-" set directory=~/temp/.swp//
+set directory=~/temp/.swp//
 " set undodir=~/temp/.undo//
 " Or fuck it. It's unsafe to do that (you might lose progress in a crash) but swap files are annoying:
-set noswapfile
+" set noswapfile
 set nobackup
 set nowritebackup
 set noundofile
 
-set cursorline " highlight current line
+" ==== disable swap file warning -- NOT TESTED
+set shortmess+=A
+
+" set cursorline " highlight current line
 "  set ruler " show cursor position all time
 
-" Indent with 2 spaces
+" Indent with 2 spaces -- this is breaking the indentation on html (and it's not working either)
 set expandtab " If 'expandtab' is set, pressing the <TAB> key will always insert 'softtabstop' amount of space characters.
 set shiftwidth=2 " affects what happens when you press >>, << or ==. It also affects how automatic indentation works.
 set softtabstop=2 " affects what happens when you press the <TAB> or <BS> keys. Its default value is the same as the value of 'tabstop', but when using indentation without hard tabs or mixed indentation, you want to set it to the same value as 'shiftwidth'.
@@ -98,7 +101,8 @@ vnoremap <C-d> "+d
 autocmd BufWritePre * %s/\s\+$//e
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-set splitbelow splitright
+"set splitbelow splitright
+set splitright splitbelow
 
 " Save and exit
 nnoremap <leader>q :wq<CR>
@@ -113,7 +117,7 @@ nnoremap <leader>s :w<CR>
 " Shortcuts
 "---------------------------------------------------------------
 " Navigating with guides
-inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
+" inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
