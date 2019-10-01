@@ -19,8 +19,8 @@ syntax on " Syntax Higlighting
 " Show line numbers on the left. Make them the relative numbers to your
 " current line
 set number relativenumber
-" Activates filetype detection
-filetype plugin on
+" Activates filetype detection and other stuff
+filetype indent plugin on
 " I like utf-8
 set encoding=utf-8
 " Enable autocompletion:
@@ -112,6 +112,22 @@ nnoremap <leader>s :w<CR>
 "vnoremap <C-Q> :wq<CR>
 
 "  now that we have ctrl s we lost ctrl v
+
+" Start in insertmode when creating new file
+" BufNewFile the doc descibes it has:
+" When starting to edit a file that doesn't exist. Can be used to read in a skeleton file.
+" The * is here to execute the command on every new file
+autocmd BufNewFile * startinsert
+
+" Always wrap long lines
+set wrap
+
+" You can set the text width for automatic word wrapping using :set textwidth=n (or :set tw=n) where n is a positive integer, for example:
+set tw=79
+
+" Spell-check set to <leader>o, 'o' for 'orthography':
+map <leader>o :setlocal spell! spelllang=en_us<CR>
+map <leader>p :setlocal spell! spelllang=pt<CR>
 
 "---------------------------------------------------------------
 " Shortcuts

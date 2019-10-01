@@ -156,7 +156,7 @@ bar {
         status_command i3status
 }
 
-#------------------------------------------
+# -----------------------------------------
 # User defined
 #------------------------------------------
 
@@ -174,10 +174,21 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 
 # Window Assignments
 
-assign [class=["Lxterminal"] 1
+# assign [class="Lxterminal"] 1
 assign [class="Google-chrome"] 2
 
 
 # Startup Executions
 exec google-chrome
 exec lxterminal
+
+# custom keybindings
+
+#command for locking
+bindsym $mod+shift+x exec i3lock
+
+#remember to mod shift r to reload i3
+#you cant dupe keybindings - there is a log
+
+# quick quit
+bindsym $mod+q kill

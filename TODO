@@ -1,0 +1,15 @@
+.vimrc
+  indentation
+  formatting
+  suggestions
+  code correction (what's the name?)
+  autocmd - buffer plugins
+  filetype plugins
+  updated syntax highliting
+  NR: get latest vim from git repo
+
+config
+  open terminal with commands
+
+
+
