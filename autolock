@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# First alternative
+x#xautolock -time 5 -locker "i3exit lock"  &
+x#xautolock -time 10 -locker "i3exit suspend" &
+
+# Second (better)
+#xautolock -time 15  -locker "i3exit lock" -killtime 10 -killer "systemctl suspend"  -detectsleep

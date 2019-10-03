@@ -123,3 +123,5 @@ export NVM_DIR="$HOME/.config"
 
 # Disable Software Flow Control (XON/XOFF flow control) (that  ctrl s ctrl q thing)
 stty -ixon
+
+export TERMINAL=urxvt
