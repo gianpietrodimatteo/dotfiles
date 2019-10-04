@@ -11,5 +11,13 @@
 config
   open terminal with commands
 
+create the useful commands and the master shortcuts document
 
+create the smart remove duplicates script
 
+create the smart add script
+
+Cleanup the vim plugins
+Adjust the vim shortcuts
+
+Adjust the i3 shortcuts to be vimlike

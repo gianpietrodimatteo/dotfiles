@@ -1,4 +1,6 @@
-URxvt*background:                     #151718
+!URxvt*background:                     #151718
+URxvt*background:                    [95]#151718
+!URxvt*background: rgba:0000/0000/0200/c800
 URxvt*foreground:                     #d6d6d6
 URxvt*cursorColor:                    #d6d6d6
 
@@ -49,9 +51,8 @@ Xcursor.size: 16W
 URxvt.urgentOnBell: true
 URxvt.scrollBar: false
 URxvt.font: xft:hack:size=10
-URxvt.depth: 24
-URxvt.url-launcher: /usr/bin/firefox
+!URxvt.depth: 24
+URxvt*depth: 32
+URxvt.url-launcher: /usr/bin/google-chrome
 URxvt.matcher.button: 1
-URxvt.perl-ext-common: default,matcher,vtwheel
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+!URxvt.perl-ext-common: default,matcher,vtwheel

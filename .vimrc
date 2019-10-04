@@ -3,7 +3,7 @@
 "---------------------------------------------------------------
 
 " Type :so % to refresh .vimrc after making changes
-
+:colo jellybeans
 " Basics
 " Set <leader> to spacebar
 let mapleader =" "
@@ -19,8 +19,9 @@ syntax on " Syntax Higlighting
 " Show line numbers on the left. Make them the relative numbers to your
 " current line
 set number relativenumber
-" Activates filetype detection and other stuff
+" Activates filetype detection and other stuff and autocompletion
 filetype indent plugin on
+set omnifunc=syntaxcomplete#Complete
 " I like utf-8
 set encoding=utf-8
 " Enable autocompletion:
@@ -88,8 +89,8 @@ map <F7> gg=G<C-o><C-o>
 " You can include <Esc> in mappings to leave insert mode, but in this case you can also use <C-O>
 " to run a single normal mode command while remaining in insert mode
 " Was working now it's broken...
-inoremap <C-Z> <C-O>u
-inoremap <C-Y> <C-O><C-R>
+" inoremap <C-Z> <C-O>u
+" inoremap <C-Y> <C-O><C-R>
 
 " Key maps to emulate the system clipboard shortcuts would be
 " Capital P to instert before current character
@@ -105,7 +106,7 @@ autocmd BufWritePre * %s/\s\+$//e
 set splitright splitbelow
 
 " Save and exit
-nnoremap <leader>q :wq<CR>
+nnoremap <leader>q :q<CR>
 " Save
 nnoremap <leader>s :w<CR>
 "inoremap <C-Q> :wq<CR>
@@ -129,6 +130,23 @@ set tw=79
 map <leader>o :setlocal spell! spelllang=en_us<CR>
 map <leader>p :setlocal spell! spelllang=pt<CR>
 
+"-- PLUGINS (Using junegunn/vim-plug) --
+call plug#begin()
+Plug 'ternjs/tern_for_vim', { 'do':'npm install'}
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'valloric/youcompleteme'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/syntastic'
+Plug 'kien/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
+" post install (yarn install | npm install)
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+call plug#end()
+
+
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
 "---------------------------------------------------------------
 " Shortcuts
 "---------------------------------------------------------------
@@ -146,3 +164,22 @@ map <leader><leader> <Esc>/<++><Enter>"_c4l
 "autocmd FileType html inoremap ;<html> <html>
 autocmd FileType html inoremap h1 <h1></h1><Enter><Enter><++><Esc>2kf<i
 
+
+" Simplest autoclosing tags (not working, duno lol)
+:iabbrev </ </<C-X><C-O>
+
+" Also, remapping cxco to ctrl+space
+:imap <C-Space> <C-X><C-O>
+
+" Simple appending of closing characters
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+" Skipping the closing character
+inoremap        (  ()<Left>
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+
+" Finally for the quotes
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"

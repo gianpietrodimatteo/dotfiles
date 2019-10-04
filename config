@@ -273,6 +273,7 @@ assign [class="Spotify"] $ws10
 
 # Startup Executions
 exec google-chrome
+exec urxvt -name cmd
 
 # Open 3 windows in two columns
 for_window [instance="cmd"] move workspace $ws2
@@ -285,6 +286,9 @@ for_window [instance="edit"] move workspace $ws2
 # floating
 for_window [class="Pavucontrol"] floating enable
 #for_window [class="Lxterminal"] move workspace $ws2
+exec --no-startup-id spotify
+for_window [class="Spotify"] move to workspace $ws10
+
 
 # custom keybindings
 
@@ -335,4 +339,7 @@ exec_always feh --bg-center .wallpaper.jpg
 exec_always compton #-f
 
 # Automatic power management
-exec_always --no-startup-id autolock
+#exec_always --no-startup-id autolock
+
+exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 10 -killer "systemctl suspend" &
+
