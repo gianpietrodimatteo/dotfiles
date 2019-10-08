@@ -322,7 +322,7 @@ bindsym $mod+End mode "$mode_system"
 # bindsym $mod+Shift+i exec --no-startup-id echo $PATH >> .i3_debug
 
 # exec even when you restart i3
-exec_always feh --bg-center .wallpaper.jpg
+exec_always feh --bg-fill .wallpaper.jpg
 
 # from arandr - change when using multiple monitors
 # exec_always xrand --output VIRTUAL1 --off --output eDP1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
