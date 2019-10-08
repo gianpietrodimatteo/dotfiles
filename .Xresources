@@ -1,3 +1,14 @@
+!! Transparency (0-1):
+stterm-256color.alpha: 0.92
+
+!! Set a default font and font size as below:
+stterm-256color.font: Monospace-20
+
+!! Set the background, foreground and cursor colors as below:
+!st.background: #282828
+!st.foreground: white
+!st.cursorColor: white
+
 !URxvt*background:                     #151718
 URxvt*background:                    [92]#151718
 !URxvt*background: rgba:0000/0000/0200/c800

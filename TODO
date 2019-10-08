@@ -1,15 +1,6 @@
 .vimrc
-  indentation
-  formatting
-  suggestions
-  code correction (what's the name?)
-  autocmd - buffer plugins
-  filetype plugins
   updated syntax highliting
   NR: get latest vim from git repo
-
-config
-  open terminal with commands
 
 create the useful commands and the master shortcuts document
 
@@ -20,4 +11,4 @@ create the smart add script
 Cleanup the vim plugins
 Adjust the vim shortcuts
 
-Adjust the i3 shortcuts to be vimlike
+Configure and build stterm

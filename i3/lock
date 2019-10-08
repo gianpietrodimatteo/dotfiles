@@ -6,7 +6,7 @@
 #i3lock -u -i /tmp/screen.png
 #rm /tmp/screen.png
 
-icon="$HOME/lock-icon.png"
+icon="$HOME/Pictures/desktop/lock-icon.png"
 tmpbg='/tmp/screen.png'
 
 (( $# )) && { icon=$1; }
