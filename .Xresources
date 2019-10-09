@@ -1,3 +1,4 @@
+! run xrdb ~/.Xresources to apply
 !! Transparency (0-1):
 stterm-256color.alpha: 0.92
 

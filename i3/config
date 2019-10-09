@@ -309,6 +309,7 @@ exec google-chrome
 exec urxvt -name cmd
 exec urxvt -name file -e ranger Workspace/
 exec --no-startup-id spotify
+exec --no-startup-id dropbox start
 
 # Move classes and instances
 for_window [instance="cmd"] move workspace $ws2

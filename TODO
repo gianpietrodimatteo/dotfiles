@@ -1,8 +1,4 @@
-.vimrc
-  updated syntax highliting
-  NR: get latest vim from git repo
-
-create the useful commands and the master shortcuts document
+create the useful commands and the master shortcuts document (?)
 
 create the smart remove duplicates script
 
@@ -12,3 +8,13 @@ Cleanup the vim plugins
 Adjust the vim shortcuts
 
 Configure and build stterm
+
+Vim easy windows
+    easy tabs
+    easy buffers
+
+
+
+
+
+

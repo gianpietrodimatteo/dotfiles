@@ -1,68 +1,130 @@
-"---------------------------------------------------------------
-" Configuration
-"---------------------------------------------------------------
+" ----------------------------------------------------------------------------
+" Plugins
+" ----------------------------------------------------------------------------
+" Type :PlugInstall or :PlugClean for adding/removing plugins
 
-" Type :so % to refresh .vimrc after making changes
-:colo jellybeans
+"-- PLUGINS (Using junegunn/vim-plug) --
+call plug#begin()
+Plug 'ternjs/tern_for_vim', { 'do':'npm install'}
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+" Plug 'valloric/youcompleteme'
+" Plug 'mattn/emmet-vim'
+Plug 'scrooloose/syntastic'
+Plug 'kien/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+call plug#end()
+
+
+" ----------------------------------------------------------------------------
+" Master Mappings
+" ----------------------------------------------------------------------------
+" Map escape sequences to their alt combinations
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+" Timeout to know if it was Esc j or Alt j
+set timeout ttimeoutlen=50
+
+" ----------------------------------------------------------------------------
 " Basics
+" ----------------------------------------------------------------------------
+" Type :so % (:source %) to refresh .vimrc after making changes
+
+" Color scheme
+:colo jellybeans
+
 " Set <leader> to spacebar
 let mapleader =" "
+
 " Enable the mouse
 set mouse=a
-" use only the normal ctrl c ctrl v clipboard (+) ( linux has also the selection (*) clipboard)
+
+" Use the same clipboard as your desktop (+ clipboard)
 " NOTE - only works after installing vim gtk
 " check for +clipboard in vim --version | grep clipboard to see if you're good to go
 set clipboard=unnamedplus
-" For being able to 'hide' current working file and go to another
+
+" For changing displayed buffers without having to save the file
 set hidden
-syntax on " Syntax Higlighting
+
+" Syntax Higlighting
+syntax on
+
 " Show line numbers on the left. Make them the relative numbers to your
 " current line
 set number relativenumber
+
 " Activates filetype detection and other stuff and autocompletion
 filetype indent plugin on
 set omnifunc=syntaxcomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+set wildmode=longest,list,full
+
 " I like utf-8
 set encoding=utf-8
-" Enable autocompletion:
-set wildmode=longest,list,full
+
+" Always have the status bar displayed below
+set laststatus=2
 " Disable automatic comenting on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Save backup(original) files, swap files and in separate directories
-" // means that the path to the edited file will be saved in the files
-" set backupdir=~/temp/.backup//
+" // means that the path to the edited file will be saved in the file name
+set backupdir=~/temp/.backup//
 set directory=~/temp/.swp//
-" set undodir=~/temp/.undo//
-" Or fuck it. It's unsafe to do that (you might lose progress in a crash) but swap files are annoying:
+set undodir=~/temp/.undo//
+" Possible but unsafe alternatives
 " set noswapfile
-set nobackup
-set nowritebackup
-set noundofile
+" set nobackup
+" set nowritebackup
+" set noundofile
 
-" ==== disable swap file warning -- NOT TESTED
+" Disable swap file warning
 set shortmess+=A
 
 " set cursorline " highlight current line
-"  set ruler " show cursor position all time
+" set ruler " show cursor position all time
 
-" Indent with 2 spaces -- this is breaking the indentation on html (and it's not working either)
-set expandtab " If 'expandtab' is set, pressing the <TAB> key will always insert 'softtabstop' amount of space characters.
-set shiftwidth=2 " affects what happens when you press >>, << or ==. It also affects how automatic indentation works.
-set softtabstop=2 " affects what happens when you press the <TAB> or <BS> keys. Its default value is the same as the value of 'tabstop', but when using indentation without hard tabs or mixed indentation, you want to set it to the same value as 'shiftwidth'.
+" Indent with 2 spaces
+" If 'expandtab' is set, pressing the <TAB> key will always insert 'softtabstop' amount of space characters.
+set expandtab
+" affects what happens when you press >>, << or ==. It also affects how automatic indentation works.
+set shiftwidth=2
+" affects what happens when you press the <TAB> or <BS> keys. Its default value is the same as the value of 'tabstop', but when using indentation without hard tabs or mixed indentation, you want to set it to the same value as 'shiftwidth'.
+set softtabstop=2
 
+" Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
+
+" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+set splitright splitbelow
+
+" Start in insertmode when creating new file
+autocmd BufNewFile * startinsert
+
+" Always wrap long lines, 79 characters
+set wrap
+set tw=79
+
+" ----------------------------------------------------------------------------
+" Basic keybindings
+" ----------------------------------------------------------------------------
+" Avoiding the escape character
 " Tab returns to normal mode
-" The vnoremap causes Tab to cancel any selection (gV is required to prevent automatic reselection).
-" The onoremap causes Tab to cancel any operator-pending command (for example, y).
-" The cnoremap causes Tab to cancel any command that was entered.
-" The first inoremap causes Tab to exit insert mode, and the `^ restores the cursor position so exiting insert does not move the cursor left.
-" The second inoremap, assuming the default leader key, allows you to press alt tab for the tab key - broken
 nnoremap <Tab> <Esc>
+" The vnoremap causes Tab to cancel any selection (gV is required to prevent automatic reselection).
 vnoremap <Tab> <Esc>gV
+" The onoremap causes Tab to cancel any operator-pending command (for example, y).
 onoremap <Tab> <Esc>
+" The cnoremap causes Tab to cancel any command that was entered.
 " cnoremap <Tab> <C-C><Esc>
+" The inoremap causes Tab to exit insert mode, and the `^ restores the cursor position so exiting insert does not move the cursor left.
 inoremap <Tab> <Esc>`^
-" inoremap <M-Tab> <Tab>
 
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h
@@ -73,113 +135,105 @@ map <C-l> <C-w>l
 " F7 corrects indentation
 map <F7> gg=G<C-o><C-o>
 
-" " Does not work right now beacuse the terminal has a special command for ctrl s (ctrl q unfrezes)
-" " Map Ctrl + S to save in any mode
-" noremap <silent> <M-S>          :update<CR>
-" vnoremap <silent> <C-S>         <C-C>:update<CR>
-" inoremap <silent> <C-S>         <C-O>:update<CR>
-" " Also map leader + s
-" map <leader>s <C-S>
-" " Second try -- nope.
-" nmap <c-s> :w<CR>
-" imap <c-s> <Esc>:w<CR>a
+" Emulate classic save and quit
+" Must configure terminal to accept Ctrl+s Ctrl+q
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+noremap <silent> <C-Q>          :q<CR>
+vnoremap <silent> <C-Q>         <C-C>:q<CR>
+inoremap <silent> <C-Q>         <C-O>:q<CR>
 
-" Map ctrl z to undo and ctrl y to redo
-" For insert mode, you still need to run a normal mode command.
-" You can include <Esc> in mappings to leave insert mode, but in this case you can also use <C-O>
-" to run a single normal mode command while remaining in insert mode
-" Was working now it's broken...
-" inoremap <C-Z> <C-O>u
-" inoremap <C-Y> <C-O><C-R>
+" Emulate classic undo redo commands
+inoremap <C-Z> <C-O>u
+inoremap <C-Y> <C-O><C-R>
 
-" Key maps to emulate the system clipboard shortcuts would be
-" Capital P to instert before current character
-inoremap <C-v> <ESC>"+Pa
-vnoremap <C-c> "+y
-vnoremap <C-d> "+d
+" Emulate the system clipboard and modern editor shortcuts
+inoremap <C-V> <ESC>"+Pa
+nnoremap <C-V> <ESC>"+Pa
+vnoremap <C-V> <ESC>"+Pa
+inoremap <C-C> <ESC>"+Y
+nnoremap <C-C> <ESC>"+Y
+vnoremap <C-C> "+y
+vnoremap <C-D> "+d
 
-" Automatically deletes all trailing whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
-
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-"set splitbelow splitright
-set splitright splitbelow
-
-" Save and exit
+" Quit and Save using leader
 nnoremap <leader>q :q<CR>
-" Save
-nnoremap <leader>s :w<CR>
-"inoremap <C-Q> :wq<CR>
-"vnoremap <C-Q> :wq<CR>
+nnoremap <leader>s :update<CR>
+" n was taken and I wanted a key far away from write
+nnoremap <leader>m :q!<CR>
 
-"  now that we have ctrl s we lost ctrl v
-
-" Start in insertmode when creating new file
-" BufNewFile the doc descibes it has:
-" When starting to edit a file that doesn't exist. Can be used to read in a skeleton file.
-" The * is here to execute the command on every new file
-autocmd BufNewFile * startinsert
-
-" Always wrap long lines
-set wrap
-
-" You can set the text width for automatic word wrapping using :set textwidth=n (or :set tw=n) where n is a positive integer, for example:
-set tw=79
-
-" Spell-check set to <leader>o, 'o' for 'orthography':
-map <leader>o :setlocal spell! spelllang=en_us<CR>
+" Spell-check e for english, p for portuguese
+map <leader>e :setlocal spell! spelllang=en_us<CR>
 map <leader>p :setlocal spell! spelllang=pt<CR>
 
-"-- PLUGINS (Using junegunn/vim-plug) --
-call plug#begin()
-Plug 'ternjs/tern_for_vim', { 'do':'npm install'}
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'valloric/youcompleteme'
-Plug 'mattn/emmet-vim'
-Plug 'scrooloose/syntastic'
-Plug 'kien/ctrlp.vim'
-Plug 'easymotion/vim-easymotion'
-" post install (yarn install | npm install)
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-call plug#end()
-
-
-"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-"---------------------------------------------------------------
-" Shortcuts
-"---------------------------------------------------------------
 " Navigating with guides
 " inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
+" Also, remapping cxco to ctrl+space
+imap <C-Space> <C-X><C-O>
+
+" Make enter, end and backspace work like insert on normal mode
+nnoremap <Enter> i<Enter><Esc>
+nnoremap <BS>    i<BS><Esc>
+nnoremap <Del>   i<Del><Esc>
+
+" Quick macros
+nnoremap <Space> @q
+
+" ----------------------------------------------------------------------------
+" Editor settings
+" ----------------------------------------------------------------------------
+" Simplest autoclosing tags
+:iabbrev </ </<C-X><C-O>
+
+" Simple appending of closing characters
+inoremap {      {}<Left>
+inoremap (      ()<Left>
+inoremap '      ''<left>
+inoremap "      ""<left>
+
+" Skipping the closing character
+inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+
+" Finally for the quotes
+inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
+inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
+
+" Alt moves lines
+nmap <m-j> ddjP
+" imap <m-j> <Esc>ddjPi
+nmap <m-k> ddkP
+" imap <m-k> <Esc>ddkPi
+
+" Alt duplication
+nmap <m-d> YP
+vmap <m-d> YP
+imap <m-d> <Esc>YPi
+
+" Easy escaping characters
+inoremap <m-l> <Right>
+" Easy deletion of unwanted completions
+inoremap <m-x> <Del>
+" New Line
+inoremap <m-m> <Esc>o
+nnoremap <m-m> o<Esc>
+
+" Quick split window
+nnoremap <C-Bslash> :vsplit<Enter>
+
+
+let g:syntastic_javascript_checkers = ['eslint']
+
 
 "---------------------------------------------------------------
-" Snippets
+" Custom Snippets
 "---------------------------------------------------------------
 
 "*.html
 "autocmd FileType html inoremap ;<html> <html>
 autocmd FileType html inoremap h1 <h1></h1><Enter><Enter><++><Esc>2kf<i
 
-
-" Simplest autoclosing tags (not working, duno lol)
-:iabbrev </ </<C-X><C-O>
-
-" Also, remapping cxco to ctrl+space
-:imap <C-Space> <C-X><C-O>
-
-" Simple appending of closing characters
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-
-" Skipping the closing character
-inoremap        (  ()<Left>
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-
-" Finally for the quotes
-inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"

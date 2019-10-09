@@ -125,3 +125,8 @@ export NVM_DIR="$HOME/.config"
 stty -ixon
 
 export TERMINAL=urxvt
+
+export PATH="$PATH:/snap/bin"
+export MYVIMRC="/home/gianpietro/.vimrc"
+export PATH="$PATH:/home/gianpietro/node_modules/.bin"
+
