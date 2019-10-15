@@ -13,8 +13,9 @@ Vim easy windows
     easy tabs
     easy buffers
 
+VIM - try out Ale instead of Syntastic
+" Features to add
+" git integration
+" snippets bank
 
-
-
-
-
+[ ]

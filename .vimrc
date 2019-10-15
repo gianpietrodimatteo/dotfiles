@@ -3,17 +3,32 @@
 " ----------------------------------------------------------------------------
 " Type :PlugInstall or :PlugClean for adding/removing plugins
 
+" Features so far:
+" File Explorer
+" Easy Commenting
+" Completion/suggestions
+" Sytax Evaluation
+" Formatter
+" Fuzzy search
+" Easymotion
+" More complete status bar
+
+" Features to add
+" git integration
+" snippets bank
+
 "-- PLUGINS (Using junegunn/vim-plug) --
 call plug#begin()
-Plug 'ternjs/tern_for_vim', { 'do':'npm install'}
+" Plug 'ternjs/tern_for_vim', { 'do':'npm install'}
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'valloric/youcompleteme'
+Plug 'valloric/youcompleteme'
 " Plug 'mattn/emmet-vim'
 Plug 'scrooloose/syntastic'
 Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 
@@ -108,24 +123,17 @@ set splitright splitbelow
 autocmd BufNewFile * startinsert
 
 " Always wrap long lines, 79 characters
+" default format options: ql view with set fo?
+"set wrap linebreak nolist
 set wrap
+set fo+=t
+set fo-=l
+"set tws=0
 set tw=79
 
 " ----------------------------------------------------------------------------
 " Basic keybindings
 " ----------------------------------------------------------------------------
-" Avoiding the escape character
-" Tab returns to normal mode
-nnoremap <Tab> <Esc>
-" The vnoremap causes Tab to cancel any selection (gV is required to prevent automatic reselection).
-vnoremap <Tab> <Esc>gV
-" The onoremap causes Tab to cancel any operator-pending command (for example, y).
-onoremap <Tab> <Esc>
-" The cnoremap causes Tab to cancel any command that was entered.
-" cnoremap <Tab> <C-C><Esc>
-" The inoremap causes Tab to exit insert mode, and the `^ restores the cursor position so exiting insert does not move the cursor left.
-inoremap <Tab> <Esc>`^
-
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -165,7 +173,7 @@ nnoremap <leader>m :q!<CR>
 
 " Spell-check e for english, p for portuguese
 map <leader>e :setlocal spell! spelllang=en_us<CR>
-map <leader>p :setlocal spell! spelllang=pt<CR>
+map <leader>i :setlocal spell! spelllang=pt<CR>
 
 " Navigating with guides
 " inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
@@ -173,7 +181,7 @@ vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
 " Also, remapping cxco to ctrl+space
-imap <C-Space> <C-X><C-O>
+" imap <C-Space> <C-X><C-O>
 
 " Make enter, end and backspace work like insert on normal mode
 nnoremap <Enter> i<Enter><Esc>
@@ -187,7 +195,7 @@ nnoremap <Space> @q
 " Editor settings
 " ----------------------------------------------------------------------------
 " Simplest autoclosing tags
-:iabbrev </ </<C-X><C-O>
+iabbrev </ </<C-X><C-O>
 
 " Simple appending of closing characters
 inoremap {      {}<Left>
@@ -208,6 +216,8 @@ nmap <m-j> ddjP
 " imap <m-j> <Esc>ddjPi
 nmap <m-k> ddkP
 " imap <m-k> <Esc>ddkPi
+vmap <m-j> ddjP
+vmap <m-k> ddkP
 
 " Alt duplication
 nmap <m-d> YP
@@ -225,9 +235,34 @@ nnoremap <m-m> o<Esc>
 " Quick split window
 nnoremap <C-Bslash> :vsplit<Enter>
 
+" Quick source current configuration file
+nmap <leader>o :so %<Enter>
+
+" Open another file
+nmap <leader>j :e
+
+" ----------------------------------------------------------------------------
+" Plugin settings
+" ----------------------------------------------------------------------------
+" Syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_html_checkers = ['htmlhint']
+let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_go_checkers = ['go']
 
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_buffers = 0
+
+let g:airline#extensions#tabline#formatter = 'default'
 
 "---------------------------------------------------------------
 " Custom Snippets

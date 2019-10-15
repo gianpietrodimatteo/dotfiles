@@ -122,7 +122,6 @@ export NVM_DIR="$HOME/.config"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Disable Software Flow Control (XON/XOFF flow control) (that  ctrl s ctrl q thing)
-stty -ixon
 
 export TERMINAL=urxvt
 
@@ -130,3 +129,12 @@ export PATH="$PATH:/snap/bin"
 export MYVIMRC="/home/gianpietro/.vimrc"
 export PATH="$PATH:/home/gianpietro/node_modules/.bin"
 
+
+export PATH="$PATH:/usr/local/go/bin"
+
+export GOPATH="$HOME/Workspace/go"
+export PATH="$PATH:$GOPATH/bin"
+
+export JAVA_HOME="/usr/java/jdk1.8.0_221"
+export JRE_HOME="/usr/java/jdk1.8.0_221/jre"
+export PATH="$PATH:$JAVA_HOME/bin:$JRE_HOME/bin"

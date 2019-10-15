@@ -1,0 +1,2 @@
+export PATH=$HOME/bin:$HOME/.config/i3:$PATH
+xmodmap ~/.xmodmaprc

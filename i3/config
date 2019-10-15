@@ -32,7 +32,7 @@ bindsym $mod+d exec dmenu_run -l 42
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-#for_window [class="^.*"] border pixel
+for_window [class="^.*"] border pixel
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
