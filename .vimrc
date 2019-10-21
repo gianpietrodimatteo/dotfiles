@@ -122,14 +122,14 @@ set splitright splitbelow
 " Start in insertmode when creating new file
 autocmd BufNewFile * startinsert
 
-" Always wrap long lines, 79 characters
+" Always wrap long lines, 80 characters
 " default format options: ql view with set fo?
 "set wrap linebreak nolist
 set wrap
 set fo+=t
 set fo-=l
-"set tws=0
-set tw=79
+set tw=0
+"set tw=80
 
 " ----------------------------------------------------------------------------
 " Basic keybindings

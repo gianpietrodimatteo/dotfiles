@@ -1,21 +1,19 @@
-create the useful commands and the master shortcuts document (?)
-
-create the smart remove duplicates script
-
-create the smart add script
-
-Cleanup the vim plugins
-Adjust the vim shortcuts
-
 Configure and build stterm
+ArchLinux wiki page
+apply patches: copy and navigate to url
+alpha
+color themes
 
-Vim easy windows
-    easy tabs
-    easy buffers
+
 
 VIM - try out Ale instead of Syntastic
-" Features to add
 " git integration
 " snippets bank
 
-[ ]
+remove plugins plugin use vim8 package manager
+emmet
+tabs
+
+Create a decent install script!
+
+
