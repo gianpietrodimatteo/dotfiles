@@ -21,10 +21,6 @@ applyDot(){
 # misc
 applyDot ~/.fonts .
 
-# i3
-applyDot ~/.config/i3 .
-applyDot ~/.i3status.conf i3
-
 # atom
 applyDot ~/.atom/config.cson atom
 
@@ -43,13 +39,3 @@ applyDot ~/.bashrc bash
 applyDot ~/.inputrc bash
 applyDot ~/.profile bash
 
-# x_window_system
-applyDot ~/.xmodmaprc x_window_system
-applyDot ~/.Xresources x_window_system
-applyDot ~/.xsessionrc x_window_system
-
-# DEBIAN: Apply multimedia keys settings
-xmodmap ~/.xmodmaprc
-
-# Apply Xresources
-xrdb ~/.Xresources

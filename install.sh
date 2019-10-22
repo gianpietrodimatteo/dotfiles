@@ -3,11 +3,7 @@
 # Installations (should run before the apply.sh)
 
 # Install ranger
-sudo apt-get update
-sudo apt-get install ranger
-
-# YouCompleteMe Dependencies
-sudo apt install build-essential cmake python3-dev
+brew install ranger
 
 # copy rangers default config
 ranger --copy-config=all

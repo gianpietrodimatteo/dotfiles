@@ -22,7 +22,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Code completion
-Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --all' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }

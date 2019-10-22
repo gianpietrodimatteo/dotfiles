@@ -15,10 +15,6 @@ revertBkp(){
 # misc
 revertBkp ~/.fonts .
 
-# i3
-revertBkp ~/.config/i3 .
-revertBkp ~/.i3status.conf i3
-
 # atom
 revertBkp ~/.atom/config.cson atom
 
@@ -37,13 +33,3 @@ revertBkp ~/.bashrc bash
 revertBkp ~/.inputrc bash
 revertBkp ~/.profile bash
 
-# x_window_system
-revertBkp ~/.xmodmaprc x_window_system
-revertBkp ~/.Xresources x_window_system
-revertBkp ~/.xsessionrc x_window_system
-
-# DEBIAN: Apply multimedia keys settings
-xmodmap ~/.xmodmaprc
-
-# Apply Xresources
-xrdb ~/.Xresources
