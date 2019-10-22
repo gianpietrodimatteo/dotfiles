@@ -6,14 +6,9 @@ color themes
 
 
 
-VIM - try out Ale instead of Syntastic
-" git integration
-" snippets bank
+vim:
+check out the theming with the new terminal
+update: stterm is gonna take more work than I thought
+check out if you need airline theme
 
-remove plugins plugin use vim8 package manager
-emmet
-tabs
-
-Create a decent install script!
-
-
+uninstall script
