@@ -60,11 +60,3 @@ ln -sv ~/path/to/dotfiles/.myconfig ~/original/path/to/config/
 ## Finally
 This is my dotfiles folder. It isn't much, but archives good working hours that I’m not willing to throw away so easily. Feel free to take some inspiration, I generally comment the lines so I don’t lose myself. If it’s no use to you, maybe you learned something from this quest.
 
-* i3: ~/.config/i3/config
-* bash: ~/.bashrc ~/.profile
-* atom: ~/.atom/config.cson
-* vim configuration file: ~/.vimrc
-* i3exit script: ~/.config/i3/i3exit
-* bash functions: ~/.bash_functions
-* bash aliases ~/.bash_aliases
-* thinkkpads multimedia keys configurations: ~/.xmodmaprc

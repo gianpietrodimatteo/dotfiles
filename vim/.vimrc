@@ -77,6 +77,8 @@ set laststatus=2
 set splitright splitbelow
 autocmd BufNewFile * startinsert
 
+set cmdheight=1
+
 let mapleader =" "
 ""let g:solarized_termcolors=256
 ""set t_Co=256
@@ -137,6 +139,27 @@ let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+" Toggle status line
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
+endfunction
+
+nnoremap <M-h> :call ToggleHiddenAll()<CR>
+
 
 " ----------------------------------------------------------------------------
 " Basic keybindings
