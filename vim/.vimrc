@@ -22,7 +22,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Code completion
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
+"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -90,7 +90,7 @@ let mapleader =" "
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " colorscheme solarized
-colorscheme jellybeans
+" colorscheme jellybeans
 
 " NOTE - only works after installing vim gtk
 set clipboard=unnamedplus

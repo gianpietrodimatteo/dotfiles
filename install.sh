@@ -2,8 +2,16 @@
 
 # Installations (should run before the apply.sh)
 
+# Homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # Install ranger
 brew install ranger
+
+brew install vim
+# Install macvim
+brew install cmake macvim
+brew link --overwrite macvim
 
 # copy rangers default config
 ranger --copy-config=all
