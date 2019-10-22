@@ -45,6 +45,9 @@ Plug 'easymotion/vim-easymotion'
 " Beloved multi cursors
 Plug 'terryma/vim-multiple-cursors'
 
+" Beloved code formatting
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
 " Initialize plugin system
 call plug#end()
 
