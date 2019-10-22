@@ -62,13 +62,13 @@ URxvt*color21:                        #eeeeee
 Xcursor.size: 16W
 URxvt.urgentOnBell: true
 URxvt.scrollBar: false
-URxvt.font: xft:hack:size=10
-!URxvt.depth: 24
+/* URxvt.font: xft:hack:size=10 */
+URxvt.font: xft:SFMono-Regular:size=10
 URxvt*depth: 32
 URxvt.url-launcher: /usr/bin/google-chrome
 URxvt.matcher.button: 1
 !URxvt.perl-ext-common: default,matcher,vtwheel
-
+URxvt.letterSpace: -1
 !! Transparency (0-1):
 st.alpha: 0.92
 

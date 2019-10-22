@@ -29,7 +29,14 @@ applyDot(){
         ln -sv $DF/$2/$file $filePath
 }
 
-#atom
+# misc
+applyDot ~/.fonts .
+
+# i3
+applyDot ~/.config/i3 .
+applyDot ~/.i3status.conf i3
+
+# atom
 applyDot ~/.atom/config.cson atom
 
 # vim
