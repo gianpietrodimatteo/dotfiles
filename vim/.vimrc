@@ -46,7 +46,20 @@ Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-multiple-cursors'
 
 " Beloved code formatting
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install', 'branch': 'release/1.x'}
+
+" Syntax Highlighting for typescript
+Plug 'leafgarland/typescript-vim'
+
+" Smarter pairing
+Plug 'jiangmiao/auto-pairs'
+
+" Javascript support
+Plug 'pangloss/vim-javascript'
+
+" More typescritp support
+Plug 'https://github.com/Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'https://github.com/Quramy/tsuquyomi'
 
 " Initialize plugin system
 call plug#end()
@@ -93,7 +106,7 @@ let mapleader =" "
 " colorscheme jellybeans
 
 " NOTE - only works after installing vim gtk
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 " Activates filetype detection and other stuff and autocompletion
 filetype indent plugin on
@@ -224,26 +237,19 @@ nnoremap <Del>   i<Del><Esc>
 " Quick macros
 nnoremap <Space> @q
 
+nnoremap gy "+y
+nnoremap gY "+Y
+nnoremap gp "+p
+nnoremap gP "+P
+
+vnoremap gy "+y
+vnoremap gY "+Y
+vnoremap gp "+p
+vnoremap gP "+P
+
 " ----------------------------------------------------------------------------
 " Editor keybindings
 " ----------------------------------------------------------------------------
-" Simplest autoclosing tags
-iabbrev </ </<C-X><C-O>
-
-" Simple appending of closing characters
-inoremap {      {}<Left>
-inoremap (      ()<Left>
-inoremap '      ''<left>
-inoremap "      ""<left>
-
-" Skipping the closing character
-inoremap <expr> }  strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-
-" Finally for the quotes
-inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
-inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
-
 " Alt moves lines
 nmap <m-j> ddjP
 " imap <m-j> <Esc>ddjPi
@@ -280,12 +286,39 @@ nmap <leader>j :e
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 
+let g:prettier#config#single_quote = 'true'
+
+let g:ale_open_list = 1
+let g:ale_set_quickfix = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'vue': ['eslint']
+\}
+
+let g:ale_fixers = {
+  \    'javascript': ['eslint'],
+  \    'typescript': ['prettier', 'tslint'],
+  \    'scss': ['prettier'],
+  \    'html': ['prettier'],
+\}
+
+let g:ale_fix_on_save = 1
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+nnoremap <M-e> :NERDTreeToggle<CR>
+
 "---------------------------------------------------------------
 " Snippets
 "---------------------------------------------------------------
 
 "*.html
-autocmd FileType html nnoremap ,h1 <h1></h1><Enter><Enter><++><Esc>2kf<i
+autocmd FileType html nnoremap ,h1 <h1></h1><Enter><Enter><Esc>2kf<i
 autocmd FileType html nnoremap ,html <Esc>:-1read $HOME/.vim/snippets/html.html<CR>
 
 "*.sh
