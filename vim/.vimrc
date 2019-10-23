@@ -22,7 +22,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Code completion
-"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' }
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -128,7 +128,6 @@ set softtabstop=2
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
 
-set colorcolumn=80
 set wrap
 set fo+=t
 set fo-=l
