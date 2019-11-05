@@ -89,16 +89,28 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+$l move left
-bindsym $mod+Shift+$d move down
-bindsym $mod+Shift+$u move up
-bindsym $mod+Shift+$r  move right
+bindsym $mod+Shift+$l move left 30
+bindsym $mod+Shift+$d move down 30
+bindsym $mod+Shift+$u move up 30
+bindsym $mod+Shift+$r  move right 30
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move left 30
+bindsym $mod+Shift+Down move down 30
+bindsym $mod+Shift+Up move up 30
+bindsym $mod+Shift+Right move right 30
+
+# Faster resize
+bindsym $mod+Control+$l resize shrink width 30
+bindsym $mod+Control+$d resize grow height 30
+bindsym $mod+Control+$u resize shrink height 30
+bindsym $mod+Control+$r resize grow width 30
+
+# Faster resize
+bindsym $mod+Control+Left resize shrink width 30
+bindsym $mod+Control+Down resize grow height 30
+bindsym $mod+Control+Up resize shrink height 30
+bindsym $mod+Control+Right resize grow width 30
 
 
 # -----------------------------------------------------------------------------
@@ -140,18 +152,6 @@ bindsym $mod+minus scratchpad show
 # focus the child container
 bindsym $mod+c focus child
 
-# Floating window movement
-bindsym $mod+y move left 30
-bindsym $mod+u move down 30
-bindsym $mod+i move up 30
-bindsym $mod+o move right 30
-
-# Faster resize
-bindsym $mod+Shift+y resize shrink width 30
-bindsym $mod+Shift+i resize grow height 30
-bindsym $mod+Shift+u resize shrink height 30
-bindsym $mod+Shift+o resize grow width 30
-
 # Original resize window (you can also use the mouse for that)
 mode "resize" {
   # These bindings trigger as soon as you enter the resize mode
@@ -183,16 +183,16 @@ bindsym $mod+r mode "resize"
 # Workspaces
 # -----------------------------------------------------------------------------
 #Set workspaces variables
-set $ws1 "1: "
-set $ws2 "2: >_"
-set $ws3 "3: "
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
 set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9: "
-set $ws10 "10: ♪"
+set $ws8 "8 "
+set $ws9 "9 "
+set $ws10 "10 ♪"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -307,19 +307,36 @@ exec --no-startup-id xfsettingsd --sm-client-disable &
 exec --no-startup-id xfce4-power-manager &
 
 assign [class="Google-chrome"] $ws1
+assign [class="Code"] $ws3
+assign [class="libreoffice"] $ws5
+assign [class="Gimp"] $ws6
 assign [class="Spotify"] $ws10
 
 # Startup Executions
 exec google-chrome
 exec urxvt -name cmd
-exec urxvt -name file -e ranger Workspace/
-exec --no-startup-id spotify
+# exec urxvt -name file -e ranger Workspace/
+# exec --no-startup-id spotify
 exec --no-startup-id dropbox start
+exec --no-startup-id wicd-client -t
+# exec code
+# exec libreoffice
+# exec gimp
+exec urxvt -name note -cd $NOTESPATH -e vim
 
 # Move classes and instances
 for_window [instance="cmd"] move workspace $ws2
-for_window [instance="file"] move workspace $ws3
+for_window [instance="file"] move workspace $ws4
+for_window [instance="note"] move workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
+
+for_window [title="GIMP Startup"] move workspace $ws6
+
+for_window [window_role="gimp-toolbox"] floating enable border normal resize shrink height 30
+
+for_window [window_role="gimp-dock"] floating enable border normal resize shrink height 30
+
+for_window [window_role="gimp-toolbox-color-dialog"] floating enable border normal
 
 # Floating windows by default
 for_window [class="Pavucontrol"] floating enable

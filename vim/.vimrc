@@ -128,7 +128,6 @@ set softtabstop=2
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
 
-set colorcolumn=80
 set wrap
 set fo+=t
 set fo-=l
@@ -214,6 +213,8 @@ vnoremap <C-D> "+d
 " Quit and Save using leader
 nnoremap <leader>q :q<CR>
 nnoremap <leader>s :update<CR>
+" Or using Z
+nnoremap ZS :update<CR>
 " n was taken and I wanted a key far away from write
 nnoremap <leader>m :q!<CR>
 
@@ -285,6 +286,7 @@ nmap <leader>j :e
 " ----------------------------------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#ale#enabled = 1
 
 let g:prettier#config#single_quote = 'true'
 
@@ -306,12 +308,29 @@ let g:ale_fixers = {
 \}
 
 let g:ale_fix_on_save = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_html_htmlhint_options='--config=$HOME/dotfiles/language/.htmlhintrc'
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 nnoremap <M-e> :NERDTreeToggle<CR>
+
+set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+" Temp
+inoremap í í
 
 "---------------------------------------------------------------
 " Snippets

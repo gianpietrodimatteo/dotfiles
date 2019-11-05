@@ -35,6 +35,8 @@ applyDot ~/.vimrc vim
 
 # ranger
 applyDot ~/.config/ranger/rc.conf ranger
+applyDot ~/.config/ranger/scope.sh ranger
+applyDot ~/.config/ranger/rifle.conf ranger
 
 # bash
 applyDot ~/.bash_aliases bash

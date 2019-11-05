@@ -12,3 +12,7 @@ alias findh='find ~ -name '
 alias tara='tar zxvf '
 
 alias rmi='rm -i'
+
+alias deb='sudo dpkg -i'
+
+alias note='urxvt -name note -cd $NOTESPATH -e vim'

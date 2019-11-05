@@ -9,6 +9,9 @@ sudo apt-get install ranger
 # YouCompleteMe Dependencies
 sudo apt install build-essential cmake python3-dev
 
+# Exuberant ctags
+sudo apt install exuberant-ctags
+
 # copy rangers default config
 ranger --copy-config=all
 

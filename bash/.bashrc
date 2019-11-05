@@ -135,6 +135,8 @@ export PATH="$PATH:/usr/local/go/bin"
 export GOPATH="$HOME/Workspace/go"
 export PATH="$PATH:$GOPATH/bin"
 
-export JAVA_HOME="/usr/java/jdk1.8.0_221"
-export JRE_HOME="/usr/java/jdk1.8.0_221/jre"
+export JAVA_HOME="/usr/local/java/jdk1.8.0_221"
+export JRE_HOME="/usr/local/java/jdk1.8.0_221/jre"
 export PATH="$PATH:$JAVA_HOME/bin:$JRE_HOME/bin"
+
+export NOTESPATH="$HOME/Dropbox/Textos"
