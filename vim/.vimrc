@@ -188,35 +188,7 @@ map <C-l> <C-w>l
 " F7 corrects indentation
 map <F7> gg=G<C-o><C-o>
 
-" Emulate classic save and quit
-" Must configure terminal to accept Ctrl+s Ctrl+q
-noremap <silent> <C-S>          :update<CR>
-vnoremap <silent> <C-S>         <C-C>:update<CR>
-inoremap <silent> <C-S>         <C-O>:update<CR>
-noremap <silent> <C-Q>          :q<CR>
-vnoremap <silent> <C-Q>         <C-C>:q<CR>
-inoremap <silent> <C-Q>         <C-O>:q<CR>
-
-" Emulate classic undo redo commands
-inoremap <C-Z> <C-O>u
-inoremap <C-Y> <C-O><C-R>
-
-" Emulate the system clipboard and modern editor shortcuts
-inoremap <C-V> <ESC>"+Pa
-nnoremap <C-V> <ESC>"+Pa
-vnoremap <C-V> <ESC>"+Pa
-inoremap <C-C> <ESC>"+Y
-nnoremap <C-C> <ESC>"+Y
-vnoremap <C-C> "+y
-vnoremap <C-D> "+d
-
-" Quit and Save using leader
-nnoremap <leader>q :q<CR>
-nnoremap <leader>s :update<CR>
-" Or using Z
 nnoremap ZS :update<CR>
-" n was taken and I wanted a key far away from write
-nnoremap <leader>m :q!<CR>
 
 " Spell-check e for english, p for portuguese
 map <leader>e :setlocal spell! spelllang=en_us<CR>
@@ -230,14 +202,13 @@ map <leader><leader> <Esc>/<++><Enter>"_c4l
 " Also, remapping cxco to ctrl+space
 " imap <C-Space> <C-X><C-O>
 
-" Make enter, end and backspace work like insert on normal mode
-nnoremap <Enter> i<Enter><Esc>
-nnoremap <BS>    i<BS><Esc>
-nnoremap <Del>   i<Del><Esc>
+" Make easy enter
+nnoremap <leader><Enter> i<Enter><Esc>
 
 " Quick macros
-nnoremap <Space> @q
+nnoremap <Space>q @q
 
+" Quick clipboard copy paste
 nnoremap gy "+y
 nnoremap gY "+Y
 nnoremap gp "+p
@@ -281,6 +252,7 @@ nmap <leader>o :so %<Enter>
 " Open another file
 nmap <leader>j :e
 
+
 " ----------------------------------------------------------------------------
 " Plugin settings
 " ----------------------------------------------------------------------------
@@ -292,8 +264,8 @@ let g:prettier#config#single_quote = 'true'
 
 let g:ale_open_list = 1
 let g:ale_set_quickfix = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <m-i> <Plug>(ale_previous_wrap)
+nmap <silent> <m-o> <Plug>(ale_next_wrap)
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
@@ -317,8 +289,10 @@ let g:typescript_compiler_options = ''
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
+" Open close explorer
 nnoremap <M-e> :NERDTreeToggle<CR>
 
+" Ctrlp igonring files
 set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
@@ -331,6 +305,7 @@ let g:ctrlp_custom_ignore = {
 
 " Temp
 inoremap í í
+
 
 "---------------------------------------------------------------
 " Snippets
