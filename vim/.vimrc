@@ -36,6 +36,9 @@ Plug 'tpope/vim-fugitive'
 " Status
 Plug 'vim-airline/vim-airline'
 
+" Autoclosing tags
+Plug 'alvan/vim-closetag'
+
 " Sorrounding
 Plug 'tpope/vim-surround'
 
@@ -60,6 +63,9 @@ Plug 'pangloss/vim-javascript'
 " More typescritp support
 Plug 'https://github.com/Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'https://github.com/Quramy/tsuquyomi'
+
+" Minimap
+Plug 'severin-lemaignan/vim-minimap'
 
 " Initialize plugin system
 call plug#end()
@@ -91,7 +97,7 @@ set number relativenumber
 set encoding=utf-8
 set laststatus=2
 set splitright splitbelow
-autocmd BufNewFile * startinsert
+" autocmd BufNewFile * startinsert
 
 set cmdheight=1
 
@@ -188,7 +194,11 @@ map <C-l> <C-w>l
 " F7 corrects indentation
 map <F7> gg=G<C-o><C-o>
 
-nnoremap ZS :update<CR>
+" easy quit, save, one or all
+nnoremap ZW :qa!<CR>
+nnoremap ZS :wa<CR>
+nnoremap ZA :update<CR>
+nnoremap ZX :wqa<CR>
 
 " Spell-check e for english, p for portuguese
 map <leader>e :setlocal spell! spelllang=en_us<CR>
@@ -252,6 +262,8 @@ nmap <leader>o :so %<Enter>
 " Open another file
 nmap <leader>j :e
 
+" Search for selection
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " ----------------------------------------------------------------------------
 " Plugin settings
@@ -306,6 +318,47 @@ let g:ctrlp_custom_ignore = {
 " Temp
 inoremap í í
 
+"----------------- alvan autoclose tags
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.xml'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml,xml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx,xml'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+"
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
 
 "---------------------------------------------------------------
 " Snippets

@@ -7,3 +7,9 @@ function m2d() {
   mv $fileName ~/dotfiles/
   ln -sv ~/dotfiles/$fileName .
 }
+
+function oproj() {
+  dir=$1
+  cd $dir
+  vim -c NERDTreeToggle -c CtrlP
+}

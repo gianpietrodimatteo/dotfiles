@@ -123,15 +123,15 @@ export NVM_DIR="$HOME/.config"
 
 # Disable Software Flow Control (XON/XOFF flow control) (that  ctrl s ctrl q thing)
 
-export TERMINAL=urxvt
+export TERMINAL=st
 
 export PATH="$PATH:/snap/bin"
+
 export MYVIMRC="/home/gianpietro/.vimrc"
+
 export PATH="$PATH:/home/gianpietro/node_modules/.bin"
 
-
 export PATH="$PATH:/usr/local/go/bin"
-
 export GOPATH="$HOME/Workspace/go"
 export PATH="$PATH:$GOPATH/bin"
 
@@ -140,3 +140,10 @@ export JRE_HOME="/usr/local/java/jdk1.8.0_221/jre"
 export PATH="$PATH:$JAVA_HOME/bin:$JRE_HOME/bin"
 
 export NOTESPATH="$HOME/Dropbox/Textos"
+
+export M2_HOME="/opt/apache-maven-3.6.2"
+export MAVEN_OPTS="-Xms1024m -Xmx1G -noverify"
+export PATH="$PATH:$M2_HOME/bin"
+
+export JBOSS_HOME="/opt/wildfly-18.0.0.Final"
+export PATH="$PATH:$JBOSS_HOME/bin"

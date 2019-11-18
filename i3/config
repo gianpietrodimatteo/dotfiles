@@ -13,7 +13,7 @@
 # Basics
 # -----------------------------------------------------------------------------
 set $mod Mod4
-set $term urxvt
+set $term st
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -61,6 +61,11 @@ mode "$mode_system" {
 }
 bindsym $mod+End mode "$mode_system"
 
+# Screen variables
+set $s1 eDP1
+set $s2 HDMI2
+# examples
+# workspace 1 output LVDS1
 
 # -----------------------------------------------------------------------------
 # Movement
@@ -112,6 +117,9 @@ bindsym $mod+Control+Down resize grow height 30
 bindsym $mod+Control+Up resize shrink height 30
 bindsym $mod+Control+Right resize grow width 30
 
+# Multiple screens
+bindsym $mod+Shift+o move workspace to output $s1
+bindsym $mod+Shift+p move workspace to output $s2
 
 # -----------------------------------------------------------------------------
 # Windows
@@ -293,14 +301,19 @@ bindsym $mod+Shift+s sticky toggle
 # -----------------------------------------------------------------------------
 # Quick shortcuts
 # -----------------------------------------------------------------------------
-bindsym $mod+n exec urxvt -name file -e ranger
-bindsym $mod+m exec urxvt -name file -e ranger Workspace/
+# bindsym $mod+n exec urxvt -name file -e ranger
+# bindsym $mod+m exec urxvt -name file -e ranger Workspace/
 
 
 # -----------------------------------------------------------------------------
 # Initialization and assignments
 # -----------------------------------------------------------------------------
 # Find the class name with xprop command
+# Find screen name with xrandr command
+
+# Screen Assignments
+workspace $ws1 output $s1
+workspace $ws2 output $s2
 
 # Adding some services from xfce
 exec --no-startup-id xfsettingsd --sm-client-disable &
@@ -314,7 +327,7 @@ assign [class="Spotify"] $ws10
 
 # Startup Executions
 exec google-chrome
-exec urxvt -name cmd
+exec $term -n cmd
 # exec urxvt -name file -e ranger Workspace/
 # exec --no-startup-id spotify
 exec --no-startup-id dropbox start
@@ -322,7 +335,7 @@ exec --no-startup-id wicd-client -t
 # exec code
 # exec libreoffice
 # exec gimp
-exec urxvt -name note -cd $NOTESPATH -e vim
+exec $term -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP'
 
 # Move classes and instances
 for_window [instance="cmd"] move workspace $ws2

@@ -1,18 +1,7 @@
 ! run xrdb ~/.Xresources to apply
-!! Transparency (0-1):
-!stterm-256color.alpha: 0.92
-
-!! Set a default font and font size as below:
-!stterm-256color.font: Monospace-20
-
-!! Set the background, foreground and cursor colors as below:
-!st.background: #282828
-!st.foreground: white
-!st.cursorColor: white
 
 !URxvt*background:                     #151718
 URxvt*background:                    [92]#151718
-!URxvt*background: rgba:0000/0000/0200/c800
 URxvt*foreground:                     #d6d6d6
 URxvt*cursorColor:                    #d6d6d6
 
@@ -69,11 +58,14 @@ URxvt.url-launcher: /usr/bin/google-chrome
 URxvt.matcher.button: 1
 !URxvt.perl-ext-common: default,matcher,vtwheel
 URxvt.letterSpace: -1
+
 !! Transparency (0-1):
-st.alpha: 0.92
+st.alpha: 0.95
 
 !! Set a default font and font size as below:
-st.font: Monospace-40;
+st.font: SFMono-Regular-12
+/* st.font: SFMono-Regular-50 */
+/* st.background: #151718 */
 
 ! st.termname: st-256color
 ! st.borderpx: 2
