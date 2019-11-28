@@ -25,18 +25,10 @@ applyDot ~/.fonts .
 applyDot ~/.config/i3 .
 applyDot ~/.i3status.conf i3
 
-# atom
-applyDot ~/.atom/config.cson atom
-
 # vim
 applyDot ~/.vim/colors vim
 applyDot ~/.vim/snippets vim
 applyDot ~/.vimrc vim
-
-# ranger
-applyDot ~/.config/ranger/rc.conf ranger
-applyDot ~/.config/ranger/scope.sh ranger
-applyDot ~/.config/ranger/rifle.conf ranger
 
 # bash
 applyDot ~/.bash_aliases bash
@@ -50,8 +42,12 @@ applyDot ~/.xmodmaprc x_window_system
 applyDot ~/.Xresources x_window_system
 applyDot ~/.xsessionrc x_window_system
 
-# DEBIAN: Apply multimedia keys settings
+# bin
+applyDot ~/bin .
+
+# Apply custom keys settings
 xmodmap ~/.xmodmaprc
 
 # Apply Xresources
 xrdb ~/.Xresources
+

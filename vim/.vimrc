@@ -265,6 +265,9 @@ nmap <leader>j :e
 " Search for selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
+" Quick enter tag with enter
+nmap <CR> <C-]>
+
 " ----------------------------------------------------------------------------
 " Plugin settings
 " ----------------------------------------------------------------------------
