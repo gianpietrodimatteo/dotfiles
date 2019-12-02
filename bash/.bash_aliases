@@ -15,10 +15,13 @@ alias rmrf='rm -rf'
 
 alias deb='sudo dpkg -i'
 
-alias note="$TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP'"
+alias notebook="$TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP'"
 
 alias vimep='vim -c NERDTreeToggle -c CtrlP'
 alias vime='vim -c NERDTreeToggle'
 alias vimp='vim -c CtrlP'
 
-alias lprompt=$HOME/Workspace/prompt/launch.sh
+alias lprompt="$HOME/Workspace/prompt/launch.sh"
+
+alias gitfap="git fetch --all --tags --prune"
+alias gitfat="git fetch --all --tags"

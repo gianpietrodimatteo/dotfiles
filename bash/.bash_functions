@@ -13,3 +13,10 @@ function oproj() {
   cd $dir
   vim -c NERDTreeToggle -c CtrlP
 }
+
+function gitp() {
+ echo "# Client: "
+ git -C $HOME/Workspace/prompt/prompt-client/ $1
+ echo -e "\n# Server: "
+ git -C $HOME/Workspace/prompt/prompt-server/ $1
+}

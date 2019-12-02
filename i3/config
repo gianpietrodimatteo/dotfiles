@@ -335,7 +335,7 @@ exec --no-startup-id wicd-client -t
 # exec code
 # exec libreoffice
 # exec gimp
-exec $term -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP'
+exec $term -n note -e sh -c "cd /home/gcdm/Dropbox/Textos/ && vim -c CtrlP"
 
 # Move classes and instances
 for_window [instance="cmd"] move workspace $ws2
