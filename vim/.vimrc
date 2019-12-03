@@ -7,7 +7,7 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
+" " Make sure you use single quotes
 
 " Syntax
 Plug 'w0rp/ale'
@@ -15,7 +15,7 @@ Plug 'w0rp/ale'
 " Comentary
 Plug 'tpope/vim-commentary'
 
-" Fuzzy finder"
+" Fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Snippets
@@ -284,15 +284,19 @@ nmap <silent> <m-o> <Plug>(ale_next_wrap)
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'vue': ['eslint']
+\   'vue': ['eslint'],
+\   'java': ['javac']
 \}
 
 let g:ale_fixers = {
   \    'javascript': ['eslint'],
   \    'typescript': ['prettier', 'tslint'],
   \    'scss': ['prettier'],
-  \    'html': ['prettier'],
+  \    'html': ['prettier']
 \}
+
+let g:ale_java_eclipselsp_path = '$HOME/local/eclipse.jdt.ls'
+let g:ale_java_eclipselsp_workspace_path = '$HOME/eclipse/prompt-workspace'
 
 let g:ale_fix_on_save = 1
 let g:ale_echo_msg_error_str = 'E'
@@ -308,7 +312,7 @@ autocmd QuickFixCmdPost    l* nested lwindow
 nnoremap <M-e> :NERDTreeToggle<CR>
 
 " Ctrlp igonring files
-set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*/target/*,*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'

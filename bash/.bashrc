@@ -87,24 +87,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# read process shell functions
-if [ -f ~/.bash_functions ]; then
-    . ~/.bash_functions
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -138,3 +120,21 @@ export PATH="$PATH:$HOME/local/idea-IC-192.7142.36/bin"
 export PATH="$PATH:$HOME/eclipse/jee-2019-09/eclipse"
 
 export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+
+export GOPATH="$HOME/Workspace/go"
+export PATH="$PATH:/usr/local/go/bin"
+
+# Alias definitions.
+# Comes AFTER defining the above variables, I need them, for now this works
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# read process shell functions
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi

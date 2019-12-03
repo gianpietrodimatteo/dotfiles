@@ -1,6 +1,10 @@
 # bash shell aliases
 alias mkdirp="mkdir -p"
 
+alias ll='ls -l'
+alias la='ls -lah'
+alias lc='ls -CF'
+
 alias trash='mv -t /home/gianpietro/.local/share/Trash/files/'
 
 alias findr='sudo find / -name '

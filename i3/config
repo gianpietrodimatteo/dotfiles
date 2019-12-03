@@ -299,13 +299,6 @@ bindsym $mod+Shift+s sticky toggle
 
 
 # -----------------------------------------------------------------------------
-# Quick shortcuts
-# -----------------------------------------------------------------------------
-# bindsym $mod+n exec urxvt -name file -e ranger
-# bindsym $mod+m exec urxvt -name file -e ranger Workspace/
-
-
-# -----------------------------------------------------------------------------
 # Initialization and assignments
 # -----------------------------------------------------------------------------
 # Find the class name with xprop command
@@ -321,6 +314,7 @@ exec --no-startup-id xfce4-power-manager &
 
 assign [class="Google-chrome"] $ws1
 assign [class="Code"] $ws3
+assign [class="jetbrains-idea-ce"] $ws4
 assign [class="libreoffice"] $ws5
 assign [class="Gimp"] $ws6
 assign [class="Spotify"] $ws10
@@ -341,6 +335,7 @@ exec $term -n note -e sh -c "cd /home/gcdm/Dropbox/Textos/ && vim -c CtrlP"
 for_window [instance="cmd"] move workspace $ws2
 for_window [instance="file"] move workspace $ws4
 for_window [instance="note"] move workspace $ws9
+for_window [instance="project"] move workspace $ws5
 for_window [class="Spotify"] move to workspace $ws10
 
 for_window [title="GIMP Startup"] move workspace $ws6
