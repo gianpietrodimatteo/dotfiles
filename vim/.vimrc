@@ -179,6 +179,8 @@ function! ToggleHiddenAll()
     endif
 endfunction
 
+set backspace=indent,eol,start  " more powerful backspacing
+
 nnoremap <M-h> :call ToggleHiddenAll()<CR>
 
 

@@ -309,8 +309,8 @@ workspace $ws1 output $s1
 workspace $ws2 output $s2
 
 # Adding some services from xfce
-exec --no-startup-id xfsettingsd --sm-client-disable &
-exec --no-startup-id xfce4-power-manager &
+# exec --no-startup-id xfsettingsd --sm-client-disable &
+# exec --no-startup-id xfce4-power-manager &
 
 assign [class="Google-chrome"] $ws1
 assign [class="Code"] $ws3
@@ -325,7 +325,7 @@ exec $term -n cmd
 # exec urxvt -name file -e ranger Workspace/
 # exec --no-startup-id spotify
 exec --no-startup-id dropbox start
-exec --no-startup-id wicd-client -t
+# exec --no-startup-id wicd-client -t
 # exec code
 # exec libreoffice
 # exec gimp

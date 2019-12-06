@@ -20,6 +20,7 @@ separate the basic configuration
 
 Add scrolling to lukes build, I'm missing it
 st truncation problem: window resizing, fullscreen etc loses its information
+Word wrapping on window resize, resize, redraw, gnu screen, checkwinsize, commands... this problem is bigger than expected
 Consider making your own terminal configuration
   How did he make the dmenu integration?
 
