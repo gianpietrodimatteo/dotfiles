@@ -15,10 +15,13 @@ function oproj() {
 }
 
 function gitp() {
+  clientDir=$HOME/Workspace/prompt/prompt-client
+  serverDir=$HOME/Workspace/prompt/prompt-server
+
   echo "# Client: ";
-  git --git-dir=$HOME/Workspace/prompt/prompt-client/.git "$@";
+  git --git-dir=$clientDir/.git --work-tree=$clientDir "$@";
   echo -e "\n# Server: ";
-  git --git-dir=$HOME/Workspace/prompt/prompt-server/.git "$@";
+  git --git-dir=$serverDir/.git --work-tree=$serverDir "$@";
 }
 
 function gitme() {

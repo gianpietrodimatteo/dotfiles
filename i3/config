@@ -303,6 +303,7 @@ bindsym $mod+Shift+s sticky toggle
 # -----------------------------------------------------------------------------
 # Find the class name with xprop command
 # Find screen name with xrandr command
+exec xrdb /home/gcdm/.Xresources
 
 # Screen Assignments
 workspace $ws1 output $s1
@@ -316,6 +317,7 @@ assign [class="Google-chrome"] $ws1
 assign [class="Code"] $ws3
 assign [class="jetbrains-idea-ce"] $ws4
 assign [class="libreoffice"] $ws5
+assign [class="DBeaver"] $ws6
 assign [class="Gimp"] $ws6
 assign [class="Spotify"] $ws10
 
@@ -334,8 +336,8 @@ exec $term -n note -e sh -c "cd /home/gcdm/Dropbox/Textos/ && vim -c CtrlP"
 # Move classes and instances
 for_window [instance="cmd"] move workspace $ws2
 for_window [instance="file"] move workspace $ws4
-for_window [instance="note"] move workspace $ws9
 for_window [instance="project"] move workspace $ws5
+for_window [instance="note"] move workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
 for_window [title="GIMP Startup"] move workspace $ws6

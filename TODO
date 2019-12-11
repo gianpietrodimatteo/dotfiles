@@ -22,5 +22,9 @@ Add scrolling to lukes build, I'm missing it
 st truncation problem: window resizing, fullscreen etc loses its information
 Word wrapping on window resize, resize, redraw, gnu screen, checkwinsize, commands... this problem is bigger than expected
 Consider making your own terminal configuration
-  How did he make the dmenu integration?
+  How did he make the dmenu integration? - externalpipe patch
+
+Using my build.... Text wrapping works in vim and in less.. Using less with highlight to read the logs temporarely
+- consider switching bach to urxvt =p
+also, tmux solves the wrapping problem and I needed to learn it anyway
 

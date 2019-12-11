@@ -310,6 +310,8 @@ let g:typescript_compiler_options = ''
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
+map <M-i> :ALEToggle<CR>
+
 " Open close explorer
 nnoremap <M-e> :NERDTreeToggle<CR>
 

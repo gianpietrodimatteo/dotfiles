@@ -11,6 +11,8 @@ alias findr='sudo find / -name '
 
 alias findh='find ~ -name '
 
+alias finda='find . -name'
+
 alias tara='tar zxvf '
 
 alias rmi='rm -i'
@@ -29,3 +31,7 @@ alias lprompt="$HOME/Workspace/prompt/launch.sh"
 
 alias gitfap="git fetch --all --tags --prune"
 alias gitfat="git fetch --all --tags"
+
+alias lessh='less -m -N -g -i -J --line-numbers --underline-special'
+
+alias cath="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style solarized-light"

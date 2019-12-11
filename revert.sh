@@ -39,6 +39,9 @@ revertBkp ~/.xsessionrc x_window_system
 # bin
 applyDot ~/bin .
 
+# tmux
+applyDot ~/.tmux.conf .
+
 # Apply custom keys settings
 xmodmap ~/.xmodmaprc
 

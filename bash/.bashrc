@@ -11,6 +11,8 @@ esac
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
+# Commands ignored from the history
+HISTIGNORE="pwd:ls:cd:exit:history"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -40,7 +42,7 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
+# uncommnt for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
@@ -124,6 +126,10 @@ export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 export GOPATH="$HOME/Workspace/go"
 export PATH="$PATH:/usr/local/go/bin"
 
+# Pipe Highlight to less
+export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
+export LESS=" -R"
+
 # Alias definitions.
 # Comes AFTER defining the above variables, I need them, for now this works
 # You may want to put all your additions into a separate file like
@@ -138,3 +144,7 @@ fi
 if [ -f ~/.bash_functions ]; then
     . ~/.bash_functions
 fi
+
+# Disable XON XOFF
+stty -ixon
+
