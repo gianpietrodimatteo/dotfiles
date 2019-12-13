@@ -1,6 +1,7 @@
-! run xrdb ~/.Xresources to apply
+/* ! run xrdb ~/.Xresources to apply */
+/* ! name.Class.resource: value */
 
-!URxvt*background:                     #151718
+! URxvt*background:                     #151718
 URxvt*background:                    [92]#151718
 URxvt*foreground:                     #d6d6d6
 URxvt*cursorColor:                    #d6d6d6
@@ -60,10 +61,10 @@ URxvt.matcher.button: 1
 URxvt.letterSpace: -1
 
 !! Transparency (0-1):
-st.alpha: 0.95
+*.alpha: 0.95
 
 !! Set a default font and font size as below:
-st.font: SFMono-Regular-14
+*.font: SFMono-Regular-14
 /* st.font: SFMono-Regular-50 */
 /* st.background: #151718 */
 

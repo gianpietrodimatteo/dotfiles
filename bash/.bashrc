@@ -148,3 +148,6 @@ fi
 # Disable XON XOFF
 stty -ixon
 
+# Source custom completions
+source $HOME/src/tmux-completion.bash
+

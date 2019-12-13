@@ -35,3 +35,9 @@ alias gitfat="git fetch --all --tags"
 alias lessh='less -m -N -g -i -J --line-numbers --underline-special'
 
 alias cath="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
+
+# Motherfucking tmux and it's huge syntax
+alias tml="tmux list-sessions"
+alias tma="tmux attach-session -t"
+alias tm0='tmux attach-session -t $(echo `tmux list-sessions` | cut -d ":" -f 1)'
+alias tmns="tmux new -s"

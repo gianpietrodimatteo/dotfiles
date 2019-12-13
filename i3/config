@@ -125,7 +125,7 @@ bindsym $mod+Shift+p move workspace to output $s2
 # Windows
 # -----------------------------------------------------------------------------
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+Shift+q exec st -e sh -c xkill
 bindsym $mod+q kill
 
 # split in horizontal orientation default: h
@@ -303,7 +303,6 @@ bindsym $mod+Shift+s sticky toggle
 # -----------------------------------------------------------------------------
 # Find the class name with xprop command
 # Find screen name with xrandr command
-exec xrdb /home/gcdm/.Xresources
 
 # Screen Assignments
 workspace $ws1 output $s1
