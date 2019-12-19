@@ -8,11 +8,10 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+# Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 # Commands ignored from the history
-HISTIGNORE="pwd:ls:cd:exit:history"
+HISTIGNORE="pwd:ls*:cd:exit:history:clear"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -120,6 +119,7 @@ export PATH="$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$M2_HOME/bin"
 
 export PATH="$PATH:$HOME/local/idea-IC-192.7142.36/bin"
 export PATH="$PATH:$HOME/eclipse/jee-2019-09/eclipse"
+export PATH="$PATH:$HOME/local/TIB_js-studiocomm_6.11.0"
 
 export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 
