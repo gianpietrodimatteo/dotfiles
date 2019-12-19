@@ -1,17 +1,30 @@
-Configure and build stterm
-ArchLinux wiki page
-apply patches: copy and navigate to url
-alpha
-color themes
-
-
-
-vim:
-check out the theming with the new terminal
-update: stterm is gonna take more work than I thought
-check out if you need airline theme
-
-Install script:
+Configure and build stterInstall script:
 add options to what do you want to install
 secure or version the backup so you don't lose your stuff on multiple executions
 MERGE the files instead of replacing them
+
+consider experimenting with zsh (+ohmyzsh)
+
+Adjust vim shortcuts to the new terminal configuration
+
+Try the git java
+  if it works, add it to the install script
+
+Add git shortcuts for navigation, error evaluation, git...
+Configure git for java
+Adjust git's go to reference functionality (that tags thing?)
+
+Test the old man's ultimate vim configuration
+Divide vim's configuration into multiple files
+separate the basic configuration
+
+Add scrolling to lukes build, I'm missing it
+st truncation problem: window resizing, fullscreen etc loses its information
+Word wrapping on window resize, resize, redraw, gnu screen, checkwinsize, commands... this problem is bigger than expected
+Consider making your own terminal configuration
+  How did he make the dmenu integration? - externalpipe patch
+
+Using my build.... Text wrapping works in vim and in less.. Using less with highlight to read the logs temporarely
+- consider switching bach to urxvt =p
+also, tmux solves the wrapping problem and I needed to learn it anyway
+

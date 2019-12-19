@@ -12,8 +12,10 @@ sudo apt install git
 sudo apt install curl
 sudo apt install xclip
 sudo apt install feh
+sudo apt install highlight
+sudo apt install tmux
 
-# stterm
+# stterm / xwindow
 sudo apt install xorg openbox xauth
 sudo apt install libx11-dev
 sudo apt install libxft-dev

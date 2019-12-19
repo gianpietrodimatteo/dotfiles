@@ -1,6 +1,7 @@
-! run xrdb ~/.Xresources to apply
+/* ! run xrdb ~/.Xresources to apply */
+/* ! name.Class.resource: value */
 
-!URxvt*background:                     #151718
+! URxvt*background:                     #151718
 URxvt*background:                    [92]#151718
 URxvt*foreground:                     #d6d6d6
 URxvt*cursorColor:                    #d6d6d6
@@ -60,10 +61,10 @@ URxvt.matcher.button: 1
 URxvt.letterSpace: -1
 
 !! Transparency (0-1):
-st.alpha: 0.90
+*.alpha: 0.95
 
 !! Set a default font and font size as below:
-st.font: SFMono-Regular
+*.font: SFMono-Regular-14
 /* st.font: SFMono-Regular-50 */
 /* st.background: #151718 */
 
@@ -76,22 +77,22 @@ st.font: SFMono-Regular
 /* *.cursorColor: white */
 
 /* !! gruvbox: */
-/* *.color0: #1d2021 */
-/* *.color1: #cc241d */
-/* *.color2: #98971a */
-/* *.color3: #d79921 */
-/* *.color4: #458588 */
-/* *.color5: #b16286 */
-/* *.color6: #689d6a */
-/* *.color7: #a89984 */
-/* *.color8: #928374 */
-/* *.color9: #fb4934 */
-/* *.color10: #b8bb26 */
-/* *.color11: #fabd2f */
-/* *.color12: #83a598 */
-/* *.color13: #d3869b */
-/* *.color14: #8ec07c */
-/* *.color15: #ebdbb2 */
+*.color0: #1d2021
+*.color1: #cc241d
+*.color2: #98971a
+*.color3: #d79921
+*.color4: #458588
+*.color5: #b16286
+*.color6: #689d6a
+*.color7: #a89984
+*.color8: #928374
+*.color9: #fb4934
+*.color10: #b8bb26
+*.color11: #fabd2f
+*.color12: #83a598
+*.color13: #d3869b
+*.color14: #8ec07c
+*.color15: #ebdbb2
 
 /* !! gruvbox light: */
 /* *.color0: #fbf1c7 */
