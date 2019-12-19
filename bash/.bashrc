@@ -129,12 +129,27 @@ export MYVIMRC="$HOME/.vimrc"
 
 export NOTESPATH="$HOME/Dropbox/Textos"
 
-export M2_HOME="$HOME/local/apache-maven-3.5.3"
-export JAVA_HOME="$HOME/local/jdk1.8.0_172"
-export JRE_HOME="$HOME/local/jdk1.8.0_172/jre"
+export PATH="$PATH:/snap/bin"
+
+export PATH="$PATH:$HOME/node_modules/.bin"
+
+export PATH="$PATH:/usr/local/go/bin"
+export GOPATH="$HOME/Workspace/go"
+export PATH="$PATH:$GOPATH/bin"
+
+export JAVA_HOME="/usr/local/java/jdk1.8.0_221"
+export JRE_HOME="/usr/local/java/jdk1.8.0_221/jre"
+export M2_HOME="/opt/apache-maven-3.6.2"
 export PATH="$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$M2_HOME/bin"
 
-export PATH="$PATH:$HOME/local/idea-IC-192.7142.36/bin"
-export PATH="$PATH:$HOME/eclipse/jee-2019-09/eclipse"
+export JBOSS_HOME="/opt/wildfly-18.0.0.Final"
+export PATH="$PATH:$JBOSS_HOME/bin"
 
-export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+# export PATH="$PATH:$HOME/local/idea-IC-192.7142.36/bin"
+# export PATH="$PATH:$HOME/eclipse/jee-2019-09/eclipse"
+
+# export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+
+
+
+

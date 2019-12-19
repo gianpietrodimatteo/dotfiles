@@ -62,8 +62,8 @@ mode "$mode_system" {
 bindsym $mod+End mode "$mode_system"
 
 # Screen variables
-set $s1 LVDS-1
-set $s2 VGA-1
+set $s1 eDP1
+set $s2 HDMI2
 # examples
 # workspace 1 output LVDS1
 
@@ -355,11 +355,11 @@ for_window [window_role="gimp-toolbox-color-dialog"] floating enable border norm
 for_window [class="Pavucontrol"] floating enable
 
 # exec even when you restart i3
-exec_always feh --bg-fill $HOME/Imagens/wallpaper.jpg
+exec_always feh --bg-fill /home/gianpietro/Pictures/desktop/wallpaper.jpg
 
 # XF86Display
 # from arandr - change when using multiple monitors
-exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
+# exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
 
 # compton allows transparent windows and also the transition
 exec_always compton #-f

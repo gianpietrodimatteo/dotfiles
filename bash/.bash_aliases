@@ -21,4 +21,3 @@ alias vimep='vim -c NERDTreeToggle -c CtrlP'
 alias vime='vim -c NERDTreeToggle'
 alias vimp='vim -c CtrlP'
 
-alias lprompt=$HOME/Workspace/prompt/launch.sh

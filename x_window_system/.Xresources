@@ -60,10 +60,10 @@ URxvt.matcher.button: 1
 URxvt.letterSpace: -1
 
 !! Transparency (0-1):
-st.alpha: 0.97
+st.alpha: 0.90
 
 !! Set a default font and font size as below:
-st.font: SFMono-Regular-14
+st.font: SFMono-Regular
 /* st.font: SFMono-Regular-50 */
 /* st.background: #151718 */
 
