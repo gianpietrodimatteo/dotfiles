@@ -65,7 +65,10 @@ Plug 'https://github.com/Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'https://github.com/Quramy/tsuquyomi'
 
 " Minimap
-Plug 'severin-lemaignan/vim-minimap'
+" Plug 'severin-lemaignan/vim-minimap'
+
+" Autosave
+Plug 'thaerkh/vim-workspace'
 
 " Initialize plugin system
 call plug#end()
@@ -328,6 +331,7 @@ let g:ctrlp_custom_ignore = {
 
 " Temp
 inoremap í í
+inoremap â â
 
 "----------------- alvan autoclose tags
 " filenames like *.xml, *.html, *.xhtml, ...

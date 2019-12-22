@@ -8,20 +8,25 @@ function m2d() {
   ln -sv ~/dotfiles/$fileName .
 }
 
-function oproj() {
-  dir=$1;
-  cd $dir;
+function vimep() {
+  if [ -z "$1" ]
+    then
+      dir=.;
+  else
+    dir=$1;
+  fi
+    cd $dir;
   vim -c NERDTreeToggle -c CtrlP
 }
 
 function gitp() {
-  clientDir=$HOME/Workspace/prompt/prompt-client
-  serverDir=$HOME/Workspace/prompt/prompt-server
+  clientDir=$HOME/Workspace/prompt/prompt-client;
+  serverDir=$HOME/Workspace/prompt/prompt-server;
 
   echo "# Client: ";
   git --git-dir=$clientDir/.git --work-tree=$clientDir "$@";
   echo -e "\n# Server: ";
-  git --git-dir=$serverDir/.git --work-tree=$serverDir "$@";
+  git --git-dir=$serverDir/.git --work-tree=$serverDir "$@"
 }
 
 function gitme() {
@@ -29,6 +34,7 @@ function gitme() {
     git -C $p $1;
   done 10<$HOME/.myrepos
 }
+
 # function gitme() {
 #   for REP in `cat $HOME/myrepos` ; do
 #     git -C $REP $1;
@@ -38,3 +44,12 @@ function gitme() {
 #   echo "$l"
 #   git -C "$l" $1
 # done <$HOME/myrepos
+
+function hibkp() {
+  rm -f $HOME/tmp/history-install-backup.txt;
+  while read p; do
+    grep "^$p" $HOME/.bash_history >> $HOME/tmp/history-install-backup.txt;
+  done < $HOME/src/history-install-grephelp
+}
+
+
