@@ -38,9 +38,9 @@ alias tm0='tmux attach-session -t $(echo `tmux list-sessions` | cut -d ":" -f 1)
 alias tmns="tmux new -s"
 
 # Motherfucking docker and it's huge syntax
-alias dockerl="docker container ls -a"
-alias dockeri="docker image ls -a"
-alias dockerb="docker exec -it $1 bash"
-alias docker0="docker exec -it $(echo `docker container ls -a` | cut -d " " -f 9) bash"
+# alias dockerl="docker container ls -a"
+# alias dockeri="docker image ls -a"
+# alias dockerb="docker exec -it $1 bash"
+# alias docker0="docker exec -it $(echo `docker container ls -a` | cut -d " " -f 9) bash"
 
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
