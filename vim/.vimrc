@@ -67,7 +67,7 @@ Plug 'https://github.com/Quramy/tsuquyomi'
 " Minimap
 " Plug 'severin-lemaignan/vim-minimap'
 
-" Autosave
+" Autosave and session/workspace saving
 Plug 'thaerkh/vim-workspace'
 
 " Initialize plugin system
@@ -374,6 +374,14 @@ let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
 "
 let g:closetag_close_shortcut = '<leader>>'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<CR>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 "---------------------------------------------------------------
 " Snippets

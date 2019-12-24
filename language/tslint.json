@@ -1,0 +1,6 @@
+{
+    "rules": {
+        "quotemark": [false, "double"],
+        "indent": [true, "spaces", 4]
+    }
+}
