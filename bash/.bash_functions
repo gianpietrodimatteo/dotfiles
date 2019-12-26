@@ -29,6 +29,16 @@ function gitp() {
   git --git-dir=$serverDir/.git --work-tree=$serverDir "$@"
 }
 
+function gitpc() {
+  clientDir=$HOME/Workspace/prompt/prompt-client;
+  git --git-dir=$clientDir/.git --work-tree=$clientDir "$@";
+}
+
+function gitps() {
+  serverDir=$HOME/Workspace/prompt/prompt-server;
+  git --git-dir=$serverDir/.git --work-tree=$serverDir "$@"
+}
+
 function gitme() {
   while read -u 10 p; do
     git -C $p $1;

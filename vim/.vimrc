@@ -271,7 +271,7 @@ nmap <leader>j :e
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " Quick enter tag with enter
-nmap <CR> <C-]>
+" nmap <CR> <C-]>
 
 " ----------------------------------------------------------------------------
 " Plugin settings
@@ -329,10 +329,6 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-" Temp
-inoremap í í
-inoremap â â
-
 "----------------- alvan autoclose tags
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
@@ -376,7 +372,7 @@ let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<CR>"
+" let g:UltiSnipsExpandTrigger="<CR>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -393,3 +389,11 @@ autocmd FileType html nnoremap ,html <Esc>:-1read $HOME/.vim/snippets/html.html<
 
 "*.sh
 autocmd FileType sh nnoremap ,sh :-1read $HOME/.vim/snippets/shebang.sh<CR>o
+
+
+" Temp
+map í í
+map â â
+map <CR> <CR>
+
+

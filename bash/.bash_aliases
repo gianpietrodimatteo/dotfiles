@@ -22,6 +22,7 @@ alias notebook="$TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP'"
 
 alias vime='vim -c NERDTreeToggle'
 alias vimp='vim -c CtrlP'
+alias viq='vim ~/tmp/draft.txt'
 
 alias lprompt="$HOME/Workspace/prompt/launch.sh"
 
