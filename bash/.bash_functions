@@ -41,19 +41,11 @@ function gitps() {
 
 function gitme() {
   while read -u 10 p; do
-    git -C $p $1;
+    echo "# $HOME/$p:";
+    git --git-dir=$p/.git --work-tree=$p "$@";
+    echo -e;
   done 10<$HOME/.myrepos
 }
-
-# function gitme() {
-#   for REP in `cat $HOME/myrepos` ; do
-#     git -C $REP $1;
-#   done
-# }
-# while read l; do
-#   echo "$l"
-#   git -C "$l" $1
-# done <$HOME/myrepos
 
 function hibkp() {
   rm -f $HOME/tmp/history-install-backup.txt;
