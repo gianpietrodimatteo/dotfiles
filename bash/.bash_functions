@@ -23,27 +23,31 @@ function gitp() {
   clientDir=$HOME/Workspace/prompt/prompt-client;
   serverDir=$HOME/Workspace/prompt/prompt-server;
 
-  echo "# Client: ";
+  echo "# Prompt Client: ";
   git --git-dir=$clientDir/.git --work-tree=$clientDir "$@";
-  echo -e "\n# Server: ";
+  echo -e "\n# Prompt Server: ";
   git --git-dir=$serverDir/.git --work-tree=$serverDir "$@"
 }
 
 function gitpc() {
+  echo "# Prompt Client: ";
   clientDir=$HOME/Workspace/prompt/prompt-client;
   git --git-dir=$clientDir/.git --work-tree=$clientDir "$@";
 }
 
 function gitps() {
+  echo "# Prompt Server: ";
   serverDir=$HOME/Workspace/prompt/prompt-server;
   git --git-dir=$serverDir/.git --work-tree=$serverDir "$@"
 }
 
 function gitme() {
   while read -u 10 p; do
-    echo "# $HOME/$p:";
-    git --git-dir=$p/.git --work-tree=$p "$@";
-    echo -e;
+    if [[ "$p" != \#* ]]; then
+      echo "# $HOME/$p:";
+      git --git-dir=$p/.git --work-tree=$p "$@";
+      echo -e;
+    fi
   done 10<$HOME/.myrepos
 }
 

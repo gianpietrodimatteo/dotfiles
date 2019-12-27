@@ -1,2 +1,7 @@
+# General
 dotfiles
 resources
+
+# Java
+Workspace/java/example-maven-spring
+Workspace/java/example-spring-boot
