@@ -287,6 +287,8 @@ let g:ale_set_quickfix = 1
 nmap <silent> <m-i> <Plug>(ale_previous_wrap)
 nmap <silent> <m-o> <Plug>(ale_next_wrap)
 
+let g:ale_java_google_java_format_executable = "$HOME/local/google-java-format/core/target/google-java-format-1.7-SNAPSHOT-all-deps.jar"
+let g:ale_java_google_java_format_use_global = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'vue': ['eslint'],
@@ -297,7 +299,8 @@ let g:ale_fixers = {
   \    'javascript': ['eslint'],
   \    'typescript': ['prettier', 'tslint'],
   \    'scss': ['prettier'],
-  \    'html': ['prettier']
+  \    'html': ['prettier'],
+  \    'java': ['google_java_format']
 \}
 
 let g:ale_java_eclipselsp_path = '$HOME/local/eclipse.jdt.ls'

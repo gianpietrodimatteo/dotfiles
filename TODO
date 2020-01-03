@@ -28,3 +28,6 @@ Using my build.... Text wrapping works in vim and in less.. Using less with high
 - consider switching bach to urxvt =p
 also, tmux solves the wrapping problem and I needed to learn it anyway
 
+
+upgrade bashaliases and bashfunctions with examples from the web
+(do it using git merge)
