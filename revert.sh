@@ -2,48 +2,61 @@
 
 # Revert configurations to their previous state
 
-# backup folder and dotfiles folder
-DBF="$HOME/dotfiles_backup"
-DF="$HOME/dotfiles"
+select_backup () {
+  echo "Select backup to restore to:";
+  select folder in `ls $HOME/dotfiles_backup`; do
+    if [ ! -z "$folder" ]; then
+      echo "$folder";
+      break
+    fi
+  done
+}
 
-revertBkp(){
-	file=`basename $1`
-	filePath=`dirname $1`
-        cp -v $DBF/$2/$file $filePath
+# Set backup folder and dotfiles folder
+DBF="$HOME/dotfiles_backup/$(select_backup)";
+DF="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )";
+
+revert_bkp () {
+  file=`basename $1`
+  filePath=`dirname $1`
+  cp -v $DBF/$2/$file $filePath
 }
 
 # misc
-revertBkp ~/.fonts .
+revert_bkp ~/.fonts .
 
 # i3
-revertBkp ~/.config/i3 .
-revertBkp ~/.i3status.conf i3
+revert_bkp ~/.config/i3 .
+revert_bkp ~/.i3status.conf i3
 
 # vim
-revertBkp ~/.vim/colors vim
-revertBkp ~/.vim/snippets vim
-revertBkp ~/.vimrc vim
+revert_bkp ~/.vim/colors vim
+revert_bkp ~/.vim/snippets vim
+revert_bkp ~/.vimrc vim
 
 # bash
-revertBkp ~/.bash_aliases bash
-revertBkp ~/.bash_functions bash
-revertBkp ~/.bashrc bash
-revertBkp ~/.inputrc bash
-revertBkp ~/.profile bash
+revert_bkp ~/.bash_aliases bash
+revert_bkp ~/.bash_functions bash
+revert_bkp ~/.bashrc bash
+revert_bkp ~/.inputrc bash
+revert_bkp ~/.profile bash
 
 # x_window_system
-revertBkp ~/.xmodmaprc x_window_system
-revertBkp ~/.Xresources x_window_system
-revertBkp ~/.xsessionrc x_window_system
+revert_bkp ~/.xmodmaprc x_window_system
+revert_bkp ~/.Xresources x_window_system
+revert_bkp ~/.xsessionrc x_window_system
 
 # bin
-revertBkp /bin .
+revert_bkp /bin .
 
 # tmux
-revertBkp ~/.tmux.conf .
+revert_bkp ~/.tmux.conf .
 
 # src
-revertBkp ~/src .
+revert_bkp ~/src .
+
+# my_repositories
+revert_bkp ~/.myrepos .
 
 # Apply custom keys settings
 xmodmap ~/.xmodmaprc

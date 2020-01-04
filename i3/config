@@ -330,7 +330,8 @@ exec --no-startup-id dropbox start
 # exec code
 # exec libreoffice
 # exec gimp
-exec $term -n note -e sh -c "cd /home/gcdm/Dropbox/Textos/ && vim -c CtrlP"
+exec $term -n note -e sh -c 'cd /home/gianpietro/Dropbox/Textos && vim -c CtrlP'
+
 
 # Move classes and instances
 for_window [instance="cmd"] move workspace $ws2

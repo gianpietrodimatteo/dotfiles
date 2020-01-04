@@ -1,13 +1,10 @@
 #!/bin/bash
-# bash functions
 
-#
-# bash_functions help
-#
-# help_funcs - summary of custom user functions
-# usage: help-funcs
+
+# functions - summary of custom user functions
+# usage: functions
 functions() {
-  cat "${HOME}/.bash_functions" | grep -B 1 usage;
+  cat "${HOME}/.bash_functions" | grep -v ignore-from-help | grep -B 1 usage;
 }
 
 #
@@ -26,7 +23,7 @@ cdl () {
 }
 
 # For now, to be executed AT THE FOLDER OF THE FILE
-# Moves to dotfiles and creates symlink
+# m2d - moves to dotfiles and creates symlink
 # usage: m2d <target>
 m2d () {
   fileName=$1;
@@ -34,7 +31,7 @@ m2d () {
   ln -sv ~/dotfiles/$fileName .
 }
 
-# Vim nerd tree and ctrl p
+# vimep - vim nerd tree and ctrl p
 # usage: vimep <target>
 vimep () {
   if [ -z "$1" ]
@@ -81,10 +78,10 @@ gitdir () {
 gitme () {
   wherisp > tmp/.myrepos_path;
   while read -u 10 p; do
-    if [ "$p" != \#* ] && [ "$p" ] ; then
-      echo "# $p:";
-          gitdir "$p" "$@";
-          echo -e;
+    if [[ "$p" != \#* ]] && [ "$p" ] ; then
+      echo "***"
+      echo "On path $p";
+      gitdir "$p" "$@";
     fi
   done 10<$HOME/tmp/.myrepos_path
 }
@@ -113,3 +110,25 @@ c2r () {
     echo "What do you mean?";
   fi;
 }
+
+
+# new_version - a function that creates a directory and returns it's path creating some crude versioning at the end of the name
+# usage: new_version <dir> <dir>
+new_version () {
+  proj="$1";
+  ver="$2";
+  if [ -z "$3" ]; then
+    i=1;
+  else
+    i="$3";
+  fi
+  stringa="$proj/$ver$i";
+
+  if [ ! -d "$stringa" ]; then
+    mkdir -p "$stringa";
+    echo "$stringa";
+  else
+    new_version "$proj" "$ver" "$(($i+1))";
+  fi
+}
+
