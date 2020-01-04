@@ -271,7 +271,7 @@ nmap <leader>j :e
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " Quick enter tag with enter
-nmap <CR> <C-]>
+" nmap <CR> <C-]>
 
 " ----------------------------------------------------------------------------
 " Plugin settings
@@ -287,6 +287,8 @@ let g:ale_set_quickfix = 1
 nmap <silent> <m-i> <Plug>(ale_previous_wrap)
 nmap <silent> <m-o> <Plug>(ale_next_wrap)
 
+let g:ale_java_google_java_format_executable = "$HOME/local/google-java-format/core/target/google-java-format-1.7-SNAPSHOT-all-deps.jar"
+let g:ale_java_google_java_format_use_global = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'vue': ['eslint'],
@@ -297,7 +299,8 @@ let g:ale_fixers = {
   \    'javascript': ['eslint'],
   \    'typescript': ['prettier', 'tslint'],
   \    'scss': ['prettier'],
-  \    'html': ['prettier']
+  \    'html': ['prettier'],
+  \    'java': ['google_java_format']
 \}
 
 let g:ale_java_eclipselsp_path = '$HOME/local/eclipse.jdt.ls'
@@ -328,10 +331,6 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
-
-" Temp
-inoremap í í
-inoremap â â
 
 "----------------- alvan autoclose tags
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -376,7 +375,7 @@ let g:closetag_shortcut = '>'
 let g:closetag_close_shortcut = '<leader>>'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<CR>"
+" let g:UltiSnipsExpandTrigger="<CR>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -393,3 +392,11 @@ autocmd FileType html nnoremap ,html <Esc>:-1read $HOME/.vim/snippets/html.html<
 
 "*.sh
 autocmd FileType sh nnoremap ,sh :-1read $HOME/.vim/snippets/shebang.sh<CR>o
+
+
+" Temp
+map í í
+map â â
+map <CR> <CR>
+
+

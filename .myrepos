@@ -1,2 +1,11 @@
-$HOME/dotfiles
-$HOME/resources
+# General
+dotfiles:$HOME/dotfiles
+resources:$HOME/resources
+
+# Pitang
+prompt-client:$HOME/workspace/prompt/prompt-client
+prompt-server:$HOME/workspace/prompt/prompt-server
+
+# Java
+example-magen-spring:$HOME/workspace/java/example-maven-spring
+example-spring-boot:$HOME/workspace/java/example-spring-boot

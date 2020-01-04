@@ -22,6 +22,7 @@ alias notebook="$TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP'"
 
 alias vime='vim -c NERDTreeToggle'
 alias vimp='vim -c CtrlP'
+alias viq='vim ~/tmp/draft.txt'
 
 alias gitfap="git fetch --all --tags --prune"
 alias gitfat="git fetch --all --tags"
@@ -44,3 +45,4 @@ alias tmns="tmux new -s"
 # alias docker0="docker exec -it $(echo `docker container ls -a` | cut -d " " -f 9) bash"
 
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
+
