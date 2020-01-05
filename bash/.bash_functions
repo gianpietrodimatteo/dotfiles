@@ -44,46 +44,40 @@ vimep () {
   vim -c NERDTreeToggle -c CtrlP
 }
 
-gitp () {
-  gitpc "$@";
-  gitps "$@";
-}
-
-gitpc () {
-  echo "# Prompt Client: ";
-  dir="`wherisp prompt-client`";
-  gitdir "$dir" "$@";
-}
-
-gitps () {
-  echo "# Prompt Server: ";
-  dir="`wherisp prompt-server`";
-  gitdir "$dir" "$@";
-}
-
 wherisp () {
-  cat ~/.myrepos | grep "$1" | cut -d ":" -f 2 | envsubst;
+  cat ~/.myrepos | grep "$1" | cut -d "|" -f 2 | envsubst;
 }
 
 gitdir () {
   if [ -d "$1" ]; then
     serverDir="$1";
     git --git-dir=$serverDir/.git --work-tree=$serverDir "${@:2}";
-    echo -e;
   else
     echo "ERROR: gitdir() - Must provide an existant directory.";
   fi
+  echo -e;
 }
 
+# gitme - execute command or download on all repositories listed in myrepos
+# usage: gitme [ <command> ]
 gitme () {
-  wherisp > tmp/.myrepos_path;
+  # Read ~/.myreppos
   while read -u 10 p; do
+    # If line is not a comment
     if [[ "$p" != \#* ]] && [ "$p" ] ; then
-      echo "***"
-      echo "On path $p";
-      gitdir "$p" "$@";
+      echo "About project $(echo "$p" | cut -d "|" -f 1)";
+      path=$(echo "$p" | cut -d "|" -f 2 | envsubst);
+      remote=$(echo "$p" | cut -d "|" -f 3);
+      # If no arguments were passed, install repositories
+      if [ -z "$1" ]; then
+        if [ ! -d "$path" ] ; then
+          git clone "$remote" "$path";
+        fi
+      else
+        gitdir "$path" "$@";
+      fi
     fi
-  done 10<$HOME/tmp/.myrepos_path
+  done 10<$HOME/.myrepos
 }
 
 hibkp () {
