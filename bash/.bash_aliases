@@ -46,3 +46,13 @@ alias tmns="tmux new -s"
 
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 
+alias sob="source ~/.bashrc;"
+
+# alias rep="sed s/$1/$2/g $3"
+
+alias allow="chmod u+x"
+
+alias space2underscore='echo "${1// /_}"'
+
+alias rm_empty_lines="sed -r '/^\s*$/d'"
+

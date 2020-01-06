@@ -313,8 +313,8 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_html_htmlhint_options='--config=$HOME/dotfiles/language/.htmlhintrc'
 let g:typescript_compiler_binary = 'tsc'
 let g:typescript_compiler_options = ''
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+" autocmd QuickFixCmdPost [^l]* nested cwindow
+" autocmd QuickFixCmdPost    l* nested lwindow
 
 map <M-i> :ALEToggle<CR>
 

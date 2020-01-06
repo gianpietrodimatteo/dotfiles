@@ -142,6 +142,9 @@ export PATH="$PATH:/snap/bin"
 
 export PATH="$PATH:$HOME/node_modules/.bin"
 
+export GDO_PROJSPATH="$HOME/workspace/gm_projects"
+export GDO_NOTESPATH="$HOME/Dropbox/gm_notes"
+
 # -----------------------------------------------------------------------------
 # Sources
 # -----------------------------------------------------------------------------

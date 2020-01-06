@@ -322,7 +322,7 @@ assign [class="Spotify"] $ws10
 
 # Startup Executions
 exec google-chrome
-exec $term -n cmd
+exec $term -n cmd -e tmux
 # exec urxvt -name file -e ranger Workspace/
 # exec --no-startup-id spotify
 exec --no-startup-id dropbox start

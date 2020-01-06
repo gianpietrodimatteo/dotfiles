@@ -106,7 +106,7 @@ c2r () {
 }
 
 
-# new_version - a function that creates a directory and returns it's path creating some crude versioning at the end of the name
+# new_version - creates a directory and returns it's path creating some crude versioning at the end of the name
 # usage: new_version <dir> <dir>
 new_version () {
   proj="$1";
@@ -126,3 +126,35 @@ new_version () {
   fi
 }
 
+# smartconcat - concatenate two text files keeping everything from the destination and addind from the origin avoiding duplicates
+# usage: smartconcat <origin> <destination>
+smartconcat () {
+  origin=$1;
+  destination=$2;
+
+  # We start by echoing the destination file
+  cat "$destination" | sed -r '/^\s*$/d';
+
+  # Then we read the origin
+  while read -u 10 o; do
+    already_exists=false;
+
+    # For each line of the origin we compare it to each line of the destination for duplicates
+    while read -u 10 d; do
+      if [[ "$o" == "$d" ]]; then
+        already_exists=true;
+      fi
+    done 10<$destination
+
+    # If the line is new to destination we echo it as well
+    if [ "$already_exists" = false ]; then
+      echo "$o";
+    fi
+  done 10<$origin
+}
+
+# smartuniq - delete the duplicate lines of a text file, keeping the first or the last ocurrence
+# smartuniq [ <option> ] <file>
+smartuniq () {
+  echo "TODO";
+}

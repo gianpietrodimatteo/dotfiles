@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# New ticket function
+
+set_project_name () {
+  select project_name in `ls $GDO_NOTESPATH`; do
+    if [ ! -z "$project_name" ]; then
+      echo "$project_name";
+      break;
+    fi
+  done
+}
+
+set_ticket_type () {
+  select ticket_type in "feature" "bug" "fix"; do
+    if [[ "$ticket_type" == "feature" ]] || [[ "$ticket_type" == "bug" ]] || [[ "$ticket_type" == "fix" ]]; then
+      break
+    fi
+  done
+}
+
+set_ticket_name_and_description () {
+  echo "Insert ticket's name:";
+  read ticket_name;
+  echo "Insert ticket's description:";
+  read ticket_description;
+}
+
+set_project_path () {
+  project_path="$GDO_NOTESPATH/$project_name";
+}
+
+set_ticket_path () {
+  if [ -z "$1" ]; then
+    i="$( ls $project_path | wc -l )";
+  else
+    i="$1";
+  fi
+
+  stringa="$project_path/$project_name-$i-$ticket_type-$( space2underscore $ticket_name )";
+
+  if [ ! -d "$stringa" ]; then
+    ticket_path="$stringa";
+  else
+    set_ticket_path "$(($i+1))";
+  fi
+}
+
+
+
+
+set_project_name;
+set_ticket_type;
+set_ticket_name_and_description;
+set_project_path;
+set_ticket_path;
+mkdir -p "$ticket_path";
+touch "$ticket_path/$ticket_name.txt" "$ticket_path/$ticket_name-db.sql";
+
+# git proceduressss
