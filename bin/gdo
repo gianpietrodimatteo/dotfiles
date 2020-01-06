@@ -10,6 +10,12 @@ fetch_github_repos () {
 
   # Save the answer from the api
   curl -u "$gh_username" https://api.github.com/user/repos > $tmp/gh_repos;
+
+{
+  "message": "Bad credentials",
+  "documentation_url": "https://developer.github.com/v3"
+}
+
   # Save the urls
   cat $tmp/gh_repos | grep html_url | grep "$gh_username"/ | cut -d "\"" -f 4 > $tmp/gh_repos_urls;
   # Save the names
@@ -18,11 +24,11 @@ fetch_github_repos () {
 
 # Create necessary directories and annotate their paths
 generate_paths () {
+  mkdir -p "$GDO_PROJSPATH";
+  mkdir -p "$GDO_NOTESPATH";
   while read -u 10 p; do
     projpath="$GDO_PROJSPATH/$p";
     notespath="$GDO_NOTESPATH/$p";
-    mkdir -p "$projpath";
-    mkdir -p "$notespath";
     echo "$projpath" >> "$tmp/gh_repos_paths";
     echo "$notespath" >> "$tmp/gh_repos_notes";
   done 10<$tmp/gh_repos_names
