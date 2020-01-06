@@ -33,6 +33,16 @@ apply_dot () {
   ln -sv $DF/$2/$file $filePath
 }
 
+apply_dot_change () {
+  new_file_name=`basename $1`
+  filePath=`dirname $1`
+  original_file_name="$3"
+  backupFolder="$DBF/$2"
+  mkdir -v $backupFolder
+  mv -v $1 $backupFolder
+  ln -sv $DF/$2/$original_file_name $filePath/$new_file_name
+}
+
 # misc
 apply_dot ~/.fonts .
 
@@ -52,6 +62,23 @@ apply_dot ~/.bashrc bash
 apply_dot ~/.inputrc bash
 apply_dot ~/.profile bash
 
+echo "Select your environment"
+select varfile in home pitang; do
+  # my_repositories
+  if [ -f "$DF/.$varfile.myrepos" ]; then
+    apply_dot_change ~/.myrepos . .$varfile.myrepos
+  fi
+  # aliases and functions
+  if [ -f "$DF/bash/.$varfile.bash_custom" ]; then
+    apply_dot_change ~/.bash_custom bash .$varfile.bash_custom
+  fi
+  # variables
+  if [ -f "$DF/bash/.$varfile.bash_variables" ]; then
+    apply_dot_change ~/.bash_variables bash .$varfile.bash_variables
+    break
+  fi
+done
+
 # x_window_system
 apply_dot ~/.xmodmaprc x_window_system
 apply_dot ~/.Xresources x_window_system
@@ -65,9 +92,6 @@ apply_dot ~/.tmux.conf .
 
 # src
 apply_dot ~/src .
-
-# my_repositories
-apply_dot ~/.myrepos .
 
 # Apply custom keys settings
 xmodmap ~/.xmodmaprc

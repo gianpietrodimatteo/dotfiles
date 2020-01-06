@@ -205,7 +205,7 @@ nnoremap ZS :wa<CR>
 nnoremap ZA :update<CR>
 nnoremap ZX :wqa<CR>
 
-" Spell-check e for english, p for portuguese
+" Spell-check e for english, i for portuguese
 map <leader>e :setlocal spell! spelllang=en_us<CR>
 map <leader>i :setlocal spell! spelllang=pt<CR>
 
