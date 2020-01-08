@@ -154,16 +154,27 @@ smartconcat () {
 }
 
 # smartuniq - delete the duplicate lines of a text file, keeping the first or the last ocurrence
-# smartuniq [ <option> ] <file>
+# usage: smartuniq [ <option> ] <file>
 smartuniq () {
   echo "TODO";
 }
 
-
+# gitpull - pull into a local branch without checking out. Remote and local branchnames must be the same
+# usage: gitpull <branchname>
 gitpull () {
   if [ -n "$2" ]; then
     git fetch "$1" "$2":"$2";
   else
     git fetch origin "$1":"$1";
   fi
+}
+
+# asa - quickly search apt repositories. Shows only lines with a word match
+# usage: asa <searchphrase>
+asa () {
+  apt-cache search $1 | grep $1
+}
+
+killport () {
+  sudo kill -9 $(sudo fuser -n tcp $1 2> /dev/null);
 }

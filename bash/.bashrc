@@ -11,7 +11,7 @@ esac
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 # Commands ignored from the history
-HISTIGNORE="pwd:ls*:cd:exit:history:clear"
+HISTIGNORE="pwd:ls:cd:exit:history:clear"
 
 # append to the history file, don't overwrite it
 shopt -s histappend

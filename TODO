@@ -5,7 +5,10 @@ MERGE the files instead of replacing them
 consider experimenting with zsh (+ohmyzsh)
 
 Adjust vim shortcuts to the new terminal configuration
+vim - consider vim sensible
 Add vim shortcuts for navigation, error evaluation, git...
+
+CONFIGURE NEW GIT PLUGINS
 
 Test the old man's ultimate vim configuration
 Divide vim's configuration into multiple files

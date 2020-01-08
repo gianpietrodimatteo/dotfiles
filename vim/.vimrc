@@ -12,8 +12,25 @@ call plug#begin('~/.vim/plugged')
 " Syntax
 Plug 'w0rp/ale'
 
+" tpope is love. tpope is life.
 " Comentary
 Plug 'tpope/vim-commentary'
+" Extend dot functionality
+Plug 'tpope/vim-repeat'
+" Extend find and replace functionality
+Plug 'tpope/vim-abolish'
+" Git
+Plug 'tpope/vim-fugitive'
+" Sorrounding
+Plug 'tpope/vim-surround'
+
+"Improved copypaste
+" Separate cut and delete
+Plug 'svermeulen/vim-cutlass'
+" Yank history
+Plug 'svermeulen/vim-yoink'
+" Easier find and replace
+Plug 'svermeulen/vim-subversive'
 
 " Fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
@@ -30,17 +47,11 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Emmet
 Plug 'mattn/emmet-vim'
 
-" Git
-Plug 'tpope/vim-fugitive'
-
 " Status
 Plug 'vim-airline/vim-airline'
 
 " Autoclosing tags
 Plug 'alvan/vim-closetag'
-
-" Sorrounding
-Plug 'tpope/vim-surround'
 
 " Beloved easymotion
 Plug 'easymotion/vim-easymotion'
@@ -63,9 +74,6 @@ Plug 'pangloss/vim-javascript'
 " More typescritp support
 Plug 'https://github.com/Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'https://github.com/Quramy/tsuquyomi'
-
-" Minimap
-" Plug 'severin-lemaignan/vim-minimap'
 
 " Autosave and session/workspace saving
 Plug 'thaerkh/vim-workspace'
@@ -167,19 +175,19 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 " Toggle status line
 let s:hidden_all = 0
 function! ToggleHiddenAll()
-    if s:hidden_all  == 0
-        let s:hidden_all = 1
-        set noshowmode
-        set noruler
-        set laststatus=0
-        set noshowcmd
-    else
-        let s:hidden_all = 0
-        set showmode
-        set ruler
-        set laststatus=2
-        set showcmd
-    endif
+  if s:hidden_all  == 0
+    let s:hidden_all = 1
+    set noshowmode
+    set noruler
+    set laststatus=0
+    set noshowcmd
+  else
+    let s:hidden_all = 0
+    set showmode
+    set ruler
+    set laststatus=2
+    set showcmd
+  endif
 endfunction
 
 set backspace=indent,eol,start  " more powerful backspacing
@@ -214,8 +222,8 @@ map <leader>i :setlocal spell! spelllang=pt<CR>
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
-" Also, remapping cxco to ctrl+space
-" imap <C-Space> <C-X><C-O>
+" Remapping cxco to ctrl+space
+imap <C-Space> <C-X><C-O>
 
 " Make easy enter
 nnoremap <leader><Enter> i<Enter><Esc>
@@ -264,14 +272,21 @@ nnoremap <C-Bslash> :vsplit<Enter>
 " Quick source current configuration file
 nmap <leader>o :so %<Enter>
 
-" Open another file
-nmap <leader>j :e
+" Update this file
+nmap <leader>j :e<CR>
+" Quick split
+nmap <leader>v :vsplit
 
 " Search for selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " Quick enter tag with enter
 " nmap <CR> <C-]>
+
+" execute single line
+nnoremap <m-t> 0YPj!!bash<CR>
+" execute multiple lines
+xnoremap <m-t> yPgv:!bash<CR>
 
 " ----------------------------------------------------------------------------
 " Plugin settings
@@ -290,18 +305,18 @@ nmap <silent> <m-o> <Plug>(ale_next_wrap)
 let g:ale_java_google_java_format_executable = "$HOME/local/google-java-format/core/target/google-java-format-1.7-SNAPSHOT-all-deps.jar"
 let g:ale_java_google_java_format_use_global = 1
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'vue': ['eslint'],
-\   'java': ['javac']
-\}
+      \   'javascript': ['eslint'],
+      \   'vue': ['eslint'],
+      \   'java': ['javac']
+      \}
 
 let g:ale_fixers = {
-  \    'javascript': ['eslint'],
-  \    'typescript': ['prettier', 'tslint'],
-  \    'scss': ['prettier'],
-  \    'html': ['prettier'],
-  \    'java': ['google_java_format']
-\}
+      \    'javascript': ['eslint'],
+      \    'typescript': ['prettier', 'tslint'],
+      \    'scss': ['prettier'],
+      \    'html': ['prettier'],
+      \    'java': ['google_java_format']
+      \}
 
 let g:ale_java_eclipselsp_path = '$HOME/local/eclipse.jdt.ls'
 let g:ale_java_eclipselsp_workspace_path = '$HOME/eclipse/prompt-workspace'
@@ -327,10 +342,10 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
 
 "----------------- alvan autoclose tags
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -362,9 +377,9 @@ let g:closetag_emptyTags_caseSensitive = 1
 " Disables auto-close if not in a "valid" region (based on filetype)
 "
 let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ }
+      \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+      \ 'javascript.jsx': 'jsxRegion',
+      \ }
 
 " Shortcut for closing tags, default is '>'
 "
@@ -382,6 +397,65 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" cutlass
+nnoremap m d
+xnoremap m d
+
+nnoremap mm dd
+nnoremap M D
+
+" yoink
+let g:yoinkIncludeDeleteOperations = 1
+" Swap the most recent paste around in the yank history:
+nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+
+" Permanently cycle through history
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
+
+" Format current paste ?
+nmap <c-=> <plug>(YoinkPostPasteToggleFormat)
+
+" Yanking now does not change the cursor position
+nmap y <plug>(YoinkYankPreserveCursorPosition)
+xmap y <plug>(YoinkYankPreserveCursorPosition)
+
+" subversive
+" Example config
+nmap <leader>s <plug>(SubversiveSubstituteRange)
+xmap <leader>s <plug>(SubversiveSubstituteRange)
+
+nmap <leader>ss <plug>(SubversiveSubstituteWordRange)
+
+" Simple motions that are useful for subversive are:
+" ie = inner entire buffer
+onoremap ie :exec "normal! ggVG"<cr>
+
+" iv = current viewable text in the buffer
+onoremap iv :exec "normal! HVL"<cr>
+
+" Confirm substitution
+nmap <leader>cr <plug>(SubversiveSubstituteRangeConfirm)
+xmap <leader>cr <plug>(SubversiveSubstituteRangeConfirm)
+nmap <leader>crr <plug>(SubversiveSubstituteWordRangeConfirm)
+
+" Abolish integration
+" You can substitute SubversiveSubvertRange for SubversiveSubvertRangeNoPrompt to use default register without prompting
+nmap <leader><leader>s <plug>(SubversiveSubvertRange)
+xmap <leader><leader>s <plug>(SubversiveSubvertRange)
+
+nmap <leader><leader>ss <plug>(SubversiveSubvertWordRange)
+
+" Integration with yoink
+xmap s <plug>(SubversiveSubstitute)
+xmap p <plug>(SubversiveSubstitute)
+xmap P <plug>(SubversiveSubstitute)
+
+
 "---------------------------------------------------------------
 " Snippets
 "---------------------------------------------------------------
@@ -397,6 +471,6 @@ autocmd FileType sh nnoremap ,sh :-1read $HOME/.vim/snippets/shebang.sh<CR>o
 " Temp
 map í í
 map â â
-map <CR> <CR>
+" map <CR> <CR>
 
 

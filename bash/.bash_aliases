@@ -26,6 +26,8 @@ alias viq='vim ~/tmp/draft.txt'
 
 alias gitfap="git fetch --all --tags --prune"
 alias gitfat="git fetch --all --tags"
+alias gits="git status"
+alias gitb="git branch"
 
 alias lessh='less -m -N -g -i -J --line-numbers --underline-special'
 
@@ -40,7 +42,7 @@ alias tmns="tmux new -s"
 
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 
-alias sob="source ~/.bashrc;"
+alias sob="source ~/.bashrc"
 
 # alias rep="sed s/$1/$2/g $3"
 
@@ -52,3 +54,4 @@ alias rm_empty_lines="sed -r '/^\s*$/d'"
 
 alias e="exit"
 
+alias vimupdate="vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc"
