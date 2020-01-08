@@ -22,6 +22,11 @@ cdl () {
   cd $1 && ls -a ;
 }
 
+
+cdi () {
+  cd "$1"; git status
+}
+
 # For now, to be executed AT THE FOLDER OF THE FILE
 # m2d - moves to dotfiles and creates symlink
 # usage: m2d <target>
@@ -66,16 +71,16 @@ gitme () {
     # If line is not a comment
     if [[ "$p" != \#* ]] && [ "$p" ] ; then
       echo "About project $(echo "$p" | cut -d "|" -f 1)";
-          path=$(echo "$p" | cut -d "|" -f 2 | envsubst);
-          remote=$(echo "$p" | cut -d "|" -f 3);
-          # If no arguments were passed, install repositories
-          if [ -z "$1" ]; then
-            if [ ! -d "$path" ] ; then
-              git clone "$remote" "$path";
-            fi
-          else
-            gitdir "$path" "$@";
-          fi
+      path=$(echo "$p" | cut -d "|" -f 2 | envsubst);
+      remote=$(echo "$p" | cut -d "|" -f 3);
+      # If no arguments were passed, install repositories
+      if [ -z "$1" ]; then
+        if [ ! -d "$path" ] ; then
+          git clone "$remote" "$path";
+        fi
+      else
+        gitdir "$path" "$@";
+      fi
     fi
   done 10<$HOME/.myrepos
 }
