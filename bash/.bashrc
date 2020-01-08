@@ -126,6 +126,10 @@ if [ -f "$HOME/src/tmux-completion.bash" ]; then
   source $HOME/src/tmux-completion.bash;
 fi
 
+if [ -f "$HOME/src/npm-completion.bash" ]; then
+  source $HOME/src/npm-completion.bash;
+fi
+
 # Other
 # Disable XON XOFF (stop ctrl s from freezing terminal)
 stty -ixon
