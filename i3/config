@@ -166,26 +166,26 @@ bindsym $mod+c focus child
 
 # Original resize window (you can also use the mouse for that)
 mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-  # Pressing left will shrink the window’s width.
-  # Pressing right will grow the window’s width.
-  # Pressing up will shrink the window’s height.
-  # Pressing down will grow the window’s height.
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
   bindsym j resize shrink width 10 px or 10 ppt
-  bindsym k resize grow height 10 px or 10 ppt
-  bindsym l resize shrink height 10 px or 10 ppt
-  bindsym ccedilla resize grow width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym ccedilla resize grow width 10 px or 10 ppt
 
-  # same bindings, but for the arrow keys
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -263,26 +263,26 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 bar {
   position top
-  status_command i3status
-  colors {
-    # Default colors
-    #background #000000
-    #statusline #ffffff
-    #separator #666666
-    #focused_workspace  #4c7899 #285577 #ffffff
-    #active_workspace   #333333 #5f676a #ffffff
-    #inactive_workspace #333333 #222222 #888888
-    #urgent_workspace   #2f343a #900000 #ffffff
-    #binding_mode       #2f343a #900000 #ffffff
+    status_command i3status
+    colors {
+# Default colors
+#background #000000
+#statusline #ffffff
+#separator #666666
+#focused_workspace  #4c7899 #285577 #ffffff
+#active_workspace   #333333 #5f676a #ffffff
+#inactive_workspace #333333 #222222 #888888
+#urgent_workspace   #2f343a #900000 #ffffff
+#binding_mode       #2f343a #900000 #ffffff
 
-    # Status bar colors
-    background $bar-bg-color
-    separator #757575
-    #                  border             background         text
-    focused_workspace  $bar-bg-color      $bar-bg-color      $text-color
-    inactive_workspace $bar-bg-color      $bar-bg-color      $inactive-text-color
-    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-  }
+# Status bar colors
+      background $bar-bg-color
+        separator #757575
+#                  border             background         text
+        focused_workspace  $bar-bg-color      $bar-bg-color      $text-color
+        inactive_workspace $bar-bg-color      $bar-bg-color      $inactive-text-color
+        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+    }
 }
 
 
@@ -291,15 +291,15 @@ bar {
 # -----------------------------------------------------------------------------
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound volume (with upper limit)
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+  bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+  bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+  bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+  bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # sticky window
-bindsym $mod+Shift+s sticky toggle
+  bindsym $mod+Shift+s sticky toggle
 
 
 # -----------------------------------------------------------------------------
@@ -309,61 +309,61 @@ bindsym $mod+Shift+s sticky toggle
 # Find screen name with xrandr command
 
 # Screen Assignments
-workspace $ws1 output $s1
-workspace $ws2 output $s2
+  workspace $ws1 output $s1
+  workspace $ws2 output $s2
 
 # Adding some services from xfce
 # exec --no-startup-id xfsettingsd --sm-client-disable &
 # exec --no-startup-id xfce4-power-manager &
 
-assign [class="Google-chrome"] $ws1
-assign [class="Code"] $ws3
-assign [class="jetbrains-idea-ce"] $ws4
-assign [class="libreoffice"] $ws5
-assign [class="DBeaver"] $ws6
-assign [class="Gimp"] $ws6
-assign [class="Spotify"] $ws10
+  assign [class="Google-chrome"] $ws1
+  assign [class="Code"] $ws3
+  assign [class="jetbrains-idea-ce"] $ws4
+  assign [class="libreoffice"] $ws5
+  assign [class="DBeaver"] $ws6
+  assign [class="Gimp"] $ws6
+  assign [class="Spotify"] $ws10
 
 # Startup Executions
-exec google-chrome
-exec $term -n cmd -e tmux
+  exec google-chrome
+  exec $term -n cmd -e tmux
 # exec urxvt -name file -e ranger Workspace/
 # exec --no-startup-id spotify
-exec --no-startup-id dropbox start
+  exec --no-startup-id dropbox start
 # exec --no-startup-id wicd-client -t
 # exec code
 # exec libreoffice
 # exec gimp
-exec $term -n note -e sh -c 'cd /home/gcdm/Dropbox/Textos && vim -c CtrlP'
+  exec $term -n note -e sh -c "cd ~/Dropbox/Textos && vim -c CtrlP -c ToggleAutosave -c ToggleWrap"
 
 # Move classes and instances
-for_window [instance="cmd"] move workspace $ws2
-for_window [instance="file"] move workspace $ws4
-for_window [instance="project"] move workspace $ws5
-for_window [instance="note"] move workspace $ws9
-for_window [class="Spotify"] move to workspace $ws10
+  for_window [instance="cmd"] move workspace $ws2
+  for_window [instance="file"] move workspace $ws4
+  for_window [instance="project"] move workspace $ws5
+  for_window [instance="note"] move workspace $ws9
+  for_window [class="Spotify"] move to workspace $ws10
 
-for_window [title="GIMP Startup"] move workspace $ws6
+  for_window [title="GIMP Startup"] move workspace $ws6
 
-for_window [window_role="gimp-toolbox"] floating enable border normal resize shrink height 30
+  for_window [window_role="gimp-toolbox"] floating enable border normal resize shrink height 30
 
-for_window [window_role="gimp-dock"] floating enable border normal resize shrink height 30
+  for_window [window_role="gimp-dock"] floating enable border normal resize shrink height 30
 
-for_window [window_role="gimp-toolbox-color-dialog"] floating enable border normal
+  for_window [window_role="gimp-toolbox-color-dialog"] floating enable border normal
 
 # Floating windows by default
-for_window [class="Pavucontrol"] floating enable
+  for_window [class="Pavucontrol"] floating enable
 
 # exec even when you restart i3
-exec_always feh --bg-fill /home/gcdm/dotfiles/wallpaper.jpg
+  exec_always feh --bg-fill ~/dotfiles/wallpaper.jpg
 
 # XF86Display
 # from arandr - change when using multiple monitors
-exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
+  exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
 
 # compton allows transparent windows and also the transition
-exec_always compton #-f
+  exec_always compton #-f
 
 # Security and power management
-exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
+  exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
 

@@ -190,3 +190,14 @@ asa () {
 killport () {
   sudo kill -9 $(sudo fuser -n tcp $1 2> /dev/null);
 }
+
+# change_extensions - change the extension name of all files in current folder
+# usage: change_extensions <old_extension> <new_extension>
+change_extensions() {
+  local old_extension="$1";
+  local new_extension="$2";
+  for file in *."$old_extension"
+  do
+    mv "$file" "${file%.$old_extension}.$new_extension"
+  done
+}

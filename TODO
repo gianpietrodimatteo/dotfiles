@@ -16,3 +16,8 @@ separate the basic configuration
 
 upgrade bashaliases and bashfunctions with examples from the web
 (do it using git merge)
+
+change gdo to python, (or go?) - all bash scripts that are too big must be like
+that.
+
+make the i3 configuration file accept the bash variables

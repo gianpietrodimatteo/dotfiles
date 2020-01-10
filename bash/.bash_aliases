@@ -23,7 +23,7 @@ alias rmrf="rm -rf"
 
 alias deb="sudo dpkg -i"
 
-alias notebook="$TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP'"
+alias notebook="$TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c ToggleAutosave'"
 
 alias vime="vim -c NERDTreeToggle"
 alias vimp="vim -c CtrlP"
