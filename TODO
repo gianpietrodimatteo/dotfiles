@@ -21,3 +21,10 @@ change gdo to python, (or go?) - all bash scripts that are too big must be like
 that.
 
 make the i3 configuration file accept the bash variables
+
+make the vim function sorting thing (or even terminal as well)
+hint: adjust identation, then make it based on the indentation
+you can compact each function in a line,
+then sort alphabetically normally (may even remove the duplicates),
+then revert the compactation of each function
+

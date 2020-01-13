@@ -12,32 +12,32 @@ functions() {
 #
 # mkcd - makedir and cd in it
 # usage: mkcd <dir>
-mkcd () {
+mkcd() {
   mkdir -p $1 && cd $1 ;
 }
 
 # cdl - cd and ls
 # usage: cdl <dir>
-cdl () {
+cdl() {
   cd $1 && ls -a ;
 }
 
-cdi () {
+cdi() {
   cd "$1"; git status
 }
 
-cath () {
-  highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light
-}
-
-cats () {
-  highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light --syntax "$2"
+cath() {
+  if [[ -n "$2" ]]; then
+    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light --syntax "$2";
+  else
+    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light;
+  fi
 }
 
 # For now, to be executed AT THE FOLDER OF THE FILE
 # m2d - moves to dotfiles and creates symlink
 # usage: m2d <target>
-m2d () {
+m2d() {
   fileName=$1;
   mv $fileName ~/dotfiles/;
   ln -sv ~/dotfiles/$fileName .
@@ -45,7 +45,7 @@ m2d () {
 
 # vimep - vim nerd tree and ctrl p
 # usage: vimep <target>
-vimep () {
+vimep() {
   if [ -z "$1" ]
   then
     dir=.;
@@ -56,11 +56,11 @@ vimep () {
   vim -c NERDTreeToggle -c CtrlP
 }
 
-wherisp () {
+wherisp() {
   cat ~/.myrepos | grep "$1" | cut -d "|" -f 2 | envsubst;
 }
 
-gitdir () {
+gitdir() {
   if [ -d "$1" ]; then
     serverDir="$1";
     git --git-dir=$serverDir/.git --work-tree=$serverDir "${@:2}";
@@ -72,7 +72,7 @@ gitdir () {
 
 # gitme - execute command or download on all repositories listed in myrepos
 # usage: gitme [ <command> ]
-gitme () {
+gitme() {
   # Read ~/.myreppos
   while read -u 10 p; do
     # If line is not a comment
@@ -92,18 +92,51 @@ gitme () {
   done 10<$HOME/.myrepos
 }
 
-hibkp () {
+# gitme_current - execute command or download on all repositories listed in myrepos
+# usage: gitme_current [ <command> ]
+gitme_current() {
+  # Read ~/.currentrepos
+  while read -u 10 p; do
+    # If line is not a comment
+    if [[ "$p" != \#* ]] && [ "$p" ] ; then
+      echo "About project $(echo "$p" | cut -d "|" -f 1)";
+          path=$(echo "$p" | cut -d "|" -f 2 | envsubst);
+          remote=$(echo "$p" | cut -d "|" -f 3);
+          # If no arguments were passed, install repositories
+          if [ -z "$1" ]; then
+            if [ ! -d "$path" ] ; then
+              git clone "$remote" "$path";
+            fi
+          else
+            gitdir "$path" "$@";
+          fi
+    fi
+  done 10<$HOME/.currentrepos
+}
+
+set_current() {
+  grep -v "^#" ~/.myrepos | grep -v "^$" | cut -d "|" -f 1 > tmp/.repos_names;
+  rm ~/.currentrepos;
+  select proj_name in $(cat tmp/.repos_names) DONE; do
+    cat .myrepos | grep "$proj_name|" >> ~/.currentrepos;
+    if [[ "$proj_name" == "DONE" ]]; then
+      break
+    fi
+  done
+}
+
+hibkp() {
   rm -f $HOME/tmp/history-install-backup.txt;
   while read p; do
     grep "^$p" $HOME/.bash_history >> $HOME/tmp/history-install-backup.txt;
   done < $HOME/src/history-install-grephelp
 }
 
-findc () {
+findc() {
   find "$1" -name "$2" 2> "$DONTCARE";
 }
 
-c2r () {
+c2r() {
   if [ -z "$1" ]; then
     echo "Must specify filename";
   elif [ -z "$2" ]; then
@@ -117,10 +150,9 @@ c2r () {
   fi;
 }
 
-
 # new_version - creates a directory and returns it's path creating some crude versioning at the end of the name
 # usage: new_version <dir> <dir>
-new_version () {
+new_version() {
   proj="$1";
   ver="$2";
   if [ -z "$3" ]; then
@@ -140,7 +172,7 @@ new_version () {
 
 # smartconcat - concatenate two text files keeping everything from the destination and addind from the origin avoiding duplicates
 # usage: smartconcat <origin> <destination>
-smartconcat () {
+smartconcat() {
   origin=$1;
   destination=$2;
 
@@ -167,13 +199,13 @@ smartconcat () {
 
 # smartuniq - delete the duplicate lines of a text file, keeping the first or the last ocurrence
 # usage: smartuniq [ <option> ] <file>
-smartuniq () {
+smartuniq() {
   echo "TODO";
 }
 
 # gitpull - pull into a local branch without checking out. Remote and local branchnames must be the same
 # usage: gitpull <branchname>
-gitpull () {
+gitpull() {
   if [ -n "$2" ]; then
     git fetch "$1" "$2":"$2";
   else
@@ -183,11 +215,11 @@ gitpull () {
 
 # asa - quickly search apt repositories. Shows only lines with a word match
 # usage: asa <searchphrase>
-asa () {
+asa() {
   apt-cache search $1 | grep $1
 }
 
-killport () {
+killport() {
   sudo kill -9 $(sudo fuser -n tcp $1 2> /dev/null);
 }
 
