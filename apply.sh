@@ -99,3 +99,17 @@ xmodmap ~/.xmodmaprc
 # Apply Xresources
 xrdb ~/.Xresources
 
+# Apply bash
+. ~/.bashrc
+
+# Reload i3
+
+# Post environment variables installations
+# makedirs
+mkdir $WORKSPACE
+
+# Install vim
+bash viminstall.sh
+
+# Install st
+bash stinstall.sh

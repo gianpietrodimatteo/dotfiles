@@ -6,8 +6,8 @@ sudo apt-get update
 
 # Command line stuff
 sudo apt install software-properties-common
-sudo apt install vim
-sudo apt install vim-gui-common
+# sudo apt install vim
+# sudo apt install vim-gui-common
 sudo apt install git
 sudo apt install curl
 sudo apt install xclip
@@ -41,10 +41,11 @@ sudo apt install exuberant-ctags
 # Python pip
 sudo apt install python-pip python3-pip
 
-#install vimplug - then run the :PluginInstall command
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 # Vim temporary directories
 mkdir -p $HOME/.vim/tmp/.backup $HOME/.vim/tmp/.swp $HOME/.vim/tmp/.undo
 
 mkdir $HOME/tmp
+
+# vimplug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
