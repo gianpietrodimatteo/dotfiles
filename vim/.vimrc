@@ -1,14 +1,10 @@
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " Plugins
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-
-" " Make sure you use single quotes
-
 " Syntax
 Plug 'w0rp/ale'
 
@@ -82,9 +78,9 @@ Plug 'thaerkh/vim-workspace'
 call plug#end()
 
 
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " Master Mappings
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " Map escape sequences to their alt combinations
 let c='a'
 while c <= 'z'
@@ -95,9 +91,10 @@ endw
 " Timeout to know if it was Esc j or Alt j
 set timeout ttimeoutlen=50
 
-" ----------------------------------------------------------------------------
+
+"------------------------------------------------------------------------------
 " Basics
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " Type :so % (:source %) to refresh .vimrc after making changes
 
 set nocompatible
@@ -145,11 +142,25 @@ set softtabstop=2
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
 
+" Line wraping
 set wrap
 set fo+=t
 set fo-=l
 set tw=0
-"set tw=80
+
+" Toggle line wrapping at 80 characters
+let s:wrapping = 0
+function! ToggleWrapFunction()
+  if s:wrapping == 0
+    let s:wrapping = 1
+    set tw=80
+  else
+    let s:wrapping = 0
+    set tw=0
+  endif
+endfunction
+
+command ToggleWrap call ToggleWrapFunction()
 
 " Search down into subfolders
 " Provides tab-completion for all file-related tasks
@@ -195,9 +206,9 @@ set backspace=indent,eol,start  " more powerful backspacing
 nnoremap <M-h> :call ToggleHiddenAll()<CR>
 
 
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " Basic keybindings
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -205,7 +216,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " F7 corrects indentation
-map <F7> gg=G<C-o><C-o>
+map <> gg=G<C-o><C-o>
 
 " easy quit, save, one or all
 nnoremap ZW :qa!<CR>
@@ -242,16 +253,14 @@ vnoremap gY "+Y
 vnoremap gp "+p
 vnoremap gP "+P
 
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " Editor keybindings
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " Alt moves lines
-nmap <m-j> ddjP
-" imap <m-j> <Esc>ddjPi
-nmap <m-k> ddkP
-" imap <m-k> <Esc>ddkPi
-vmap <m-j> ddjP
-vmap <m-k> ddkP
+nmap <m-j> Vmp
+nmap <m-k> VmkP
+vmap <m-j> Vmp
+vmap <m-k> VmkP
 
 " Alt duplication
 nmap <m-d> YP
@@ -280,17 +289,16 @@ nmap <leader>v :vsplit
 " Search for selection
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-" Quick enter tag with enter
-" nmap <CR> <C-]>
-
 " execute single line
 nnoremap <m-t> 0YPj!!bash<CR>
 " execute multiple lines
 xnoremap <m-t> yPgv:!bash<CR>
 
-" ----------------------------------------------------------------------------
+nnoremap <m-f> V=Vgq<CR>
+
+"------------------------------------------------------------------------------
 " Plugin settings
-" ----------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
 let g:airline#extensions#ale#enabled = 1
@@ -302,7 +310,8 @@ let g:ale_set_quickfix = 1
 nmap <silent> <m-i> <Plug>(ale_previous_wrap)
 nmap <silent> <m-o> <Plug>(ale_next_wrap)
 
-let g:ale_java_google_java_format_executable = "$HOME/local/google-java-format/core/target/google-java-format-1.7-SNAPSHOT-all-deps.jar"
+let g:ale_java_google_java_format_executable =
+      \ "$HOME/local/google-java-format/core/target/google-java-format-1.7-SNAPSHOT-all-deps.jar"
 let g:ale_java_google_java_format_use_global = 1
 let g:ale_linters = {
       \   'javascript': ['eslint'],
@@ -337,7 +346,8 @@ map <M-i> :ALEToggle<CR>
 nnoremap <M-e> :NERDTreeToggle<CR>
 
 " Ctrlp igonring files
-set wildignore+=*/target/*,*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*/target/*,*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip
+" MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -354,7 +364,8 @@ let g:ctrlp_custom_ignore = {
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.xml'
 
 " filenames like *.xml, *.xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
+" This will make the list of non-closing tags self-closing in the specified
+" files.
 "
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.xml'
 
@@ -364,12 +375,14 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.xml'
 let g:closetag_filetypes = 'html,xhtml,phtml,xml'
 
 " filetypes like xml, xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
+" This will make the list of non-closing tags self-closing in the specified
+" files.
 "
 let g:closetag_xhtml_filetypes = 'xhtml,jsx,xml'
 
 " integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>`
+" will be closed while `<link>` won't.)
 "
 let g:closetag_emptyTags_caseSensitive = 1
 
@@ -389,7 +402,8 @@ let g:closetag_shortcut = '>'
 "
 let g:closetag_close_shortcut = '<leader>>'
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<CR>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -444,7 +458,8 @@ xmap <leader>cr <plug>(SubversiveSubstituteRangeConfirm)
 nmap <leader>crr <plug>(SubversiveSubstituteWordRangeConfirm)
 
 " Abolish integration
-" You can substitute SubversiveSubvertRange for SubversiveSubvertRangeNoPrompt to use default register without prompting
+" You can substitute SubversiveSubvertRange for SubversiveSubvertRangeNoPrompt
+" to use default register without prompting
 nmap <leader><leader>s <plug>(SubversiveSubvertRange)
 xmap <leader><leader>s <plug>(SubversiveSubvertRange)
 
@@ -456,13 +471,21 @@ xmap p <plug>(SubversiveSubstitute)
 xmap P <plug>(SubversiveSubstitute)
 
 
-"---------------------------------------------------------------
-" Snippets
-"---------------------------------------------------------------
+"------------------------------------------------------------------------------
+" Styles
+"------------------------------------------------------------------------------
+au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile *.sh setlocal textwidth=80
+au BufRead,BufNewFile *.bash setlocal textwidth=80
 
+
+"------------------------------------------------------------------------------
+" Snippets
+"------------------------------------------------------------------------------
 "*.html
 autocmd FileType html nnoremap ,h1 <h1></h1><Enter><Enter><Esc>2kf<i
-autocmd FileType html nnoremap ,html <Esc>:-1read $HOME/.vim/snippets/html.html<CR>
+autocmd FileType html nnoremap ,html <Esc>:-1read
+      \ $HOME/.vim/snippets/html.html<CR>
 
 "*.sh
 autocmd FileType sh nnoremap ,sh :-1read $HOME/.vim/snippets/shebang.sh<CR>o
@@ -471,6 +494,5 @@ autocmd FileType sh nnoremap ,sh :-1read $HOME/.vim/snippets/shebang.sh<CR>o
 " Temp
 map í í
 map â â
-" map <CR> <CR>
 
 

@@ -2,7 +2,7 @@
 # Custom aliases and commands specific to pitang
 
 # Aliases
-alias lprompt="$HOME/workspace/prompt/launch.sh"
+alias lprompt="$WORKSPACE/prompt/launch.sh"
 
 # Motherfucking docker and it's huge syntax
 alias dockerl="docker container ls -a"

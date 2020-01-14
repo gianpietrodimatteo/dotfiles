@@ -1,38 +1,40 @@
 # Bash aliases
+# A bash alias is a word to replace a line. Anything more complex than that, so
+# as using the positional parameters or multiple lines of code should be a bash
+# function. Put a space at the end if you wish to concatenate aliases, but
+# remember to not refer to them anywhere else and avoid doing it here
+
 alias mkdirp="mkdir -p"
 
-alias ll='ls -l'
-alias la='ls -lah'
-alias lc='ls -CF'
+alias ll="ls -l"
+alias la="ls -lah"
+alias lc="ls -CF"
 
-alias trash='mv -t /home/gianpietro/.local/share/Trash/files/'
+alias trash="mv -t $HOME/.local/share/Trash/files/"
 
-alias findr='sudo find / -name '
-alias findh='find ~ -name '
-alias finda='find . -name'
+alias findr="sudo find / -name"
+alias findh="find ~ -name"
+alias finda="find . -name"
 
-alias tara='tar zxvf '
+alias tara="tar zxvf "
 
-alias rmi='rm -i'
-alias rmrf='rm -rf'
+alias rmi="rm -i"
+alias rmrf="rm -rf"
 
-alias deb='sudo dpkg -i'
+alias deb="sudo dpkg -i"
 
-alias notebook="$TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP'"
+alias notebook="$TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c ToggleAutosave'"
 
-alias vime='vim -c NERDTreeToggle'
-alias vimp='vim -c CtrlP'
-alias viq='vim ~/tmp/draft.txt'
+alias vime="vim -c NERDTreeToggle"
+alias vimp="vim -c CtrlP"
+alias viq="vim $DONTCARE"
 
 alias gitfap="git fetch --all --tags --prune"
 alias gitfat="git fetch --all --tags"
 alias gits="git status"
 alias gitb="git branch"
 
-alias lessh='less -m -N -g -i -J --line-numbers --underline-special'
-
-alias cath="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
-alias cats="highlight $1 --out-format xterm256 --line-numbers --quiet --force --style solarized-light --syntax $2"
+alias lessh="less -m -N -g -i -J --line-numbers --underline-special"
 
 # Motherfucking tmux and it's huge syntax
 alias tml="tmux list-sessions"
@@ -43,8 +45,6 @@ alias tmns="tmux new -s"
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 
 alias sob="source ~/.bashrc"
-
-# alias rep="sed s/$1/$2/g $3"
 
 alias allow="chmod u+x"
 
