@@ -63,11 +63,11 @@ bindsym $mod+End mode "$mode_system"
 
 # Screen variables
 # Home
-set $s1 eDP1
-set $s2 HDMI2
+# set $s1 eDP1
+# set $s2 HDMI2
 # Pitang
-# set $s1 LVDS-1
-# set $s2 VGA-1
+set $s1 LVDS-1
+set $s2 VGA-1
 # examples
 # workspace 1 output LVDS1
 
@@ -313,8 +313,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound vol
   workspace $ws2 output $s2
 
 # Adding some services from xfce
-exec --no-startup-id xfsettingsd --sm-client-disable &
-exec --no-startup-id xfce4-power-manager &
+  exec --no-startup-id xfsettingsd --sm-client-disable &
+  exec --no-startup-id xfce4-power-manager &
 
   assign [class="Google-chrome"] $ws1
   assign [class="Code"] $ws3
@@ -359,7 +359,7 @@ exec --no-startup-id xfce4-power-manager &
 
 # XF86Display
 # from arandr - change when using multiple monitors
-  # exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
+  exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
 
 # compton allows transparent windows and also the transition
   exec_always compton #-f
