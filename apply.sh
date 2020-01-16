@@ -106,7 +106,7 @@ xrdb ~/.Xresources
 
 # Post environment variables installations
 # makedirs
-mkdir $WORKSPACE
+mkdir "$WORKSPACE"
 
 # Install vim
 bash viminstall.sh

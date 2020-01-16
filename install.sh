@@ -16,6 +16,9 @@ sudo apt install highlight
 sudo apt install tmux
 sudo apt install tree
 
+# Basic services
+sudo apt install xfce4
+
 # stterm / xwindow
 sudo apt install xorg openbox xauth
 sudo apt install libx11-dev
@@ -48,4 +51,17 @@ mkdir $HOME/tmp
 
 # vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Chrome, IDEs, deb packages
+cd ~/Downloads
+#chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
+sudo apt install ./google-chrome-stable_current_amd64.deb
+
+#vscode
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - &&
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" &&
+sudo apt update &&
+sudo apt install code
+
 
