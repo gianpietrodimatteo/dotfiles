@@ -422,7 +422,8 @@ nnoremap M D
 let g:yoinkIncludeDeleteOperations = 1
 " Swap the most recent paste around in the yank history:
 nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+" find a key for the swap foward
+nmap <c-ç> <plug>(YoinkPostPasteSwapForward)
 
 nmap p <plug>(YoinkPaste_p)
 nmap P <plug>(YoinkPaste_P)

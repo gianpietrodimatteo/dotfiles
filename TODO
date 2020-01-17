@@ -1,6 +1,5 @@
 Install/Revert script:
 Add options to what do you want to install
-MERGE the files instead of replacing them
 
 consider experimenting with zsh (+ohmyzsh)
 

@@ -1,5 +1,12 @@
 # The Dotfiles Saga
 
+## Installation instructions
+Clone this repository in your home folder. Then run:
+
+```
+bash ~/dotfiles/install.sh
+```
+
 ## What do we want?
 
 ## We want to version control each of our painstakingly edited configuration files.

@@ -22,6 +22,8 @@ revert_bkp () {
   cp -v $DBF/$2/$file $filePath
 }
 
+echo "Reverting to previous configuration..."
+
 # misc
 revert_bkp ~/.fonts .
 
@@ -66,4 +68,10 @@ xmodmap ~/.xmodmaprc
 # Apply Xresources
 xrdb ~/.Xresources
 
+# Apply bash
+. ~/.bashrc
 
+# Reload i3
+i3-msg restart
+
+echo "Done."

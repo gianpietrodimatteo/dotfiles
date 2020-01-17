@@ -46,3 +46,6 @@ sudo update-alternatives --set vi /usr/local/bin/vim
 vim --version
 
 # got from youcompleteme iwki
+
+# update plugins and configurations
+vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc

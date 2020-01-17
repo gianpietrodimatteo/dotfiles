@@ -43,6 +43,8 @@ apply_dot_change () {
   ln -sv $DF/$2/$original_file_name $filePath/$new_file_name
 }
 
+echo "Start applying these configuration files..."
+
 # misc
 apply_dot ~/.fonts .
 
@@ -103,13 +105,22 @@ xrdb ~/.Xresources
 . ~/.bashrc
 
 # Reload i3
+i3-msg restart
+
+echo "Done applying this configuration."
+echo "Your previous files are in the latest dotfiles backup."
+echo "Run the revert.sh script to change back."
 
 # Post environment variables installations
 # makedirs
 mkdir "$WORKSPACE"
+mkdir "$WORKSPACE/go"
+mkdir "$HOME/java"
+mkdir "$HOME/Applications"
 
 # Install vim
 bash viminstall.sh
 
 # Install st
 bash stinstall.sh
+

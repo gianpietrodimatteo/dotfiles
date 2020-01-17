@@ -24,12 +24,6 @@ sudo apt install xorg openbox xauth
 sudo apt install libx11-dev
 sudo apt install libxft-dev
 
-# Docker
-sudo apt-get remove docker docker-engine docker.io containerd runc
-sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-sudo apt install docker-compose
-
 # i3
 sudo apt install i3
 sudo apt install compton
@@ -52,16 +46,48 @@ mkdir $HOME/tmp
 # vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# package managers
+sudo apt install snapd
+sudo snap install dbeaver-ce
+sudo snap install spotify
+sudo snap install vlc
+
 # Chrome, IDEs, deb packages
-cd ~/Downloads
 #chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
-sudo apt install ./google-chrome-stable_current_amd64.deb
+cd ~/Downloads && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
+  sudo apt install ./google-chrome-stable_current_amd64.deb
 
 #vscode
-curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - &&
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" &&
-sudo apt update &&
-sudo apt install code
+cd ~/Downloads && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - &&
+  sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" &&
+  sudo apt update &&
+  sudo apt install code
 
+# Cloud
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+~/.dropbox-dist/dropboxd &
+
+# nvm and node
+cd ~ && wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+command -v nvm # check installation
+nvm install node # latest
+
+# yarn
+cd ~/Downloads && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+
+# docker
+bash install_scripts/dockerinstall.sh
+
+# mysql
+bash install_scripts/mysqlinstall.sh
+
+# manual installations...
+echo "Install by hand: "
+echo "java eclipse intellij"
+echo "go"
+
+# Apply configuration
+bash install_scripts/apply.sh
 

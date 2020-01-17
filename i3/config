@@ -367,3 +367,5 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound vol
 # Security and power management
   exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
 
+# Temp
+exec xmodmap ~/.xmodmaprc
