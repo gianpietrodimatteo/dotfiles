@@ -329,7 +329,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound vol
   exec $term -n cmd -e tmux
 # exec urxvt -name file -e ranger Workspace/
 # exec --no-startup-id spotify
-  exec --no-startup-id dropbox start
+  exec --no-startup-id dropbox.py start # if you used the deb package is just dropbox
 # exec --no-startup-id wicd-client -t
 # exec code
 # exec libreoffice
@@ -368,4 +368,4 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound vol
   exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
 
 # Temp
-exec xmodmap ~/.xmodmaprc
+exec_always --no-startup-id xmodmap ~/.xmodmaprc

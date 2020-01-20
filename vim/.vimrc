@@ -91,6 +91,31 @@ endw
 " Timeout to know if it was Esc j or Alt j
 set timeout ttimeoutlen=50
 
+function! ConfirmQuit()
+  if (&modified==1)
+    if (confirm("Close this buffer and discard changes?", "&Yes\n&No", 2)==1)
+      :quit!
+    endif
+  else
+    :quit!
+  endif
+endfu
+
+function! ConfirmQuitAll()
+  if (len(filter(getbufinfo(), 'v:val.changed == 1')) > 0)
+    if (confirm("Close all buffers and discard changes?", "&Yes\n&No", 2)==1)
+      :qa!
+    endif
+  else
+    :qa!
+  endif
+endfu
+
+" Prompt before force quitting
+cnoremap <silent> q!<CR>  :call ConfirmQuit()<CR>
+nmap ZQ :call ConfirmQuit()<CR>
+cnoremap <silent> qa!<CR>  :call ConfirmQuitAll()<CR>
+
 
 "------------------------------------------------------------------------------
 " Basics
@@ -219,10 +244,10 @@ map <C-l> <C-w>l
 map <> gg=G<C-o><C-o>
 
 " easy quit, save, one or all
-nnoremap ZW :qa!<CR>
+nnoremap ZW :call ConfirmQuitAll()<CR>
 nnoremap ZS :wa<CR>
 nnoremap ZA :update<CR>
-nnoremap ZX :wqa<CR>
+nnoremap ZX :xa<CR>
 
 " Spell-check e for english, i for portuguese
 map <leader>e :setlocal spell! spelllang=en_us<CR>
