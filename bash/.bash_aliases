@@ -55,3 +55,9 @@ alias rm_empty_lines="sed -r '/^\s*$/d'"
 alias e="exit"
 
 alias vimupdate="vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc"
+
+alias tailf="tail -F"
+
+alias gitrw="git checkout HEAD~"
+
+alias gita="git add ."

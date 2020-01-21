@@ -233,3 +233,28 @@ change_extensions() {
     mv "$file" "${file%.$old_extension}.$new_extension"
   done
 }
+
+grepa() {
+  grep -r "$1" .
+}
+
+gitremotes() {
+  # Credit http://stackoverflow.com/a/2514279
+  for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r
+  }
+
+# gitff - git fast foward one commit
+# usage: gitff <reference_commit>
+gitff() {
+  if [[ -n "$1" ]]; then
+    local child_commit="$(git rev-list --topo-order HEAD.."$*" | tail -1)"
+    if [[ -n "$child_commit" ]]; then
+      git checkout "$child_commit"
+    else
+      echo "Already in latest commit on stated reference, checking it out instead"
+      git checkout "$1"
+    fi
+  else
+    echo "Must provide a reference commit."
+  fi
+}

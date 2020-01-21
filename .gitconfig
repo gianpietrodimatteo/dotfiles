@@ -1,0 +1,30 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+  name = Gianpietro Cavalcante Di Matteo
+  email = gianpietro.dimatteo@pitang.com
+[pager]
+  branch = false
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  mt = mergetool
+  sa = stash
+  df = diff
+  cp = cherry-pick
+  pl = pull --rebase
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  rw = checkout HEAD~
+  bk = checkout HEAD@{1}
+  rollback = rebase -i HEAD~
+[color]
+  ui = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto

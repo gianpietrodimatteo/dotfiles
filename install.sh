@@ -12,6 +12,7 @@ sudo apt install git
 sudo apt install curl
 sudo apt install xclip
 sudo apt install feh
+sudo apt install imagemagick
 sudo apt install highlight
 sudo apt install tmux
 sudo apt install tree
