@@ -16,12 +16,15 @@
   sa = stash
   df = diff
   cp = cherry-pick
-  pl = pull --rebase
+  pu = pull
+  pr = pull --rebase
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   rw = checkout HEAD~
   bk = checkout HEAD@{1}
   rollback = rebase -i HEAD~
+	fap = fetch --all --tags --prune
+	fa = fetch --all --tags
 [color]
   ui = auto
   branch = auto

@@ -1,4 +1,6 @@
 # cut and paste (don't copy!) the same settings from ~/.inputrc to /etc/inputrc which contains the system-wide settings, making this available to all users on your system
+# $INPUTRCm or ~/.inputrc or, lastly, /etc/inputrc
+
 # mappings to have up and down arrow searching through history:
 "\e[A": history-search-backward
 "\e[B": history-search-forward
@@ -9,3 +11,24 @@
 # mapping to have [Tab] and [Shift]+[Tab] to cycle through all the possible completions:
 "\t": menu-complete
 "\e[Z": menu-complete-backward
+
+set completion-ignore-case on
+
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+set skip-completed-text on
+
+# vi mode - needs more configurations
+# set editing-mode vi
+# set keymap vi
+
+$if mode=vi
+  set show-mode-in-prompt on
+  set keymap vi-command
+  "gg": beginning-of-history
+  "G": end-of-history
+  set keymap vi-insert       #notice how the "jj" movement is
+  "jj": vi-movement-mode     #after 'set keymap vi-insert'?
+  "\C-w": backward-kill-word
+$endif
