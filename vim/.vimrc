@@ -91,6 +91,9 @@ endw
 " Timeout to know if it was Esc j or Alt j
 set timeout ttimeoutlen=50
 
+" Map q to close instead of q
+cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'close' : 'q')<CR>
+
 
 "------------------------------------------------------------------------------
 " Basics

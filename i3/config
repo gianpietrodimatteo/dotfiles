@@ -63,11 +63,11 @@ bindsym $mod+End mode "$mode_system"
 
 # Screen variables
 # Home
-# set $s1 eDP1
-# set $s2 HDMI2
+set $s1 eDP1
+set $s2 HDMI2
 # Pitang
-set $s1 LVDS-1
-set $s2 VGA-1
+# set $s1 LVDS-1
+# set $s2 VGA-1
 # examples
 # workspace 1 output LVDS1
 
@@ -367,5 +367,3 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound vol
 # Security and power management
   exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
 
-# Temp
-exec xmodmap ~/.xmodmaprc
