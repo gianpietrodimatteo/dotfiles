@@ -8,6 +8,7 @@ vim - consider vim sensible
 Add vim shortcuts for navigation, error evaluation, git...
 
 CONFIGURE NEW GIT PLUGINS
+git - explore commit templates
 
 Test the old man's ultimate vim configuration
 Divide vim's configuration into multiple files

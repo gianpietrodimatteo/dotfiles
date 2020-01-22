@@ -12,6 +12,7 @@ sudo apt install git
 sudo apt install curl
 sudo apt install xclip
 sudo apt install feh
+sudo apt install imagemagick
 sudo apt install highlight
 sudo apt install tmux
 sudo apt install tree
@@ -42,6 +43,7 @@ sudo apt install python-pip python3-pip
 mkdir -p $HOME/.vim/tmp/.backup $HOME/.vim/tmp/.swp $HOME/.vim/tmp/.undo
 
 mkdir $HOME/tmp
+ln -sv /opt $HOME/Applications
 
 # vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -65,6 +67,9 @@ cd ~/Downloads && curl -sSL https://packages.microsoft.com/keys/microsoft.asc | 
 
 # Cloud
 cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+mkdir ~/bin
+curl -sSL https://www.dropbox.com/download?dl=packages/dropbox.py > ~/bin/dropbox.py
+chmod 755 ~/bin/dropbox.py
 ~/.dropbox-dist/dropboxd &
 
 # nvm and node
