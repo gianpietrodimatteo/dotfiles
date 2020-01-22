@@ -61,3 +61,7 @@ alias tailf="tail -F"
 alias gitrw="git checkout HEAD~"
 
 alias gita="git add ."
+alias gitm="git commit -m"
+alias gitam="gita;gitm"
+
+alias cpr="cp -r"
