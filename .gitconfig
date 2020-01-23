@@ -16,15 +16,19 @@
   sa = stash
   df = diff
   cp = cherry-pick
-  pu = pull
+  pl = pull
+  pu = push
   pr = pull --rebase
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   rw = checkout HEAD~
   bk = checkout HEAD@{1}
   rollback = rebase -i HEAD~
-	fap = fetch --all --tags --prune
-	fa = fetch --all --tags
+  fap = fetch --all --tags --prune
+  fa = fetch --all --tags
+  cm = commit -m
+  a = add .
+  po = push -u origin
 [color]
   ui = auto
   branch = auto

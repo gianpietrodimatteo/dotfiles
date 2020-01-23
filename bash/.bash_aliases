@@ -61,3 +61,5 @@ alias tailf="tail -F"
 alias gitrw="git checkout HEAD~"
 
 alias gita="git add ."
+
+alias curly="curl -sSL"
