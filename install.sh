@@ -6,8 +6,6 @@ sudo apt-get update
 
 # Command line stuff
 sudo apt install software-properties-common
-# sudo apt install vim
-# sudo apt install vim-gui-common
 sudo apt install git
 sudo apt install curl
 sudo apt install xclip
@@ -76,6 +74,9 @@ chmod 755 ~/bin/dropbox.py
 cd ~ && wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 command -v nvm # check installation
 nvm install node # latest
+# npm installations
+npm -g install typescript
+npm -g install prettier
 
 # yarn
 cd ~/Downloads && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -

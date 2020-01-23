@@ -63,11 +63,11 @@ bindsym $mod+End mode "$mode_system"
 
 # Screen variables
 # Home
-set $s1 eDP1
-set $s2 HDMI2
+set $s11 eDP1
+set $s21 HDMI2
 # Pitang
-# set $s1 LVDS-1
-# set $s2 VGA-1
+set $s12 LVDS-1
+set $s22 VGA-1
 # examples
 # workspace 1 output LVDS1
 
@@ -122,8 +122,8 @@ bindsym $mod+Control+Up resize shrink height 30
 bindsym $mod+Control+Right resize grow width 30
 
 # Multiple screens
-bindsym $mod+Shift+o move workspace to output $s1
-bindsym $mod+Shift+p move workspace to output $s2
+bindsym $mod+Shift+o move workspace to output $s11a; move workspace to output $s12
+bindsym $mod+Shift+p move workspace to output $s21; move workspace to output $s22
 
 # -----------------------------------------------------------------------------
 # Windows

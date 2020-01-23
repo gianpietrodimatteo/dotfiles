@@ -28,3 +28,7 @@ you can compact each function in a line,
 then sort alphabetically normally (may even remove the duplicates),
 then revert the compactation of each function
 
+turn vim into a real markdown writter
+latex?
+
+st: allow use of page up/down keys

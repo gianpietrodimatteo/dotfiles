@@ -65,3 +65,5 @@ alias gitm="git commit -m"
 alias gitam="gita;gitm"
 
 alias cpr="cp -r"
+
+alias curly="curl -sSL"
