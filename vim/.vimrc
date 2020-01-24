@@ -267,16 +267,21 @@ nnoremap <leader><Enter> i<Enter><Esc>
 " Quick macros
 nnoremap <Space>q @q
 
-" Quick clipboard copy paste
+" Quick clipboard cut, copy and paste
+nmap gm "+m
+nmap gM "+M
 nnoremap gy "+y
 nnoremap gY "+Y
 nnoremap gp "+p
 nnoremap gP "+P
 
+vmap gm "+m
+vmap gM "+M
 vnoremap gy "+y
 vnoremap gY "+Y
 vnoremap gp "+p
 vnoremap gP "+P
+
 
 "------------------------------------------------------------------------------
 " Editor keybindings

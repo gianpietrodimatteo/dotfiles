@@ -32,3 +32,22 @@ turn vim into a real markdown writter
 latex?
 
 st: allow use of page up/down keys
+
+
+swap fn keys (system bios, perhaps impossible)
+Disable the Control-Alt-L locking screen
+-- gnome and xfce4 does that
+for gnome is
+gsettings set org.gnome.desktop.lockdown disable-lock-screen 'true'
+For xfce??
+
+vscode settings:
+Control-s saves all. Remove other binding;
+Missing: escape parenthesis/move foward thing
+vim? vim easymotion?
+Duplicate lines not working
+
+Intellij Settings:
+keymap - gnome
+
+

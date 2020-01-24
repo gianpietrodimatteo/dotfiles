@@ -19,7 +19,7 @@ mkcd() {
 # cdl - cd and ls
 # usage: cdl <dir>
 cdl() {
-  cd $1 && ls -a ;
+  cd $1 && ls -a;
 }
 
 cdi() {
@@ -258,3 +258,4 @@ gitff() {
     echo "Must provide a reference commit."
   fi
 }
+

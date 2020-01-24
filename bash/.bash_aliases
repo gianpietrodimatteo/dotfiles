@@ -47,6 +47,7 @@ alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 alias sob="source ~/.bashrc"
 
 alias allow="chmod u+x"
+alias allall="chmod a+x"
 
 alias space2underscore='echo "${1// /_}"'
 
