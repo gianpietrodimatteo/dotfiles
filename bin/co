@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# co - wrapper for configuration files
+# usage: conf <alias-or-filename>
+
+if [[ -z "$1" ]]; then
+  echo "Missing arguments. Syntax: {FILE|ALIAS}"
+  return 1
+fi
+case "$1" in
+  'alias')
+    $EDITOR "${HOME}/.bash_aliases"
+    source "${HOME}/.bash_aliases"
+    ;;
+  'custom')
+    $EDITOR "${HOME}/.bash_custom"
+    source "${HOME}/.bash_custom"
+    ;;
+  'function')
+    $EDITOR "${HOME}/.bash_functions"
+    source "${HOME}/.bash_functions"
+    ;;
+  'variable')
+    $EDITOR "${HOME}/.bash_variables"
+    source "${HOME}/.bash_variables"
+    ;;
+  'bash')
+    $EDITOR "${HOME}/.bashrc"
+    source "${HOME}/.bashrc"
+    ;;
+  'profile')
+    $EDITOR "${HOME}/.profile"
+    source "${HOME}/.profile"
+    ;;
+  'inputrc')
+    $EDITOR "${HOME}/.inputrc"
+    ;;
+  'git')
+    $EDITOR "${HOME}/.gitconfig"
+    ;;
+  'repository')
+    $EDITOR "${HOME}/.myrepos"
+    ;;
+  'tmux')
+    $EDITOR "${HOME}/.tmux.conf"
+    ;;
+  'vim')
+    $EDITOR "${HOME}/.vimrc"
+    ;;
+  'map')
+    $EDITOR "${HOME}/.xmodmaprc"
+    xmodmap "${HOME}/.xmodmaprc"
+    ;;
+  'resource')
+    $EDITOR "${HOME}/.Xresources"
+    xrdb .Xresources
+    ;;
+  'session')
+    $EDITOR "${HOME}/.xsessionrc"
+    ;;
+  'i3')
+    $EDITOR "${HOME}/.config/i3/config"
+    i3-msg restart
+    ;;
+  *)
+    if [[ "$(readlink -f "$1")" != ${HOME}/* ]]; then
+      sudo -E $EDITOR "$1"
+    else
+      $EDITOR "$1"
+    fi
+    ;;
+esac
+
+
+

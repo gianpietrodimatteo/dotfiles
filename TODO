@@ -51,3 +51,7 @@ Intellij Settings:
 keymap - gnome
 
 
+myrepos:
+insert single entry
+load from remote
+
