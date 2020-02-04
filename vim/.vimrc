@@ -282,6 +282,9 @@ vnoremap gY "+Y
 vnoremap gp "+p
 vnoremap gP "+P
 
+" Select all
+nnoremap <C-a> ggVG
+
 
 "------------------------------------------------------------------------------
 " Editor keybindings

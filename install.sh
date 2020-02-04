@@ -46,11 +46,13 @@ ln -sv /opt $HOME/Applications
 # vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# package managers
+# package managed
 sudo apt install snapd
 sudo snap install dbeaver-ce
 sudo snap install spotify
 sudo snap install vlc
+
+sudo apt install calibre
 
 # Chrome, IDEs, deb packages
 #chrome
@@ -96,4 +98,7 @@ echo "go"
 
 # Apply configuration
 bash install_scripts/apply.sh
+
+# Debians firmware
+sudo apt install firmware-linux
 
