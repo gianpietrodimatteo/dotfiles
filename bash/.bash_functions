@@ -60,6 +60,23 @@ wherisp() {
   cat ~/.myrepos | grep "$1" | cut -d "|" -f 2 | envsubst;
 }
 
+gitdj() {
+  gitd "$@";
+  gitr "$@";
+}
+
+gitd() {
+  local proj_path="$HOME/dotfiles";
+  echo '# Dotfiles:';
+  gitdir "$proj_path" "$@";
+}
+
+gitr() {
+  local proj_path="$HOME/resources";
+  echo '# Resources:';
+  gitdir "$proj_path" "$@";
+}
+
 gitdir() {
   if [ -d "$1" ]; then
     serverDir="$1";

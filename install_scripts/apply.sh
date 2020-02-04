@@ -96,6 +96,9 @@ apply_dot ~/.tmux.conf .
 # src
 apply_dot ~/src .
 
+# git
+apply_dot ~/.gitconfig .
+
 # Apply custom keys settings
 xmodmap ~/.xmodmaprc
 
