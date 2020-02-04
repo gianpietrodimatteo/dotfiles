@@ -7,9 +7,9 @@
   branch = false
 [alias]
   co = checkout
-  br = branch
-  ci = commit
-  st = status
+  b = branch
+  c = commit
+  s = status
   unstage = reset HEAD --
   last = log -1 HEAD
   mt = mergetool
@@ -21,6 +21,7 @@
   pr = pull --rebase
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  logan = log --pretty="format:%h %G? %aN %s"
   rw = checkout HEAD~
   bk = checkout HEAD@{1}
   rollback = rebase -i HEAD~

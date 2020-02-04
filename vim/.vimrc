@@ -240,18 +240,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" F7 corrects indentation
-map <> gg=G<C-o><C-o>
-
 " easy quit, save, one or all
 nnoremap ZW :call ConfirmQuitAll()<CR>
 nnoremap ZS :wa<CR>
 nnoremap ZA :update<CR>
 nnoremap ZX :xa<CR>
-
-" Spell-check e for english, i for portuguese
-map <leader>e :setlocal spell! spelllang=en_us<CR>
-map <leader>i :setlocal spell! spelllang=pt<CR>
 
 " Navigating with guides
 " inoremap <leader><Tab> <Esc>/<++><Enter>"_c4l
@@ -327,7 +320,18 @@ nnoremap <m-t> 0YPj!!bash<CR>
 " execute multiple lines
 xnoremap <m-t> yPgv:!bash<CR>
 
+" Spell-check e for english, i for portuguese
+nnoremap <leader>e :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader>i :setlocal spell! spelllang=pt<CR>
+
+" Correct indentation and apply line wrap
 nnoremap <m-f> V=Vgq<CR>
+
+" F7 corrects indentation
+nnoremap <F7> gg=G<C-o><C-o>
+
+" Print time stamp
+nnoremap <F2> :read !date<CR>
 
 "------------------------------------------------------------------------------
 " Plugin settings

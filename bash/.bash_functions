@@ -276,3 +276,6 @@ gitff() {
   fi
 }
 
+notebook() {
+  $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave"'
+}
