@@ -19,7 +19,7 @@ mkcd() {
 # cdl - cd and ls
 # usage: cdl <dir>
 cdl() {
-  cd $1 && ls -a ;
+  cd $1 && ls -a;
 }
 
 cdi() {
@@ -276,3 +276,6 @@ gitff() {
   fi
 }
 
+notebook() {
+  $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave"'
+}

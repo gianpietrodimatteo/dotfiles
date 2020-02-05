@@ -44,6 +44,7 @@ revert_bkp ~/.inputrc bash
 revert_bkp ~/.profile bash
 revert_bkp ~/.bash_variables bash
 revert_bkp ~/.bash_custom bash
+revert_bkp ~/.bash_completion bash
 
 # x_window_system
 revert_bkp ~/.xmodmaprc x_window_system

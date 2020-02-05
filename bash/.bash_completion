@@ -1,0 +1,35 @@
+#/usr/bin/env bash
+
+# co - wrapper for configuraiton files
+complete -W "alias \
+  custom  \
+  function \
+  variable \
+  bash \
+  profile \
+  input \
+  git \
+  repository \
+  tmux \
+  vim \
+  map \
+  resource \
+  session \
+  i3 \
+  " co
+
+# .bash_aliases
+# .bash_custom
+# .bash_functions
+# .bash_variables
+# .bashrc
+# .profile
+# .inputrc
+# .gitconfig
+# .myrepos
+# .tmux.conf
+# .vimrc
+# .xmodmaprc
+# .Xresources
+# .xsessionrc
+# .config/i3/config

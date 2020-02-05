@@ -134,3 +134,6 @@ fi
 # Disable XON XOFF (stop ctrl s from freezing terminal)
 stty -ixon
 
+# Correct directory name and typos
+shopt -s cdspell
+shopt -s dirspell direxpand
