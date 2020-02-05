@@ -99,6 +99,10 @@ apply_dot ~/src .
 # git
 apply_dot ~/.gitconfig .
 
+# languages (you can have new clean files by using eslint --init and tslint --init)
+apply_dot ~/tslint.json language
+apply_dot ~/.eslintrc.yml language
+
 # Apply custom keys settings
 xmodmap ~/.xmodmaprc
 

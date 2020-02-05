@@ -441,7 +441,7 @@ let g:closetag_close_shortcut = '<leader>>'
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<CR>"
+let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
