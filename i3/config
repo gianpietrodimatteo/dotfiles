@@ -334,7 +334,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound vol
 # exec code
 # exec libreoffice
 # exec gimp
-  exec $term -n note -e sh -c "cd ~/Dropbox/Textos && vim -c CtrlP -c ToggleAutosave -c ToggleWrap"
+  exec $term -n note -e sh -c "cd ~/Dropbox/Textos && vim -c CtrlP -c 'silent ToggleAutosave' -c ToggleWrap"
 
 # Move classes and instances
   for_window [instance="cmd"] move workspace $ws2
