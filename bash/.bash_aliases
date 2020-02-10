@@ -8,10 +8,11 @@
 alias mkdirp="mkdir -p"
 
 alias ll="ls -l"
-alias la="ls -lah"
+alias la="ls -lath"
 alias lc="ls -CF"
 
 alias cb="cd -"
+alias cu="cd .."
 
 alias cpr="cp -r"
 
@@ -28,6 +29,7 @@ alias vime="vim -c NERDTreeToggle"
 alias vimp="vim -c CtrlP"
 alias viq="vim $DONTCARE"
 alias vimupdate="vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc"
+alias vimo="vim -O"
 
 
 # Quick git

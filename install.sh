@@ -4,6 +4,9 @@
 sudo apt update
 sudo apt-get update
 
+# Debians firmware
+sudo apt install firmware-linux
+
 # Command line stuff
 sudo apt install software-properties-common
 sudo apt install git
@@ -38,9 +41,9 @@ sudo apt install exuberant-ctags
 sudo apt install python-pip python3-pip
 
 # Vim temporary directories
-mkdir -p $HOME/.vim/tmp/.backup $HOME/.vim/tmp/.swp $HOME/.vim/tmp/.undo
+mkdir -p $HOME/.vim/tmp/{.backup,.swp,.undo}
 
-mkdir $HOME/tmp
+mkdir -p $HOME/tmp
 ln -sv /opt $HOME/Applications
 
 # vimplug
@@ -91,14 +94,23 @@ bash install_scripts/dockerinstall.sh
 # mysql
 bash install_scripts/mysqlinstall.sh
 
-# manual installations...
-echo "Install by hand: "
-echo "java eclipse intellij"
-echo "go"
-
 # Apply configuration
 bash install_scripts/apply.sh
 
-# Debians firmware
-sudo apt install firmware-linux
+# Post environment variables installations: These must come after apply.sh
+echo "Starting post configuration installations."
+mkdir -p "$WORKSPACE"
+
+# Install vim
+bash install_scripts/viminstall.sh
+
+# Install st
+bash install_scripts/stinstall.sh
+
+# Golang
+bash install_scripts/goinstall.sh
+
+# manual installations...TODO make it all automatic
+echo "Install by hand: "
+echo "java eclipse intellij"
 

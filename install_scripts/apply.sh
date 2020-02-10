@@ -119,16 +119,3 @@ echo "Done applying this configuration."
 echo "Your previous files are in the latest dotfiles backup."
 echo "Run the revert.sh script to change back to your previous setup."
 
-# Post environment variables installations
-# makedirs
-mkdir "$WORKSPACE"
-mkdir "$WORKSPACE/go"
-mkdir "$HOME/java"
-mkdir "$HOME/Applications"
-
-# Install vim
-bash viminstall.sh
-
-# Install st
-bash stinstall.sh
-
