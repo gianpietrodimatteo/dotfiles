@@ -26,11 +26,11 @@ floating_modifier $mod
 bindsym $mod+Return exec $term
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -l 42
+# bindsym $mod+d exec dmenu_run -l 42
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 for_window [class="^.*"] border pixel
 

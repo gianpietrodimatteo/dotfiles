@@ -24,6 +24,10 @@ case "$1" in
     $EDITOR "${HOME}/.bash_variables"
     source "${HOME}/.bash_variables"
     ;;
+  'completion')
+    $EDITOR "${HOME}/.bash_completion"
+    source "${HOME}/.bash_completion"
+    ;;
   'bash')
     $EDITOR "${HOME}/.bashrc"
     source "${HOME}/.bashrc"
@@ -32,7 +36,7 @@ case "$1" in
     $EDITOR "${HOME}/.profile"
     source "${HOME}/.profile"
     ;;
-  'inputrc')
+  'input')
     $EDITOR "${HOME}/.inputrc"
     ;;
   'git')

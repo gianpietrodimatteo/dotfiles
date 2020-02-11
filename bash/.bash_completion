@@ -5,6 +5,7 @@ complete -W "alias \
   custom  \
   function \
   variable \
+  completion \
   bash \
   profile \
   input \
@@ -17,11 +18,11 @@ complete -W "alias \
   session \
   i3 \
   " co
-
 # .bash_aliases
 # .bash_custom
 # .bash_functions
 # .bash_variables
+# .bash_completion
 # .bashrc
 # .profile
 # .inputrc

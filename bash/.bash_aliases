@@ -23,14 +23,12 @@ alias findr="sudo find / -name"
 alias findh="find ~ -name"
 alias finda="find . -name"
 
-
 # Quick vim
 alias vime="vim -c NERDTreeToggle"
 alias vimp="vim -c CtrlP"
 alias viq="vim $DONTCARE"
 alias vimupdate="vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc"
 alias vimo="vim -O"
-
 
 # Quick git
 alias gitco="git checkout"
@@ -60,20 +58,17 @@ alias gitcm="git commit -m"
 alias gitam="gita;gitcm"
 alias gitpo="git push -u origin"
 
-
 # Quick tmux
 alias tml="tmux list-sessions"
 alias tma="tmux attach-session -t"
 alias tm0='tmux attach-session -t $(echo `tmux list-sessions` | cut -d ":" -f 1)'
 alias tmns="tmux new -s"
 
-
 # System
 alias e="exit"
 alias allow="chmod u+x"
 alias allall="chmod a+x"
 alias deb="sudo dpkg -i"
-
 
 # Util
 alias curly="curl -sSL"
@@ -83,7 +78,6 @@ alias tara="tar zxvf"
 alias lessh="less -m -N -g -i -J --line-numbers --underline-special"
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 alias sob="source ~/.bashrc"
-
 
 # Misc
 alias space2underscore='echo "${1// /_}"'
