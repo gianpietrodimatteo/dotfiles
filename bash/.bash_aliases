@@ -78,6 +78,8 @@ alias tara="tar zxvf"
 alias lessh="less -m -N -g -i -J --line-numbers --underline-special"
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 alias sob="source ~/.bashrc"
+alias ethdevices="nmcli device status"
+alias vpn_pitang="cd /etc/openvpn/;sudo openvpn pitang.ovpn"
 
 # Misc
 alias space2underscore='echo "${1// /_}"'

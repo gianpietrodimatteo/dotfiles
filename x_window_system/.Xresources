@@ -64,7 +64,7 @@ URxvt.letterSpace: -1
 *.alpha: 0.95
 
 !! Set a default font and font size as below:
-*.font: SFMono-Regular-14
+*.font: SFMono-Regular-12
 /* st.font: SFMono-Regular-50 */
 /* st.background: #151718 */
 

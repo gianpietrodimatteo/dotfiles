@@ -251,3 +251,7 @@ keycode() {
   echo "Ctrl+C on the terminal to stop. Move mouse to display."
   xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 }
+
+vims() {
+  vim $(find . -name "$1")
+}

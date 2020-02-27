@@ -68,6 +68,7 @@ set $s21 HDMI2
 # Pitang
 set $s12 LVDS-1
 set $s22 VGA-1
+set $s23 HDMI-1
 # examples
 # workspace 1 output LVDS1
 
@@ -123,7 +124,7 @@ bindsym $mod+Control+Right resize grow width 30
 
 # Multiple screens
 bindsym $mod+Shift+o move workspace to output $s11a; move workspace to output $s12
-bindsym $mod+Shift+p move workspace to output $s21; move workspace to output $s22
+bindsym $mod+Shift+p move workspace to output $s21; move workspace to output $s22; move workspace to output $s23
 
 # -----------------------------------------------------------------------------
 # Windows
@@ -290,16 +291,21 @@ bar {
 # Multimedia controls
 # -----------------------------------------------------------------------------
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound volume (with upper limit)
-  bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-  bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#increase sound volume (with upper limit)
+bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup
+#decrease sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+# mute sound
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Sreen brightness controls
-  bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-  bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+# increase screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+# decrease screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
 # sticky window
-  bindsym $mod+Shift+s sticky toggle
+bindsym $mod+Shift+s sticky toggle
 
 
 # -----------------------------------------------------------------------------
@@ -309,61 +315,61 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup #increase sound vol
 # Find screen name with xrandr command
 
 # Screen Assignments
-  workspace $ws1 output $s1
-  workspace $ws2 output $s2
+workspace $ws1 output $s1
+workspace $ws2 output $s2
 
 # Adding some services from xfce
-  exec --no-startup-id xfsettingsd --sm-client-disable &
-  exec --no-startup-id xfce4-power-manager &
+exec --no-startup-id xfsettingsd --sm-client-disable &
+exec --no-startup-id xfce4-power-manager &
 
-  assign [class="Google-chrome"] $ws1
-  assign [class="Code"] $ws3
-  assign [class="jetbrains-idea-ce"] $ws4
-  assign [class="libreoffice"] $ws5
-  assign [class="DBeaver"] $ws6
-  assign [class="Gimp"] $ws6
-  assign [class="Spotify"] $ws10
+assign [class="Google-chrome"] $ws1
+assign [class="Code"] $ws3
+assign [class="jetbrains-idea-ce"] $ws4
+assign [class="libreoffice"] $ws5
+assign [class="DBeaver"] $ws6
+assign [class="Gimp"] $ws6
+assign [class="Spotify"] $ws10
 
 # Startup Executions
-  exec google-chrome
-  exec $term -n cmd -e tmux
+exec google-chrome
+exec $term -n cmd -e tmux
 # exec urxvt -name file -e ranger Workspace/
 # exec --no-startup-id spotify
-  exec --no-startup-id dropbox start # if you used the deb package is just dropbox
+exec --no-startup-id dropbox start # if you used the deb package is just dropbox
 # exec --no-startup-id wicd-client -t
 # exec code
 # exec libreoffice
 # exec gimp
-  exec $term -n note -e sh -c "cd ~/Dropbox/Textos && vim -c CtrlP -c 'silent ToggleAutosave' -c ToggleWrap"
+exec $term -n note -e sh -c "cd ~/Dropbox/Textos && vim -c CtrlP -c 'silent ToggleAutosave' -c ToggleWrap"
 
 # Move classes and instances
-  for_window [instance="cmd"] move workspace $ws2
-  for_window [instance="file"] move workspace $ws4
-  for_window [instance="project"] move workspace $ws5
-  for_window [instance="note"] move workspace $ws9
-  for_window [class="Spotify"] move to workspace $ws10
+for_window [instance="cmd"] move workspace $ws2
+for_window [instance="file"] move workspace $ws4
+for_window [instance="project"] move workspace $ws5
+for_window [instance="note"] move workspace $ws9
+for_window [class="Spotify"] move to workspace $ws10
 
-  for_window [title="GIMP Startup"] move workspace $ws6
+for_window [title="GIMP Startup"] move workspace $ws6
 
-  for_window [window_role="gimp-toolbox"] floating enable border normal resize shrink height 30
+for_window [window_role="gimp-toolbox"] floating enable border normal resize shrink height 30
 
-  for_window [window_role="gimp-dock"] floating enable border normal resize shrink height 30
+for_window [window_role="gimp-dock"] floating enable border normal resize shrink height 30
 
-  for_window [window_role="gimp-toolbox-color-dialog"] floating enable border normal
+for_window [window_role="gimp-toolbox-color-dialog"] floating enable border normal
 
 # Floating windows by default
-  for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 # exec even when you restart i3
-  exec_always feh --bg-fill ~/dotfiles/wallpaper.jpg
+exec_always feh --bg-fill ~/dotfiles/wallpaper.jpg
 
 # XF86Display
 # from arandr - change when using multiple monitors
-  exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
+exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
 
 # compton allows transparent windows and also the transition
-  exec_always compton #-f
+exec_always compton #-f
 
 # Security and power management
-  exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
+exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
 
