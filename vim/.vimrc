@@ -240,6 +240,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Alt move/delete buffers
+nmap <M-i> :bp
+nmap <M-o> :bn
+nmap <M-m> :bd
+
 " easy quit, save, one or all
 nnoremap ZW :call ConfirmQuitAll()<CR>
 nnoremap ZS :wa<CR>
@@ -377,7 +382,7 @@ let g:typescript_compiler_options = ''
 " autocmd QuickFixCmdPost [^l]* nested cwindow
 " autocmd QuickFixCmdPost    l* nested lwindow
 
-map <M-i> :ALEToggle<CR>
+map <M-u> :ALEToggle<CR>
 
 " Open close explorer
 nnoremap <M-e> :NERDTreeToggle<CR>
