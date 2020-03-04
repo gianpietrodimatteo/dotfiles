@@ -15,7 +15,6 @@ sudo apt install xclip
 sudo apt install feh
 sudo apt install imagemagick
 sudo apt install highlight
-sudo apt install tmux
 sudo apt install tree
 
 # Basic services
@@ -94,6 +93,9 @@ bash install_scripts/dockerinstall.sh
 # mysql
 bash install_scripts/mysqlinstall.sh
 
+# tmux
+bash install_scripts/tmuxinstall.sh
+
 # Apply configuration
 bash install_scripts/apply.sh
 
@@ -110,7 +112,7 @@ bash install_scripts/stinstall.sh
 # Golang
 bash install_scripts/goinstall.sh
 
-# manual installations...TODO make it all automatic
+# manual installations...TODO make it all automatic - thanks oracle
 echo "Install by hand: "
 echo "java eclipse intellij"
 
