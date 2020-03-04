@@ -3,6 +3,7 @@
 
 # Aliases
 alias lprompt="$WORKSPACE/prompt/launch.sh"
+alias lwallet="$WORKSPACE/wallet-dashboard/launch.sh"
 
 # Motherfucking docker and it's huge syntax
 alias dockerl="docker container ls -a"

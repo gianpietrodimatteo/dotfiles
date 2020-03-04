@@ -109,39 +109,6 @@ gitme() {
   done 10<$HOME/.myrepos
 }
 
-# gitme_current - execute command or download on all repositories listed in myrepos
-# usage: gitme_current [ <command> ]
-gitme_current() {
-  # Read ~/.currentrepos
-  while read -u 10 p; do
-    # If line is not a comment
-    if [[ "$p" != \#* ]] && [ "$p" ] ; then
-      echo "About project $(echo "$p" | cut -d "|" -f 1)";
-          path=$(echo "$p" | cut -d "|" -f 2 | envsubst);
-          remote=$(echo "$p" | cut -d "|" -f 3);
-          # If no arguments were passed, install repositories
-          if [ -z "$1" ]; then
-            if [ ! -d "$path" ] ; then
-              git clone "$remote" "$path";
-            fi
-          else
-            gitdir "$path" "$@";
-          fi
-    fi
-  done 10<$HOME/.currentrepos
-}
-
-set_current() {
-  grep -v "^#" ~/.myrepos | grep -v "^$" | cut -d "|" -f 1 > tmp/.repos_names;
-  rm ~/.currentrepos;
-  select proj_name in $(cat tmp/.repos_names) DONE; do
-    cat .myrepos | grep "$proj_name|" >> ~/.currentrepos;
-    if [[ "$proj_name" == "DONE" ]]; then
-      break
-    fi
-  done
-}
-
 hibkp() {
   rm -f $HOME/tmp/history-install-backup.txt;
   while read p; do
@@ -150,7 +117,7 @@ hibkp() {
 }
 
 findc() {
-  find "$1" -name "$2" 2> "$DONTCARE";
+  find "$1" -iname "$2" 2> "$DONTCARE";
 }
 
 c2r() {
@@ -283,4 +250,8 @@ notebook() {
 keycode() {
   echo "Ctrl+C on the terminal to stop. Move mouse to display."
   xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+}
+
+vims() {
+  vim $(find . -name "$1")
 }

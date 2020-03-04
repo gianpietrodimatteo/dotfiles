@@ -13,12 +13,14 @@
 # gdo -p <project_name> -t <ticket_name> -d <ticket_description> : create new
 #   ticket with arguments on specific project
 
+# Ajeita ai mano brown
+
 
 # goes where? develop? other branch? - must set target, target defaults to develop but can change
 
 tmp="$HOME/tmp";
 
-fetch_github_repos () {
+fetch_github_repos() {
   echo "Enter github username: ";
   read gh_username;
 
@@ -37,7 +39,7 @@ fetch_github_repos () {
 }
 
 # Create necessary directories and annotate their paths
-generate_paths () {
+generate_paths() {
   mkdir -p "$GDO_PROJSPATH";
   mkdir -p "$GDO_NOTESPATH";
   while read -u 10 p; do
@@ -49,12 +51,12 @@ generate_paths () {
 }
 
 # Generate the myrepos file with a horizontal concatenation
-generate_myrepos () {
+generate_myrepos() {
   paste -d "|" $tmp/gh_repos_names $tmp/gh_repos_paths $tmp/gh_repos_urls $tmp/gh_repos_notes > $HOME/.myrepos;
 }
 
 
-gitdir () {
+gitdir() {
   if [ -d "$1" ]; then
     serverDir="$1";
     git --git-dir=$serverDir/.git --work-tree=$serverDir "${@:2}";
@@ -66,7 +68,7 @@ gitdir () {
 
 # gitme - execute command or download on all repositories listed in myrepos
 # usage: gitme [ <command> ]
-gitrepos () {
+gitrepos() {
   # Read ~/.myreppos
   while read -u 10 p; do
     # If line is not a comment
@@ -85,6 +87,39 @@ gitrepos () {
           fi
     fi
   done 10<$HOME/.myrepos
+}
+
+# gitme_current - execute command or download on all repositories listed in myrepos
+# usage: gitme_current [ <command> ]
+gitme_current() {
+  # Read ~/.currentrepos
+  while read -u 10 p; do
+    # If line is not a comment
+    if [[ "$p" != \#* ]] && [ "$p" ] ; then
+      echo "About project $(echo "$p" | cut -d "|" -f 1)";
+          path=$(echo "$p" | cut -d "|" -f 2 | envsubst);
+          remote=$(echo "$p" | cut -d "|" -f 3);
+          # If no arguments were passed, install repositories
+          if [ -z "$1" ]; then
+            if [ ! -d "$path" ] ; then
+              git clone "$remote" "$path";
+            fi
+          else
+            gitdir "$path" "$@";
+          fi
+    fi
+  done 10<$HOME/.currentrepos
+}
+
+set_current() {
+  grep -v "^#" ~/.myrepos | grep -v "^$" | cut -d "|" -f 1 > tmp/.repos_names;
+  rm ~/.currentrepos;
+  select proj_name in $(cat tmp/.repos_names) DONE; do
+    cat .myrepos | grep "$proj_name|" >> ~/.currentrepos;
+    if [[ "$proj_name" == "DONE" ]]; then
+      break
+    fi
+  done
 }
 
 # Checks if .myrepos exists
