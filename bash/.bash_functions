@@ -219,7 +219,7 @@ change_extensions() {
 }
 
 grepa() {
-  grep -r "$1" .
+  grep -r "$@" .
 }
 
 gitremotes() {

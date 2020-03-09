@@ -17,6 +17,7 @@ sudo apt install imagemagick
 sudo apt install highlight
 sudo apt install tmux
 sudo apt install tree
+sudo apt install xbacklight
 
 # Basic services
 sudo apt install xfce4

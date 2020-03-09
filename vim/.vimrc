@@ -131,6 +131,8 @@ set encoding=utf-8
 set laststatus=2
 set splitright splitbelow
 " autocmd BufNewFile * startinsert
+set ignorecase
+set incsearch
 
 set cmdheight=1
 
@@ -230,6 +232,9 @@ set backspace=indent,eol,start  " more powerful backspacing
 
 nnoremap <M-h> :call ToggleHiddenAll()<CR>
 
+" Disable ex-mode mappings
+nnoremap Q <nop>
+
 
 "------------------------------------------------------------------------------
 " Basic keybindings
@@ -240,10 +245,22 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Still available:
+" Ctrl-I      Tab
+" Ctrl-[      Esc
+" Ctrl-M      Enter
+" Ctrl-H      Backspace
+" leader k
+" leader l
+" leader h
+" lets liberate leader y u i for the tab functionallity
 " Alt move/delete buffers
-nmap <M-i> :bp
-nmap <M-o> :bn
-nmap <M-m> :bd
+nmap <leader>k :bp<CR>
+nmap <leader>l :bn<CR>
+nmap <leader>h :bd<CR>
+nmap <leader>i :tabp<CR>
+nmap <leader>o :tabn<CR>
+nmap <leader>y :tabclose<CR>
 
 " easy quit, save, one or all
 nnoremap ZW :call ConfirmQuitAll()<CR>
@@ -310,7 +327,7 @@ nnoremap <m-m> o<Esc>
 nnoremap <C-Bslash> :vsplit<Enter>
 
 " Quick source current configuration file
-nmap <leader>o :so %<Enter>
+nmap <leader><leader>o :so %<Enter>
 
 " Update this file
 nmap <leader>j :e<CR>
@@ -326,8 +343,8 @@ nnoremap <m-t> 0YPj!!bash<CR>
 xnoremap <m-t> yPgv:!bash<CR>
 
 " Spell-check e for english, i for portuguese
-nnoremap <leader>e :setlocal spell! spelllang=en_us<CR>
-nnoremap <leader>i :setlocal spell! spelllang=pt<CR>
+nnoremap <leader><leader>e :setlocal spell! spelllang=en_us<CR>
+nnoremap <leader><leader>i :setlocal spell! spelllang=pt<CR>
 
 " Correct indentation and apply line wrap
 nnoremap <m-f> V=Vgq<CR>
