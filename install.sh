@@ -97,7 +97,7 @@ bash install_scripts/mysqlinstall.sh
 bash install_scripts/tmuxinstall.sh
 
 # Apply configuration
-bash install_scripts/apply.sh
+bash apply.sh
 
 # Post environment variables installations: These must come after apply.sh
 echo "Starting post configuration installations."

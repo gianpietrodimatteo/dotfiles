@@ -69,16 +69,24 @@ echo "Select your environment"
 select varfile in home pitang; do
   # my_repositories
   if [ -f "$DF/.$varfile.myrepos" ]; then
+    echo "myrepos"
     apply_dot_change ~/.myrepos . .$varfile.myrepos
   fi
   # aliases and functions
   if [ -f "$DF/bash/.$varfile.bash_custom" ]; then
+    echo "custom"
     apply_dot_change ~/.bash_custom bash .$varfile.bash_custom
   fi
   # variables
   if [ -f "$DF/bash/.$varfile.bash_variables" ]; then
+    echo "variable"
     apply_dot_change ~/.bash_variables bash .$varfile.bash_variables
-    break
+  fi
+  # git
+  if [ -f "$DF/.$varfile.gitconfig" ]; then
+    echo "git"
+    apply_dot_change ~/.gitconfig . .$varfile.gitconfig
+  break
   fi
 done
 
@@ -95,9 +103,6 @@ apply_dot ~/.tmux.conf .
 
 # src
 apply_dot ~/src .
-
-# git
-apply_dot ~/.gitconfig .
 
 # languages (you can have new clean files by using eslint --init and tslint --init)
 apply_dot ~/tslint.json language

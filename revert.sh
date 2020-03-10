@@ -3,7 +3,6 @@
 # Revert configurations to their previous state
 
 select_backup () {
-  echo "Select backup to restore to:";
   select folder in `ls $HOME/dotfiles_backup`; do
     if [ ! -z "$folder" ]; then
       echo "$folder";
@@ -13,6 +12,7 @@ select_backup () {
 }
 
 # Set backup folder and dotfiles folder
+echo "Select backup to restore to:";
 DBF="$HOME/dotfiles_backup/$(select_backup)";
 DF="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )";
 

@@ -1,0 +1,40 @@
+[core]
+	editor = vim
+[user]
+  name = Gianpietro Cavalcante Di Matteo
+  email = gianpietro.dimatteo@gmail.com
+[pager]
+  branch = false
+[alias]
+  co = checkout
+  b = branch
+  c = commit
+  s = status
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  mt = mergetool
+  sa = stash
+  df = diff
+  cp = cherry-pick
+  pl = pull
+  pu = push
+  pr = pull --rebase
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  logan = log --pretty="format:%h %G? %aN %s"
+  rw = checkout HEAD~
+  bk = checkout HEAD@{1}
+  rollback = rebase -i HEAD~
+  fap = fetch --all --tags --prune
+  fa = fetch --all --tags
+  cm = commit -m
+  a = add .
+  po = push -u origin
+[color]
+  ui = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[credential]
+	helper = store
