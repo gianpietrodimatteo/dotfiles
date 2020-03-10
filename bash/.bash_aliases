@@ -22,6 +22,7 @@ alias rmrf="rm -rf"
 alias findr="sudo find / -name"
 alias findh="find ~ -name"
 alias finda="find . -name"
+alias findi="find . -iname"
 
 # Quick vim
 alias vime="vim -c NERDTreeToggle"

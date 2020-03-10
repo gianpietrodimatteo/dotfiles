@@ -6,6 +6,7 @@
   branch = false
 [alias]
   co = checkout
+  cob = checkout -b
   b = branch
   c = commit
   s = status
