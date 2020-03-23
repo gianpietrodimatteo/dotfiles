@@ -128,6 +128,7 @@ set hidden
 syntax enable
 set number relativenumber
 set encoding=utf-8
+set fileencodings=utf-8
 set laststatus=2
 set splitright splitbelow
 " autocmd BufNewFile * startinsert
@@ -550,9 +551,10 @@ autocmd FileType html nnoremap ,html <Esc>:-1read
 "*.sh
 autocmd FileType sh nnoremap ,sh :-1read $HOME/.vim/snippets/shebang.sh<CR>o
 
-
 " Temp
-map í í
-map â â
-
+inoremap í í
+" set keymap=accents
+" you can use temporarely <C-K>a> or <C-K>a^
+" inoremap â <C-K>a^
+inoremap ^a Â<Esc>vua
 

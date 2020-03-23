@@ -3,9 +3,7 @@ Add options to what do you want to install
 
 consider experimenting with zsh (+ohmyzsh)
 
-Adjust vim shortcuts to the new terminal configuration
 vim - consider vim sensible
-Add vim shortcuts for navigation, error evaluation, git...
 
 CONFIGURE NEW GIT PLUGINS
 git - explore commit templates
@@ -31,15 +29,7 @@ then revert the compactation of each function
 turn vim into a real markdown writter
 latex?
 
-st: allow use of page up/down keys
-
-
-swap fn keys (system bios, perhaps impossible)
-Disable the Control-Alt-L locking screen
--- gnome and xfce4 does that
-for gnome is
-gsettings set org.gnome.desktop.lockdown disable-lock-screen 'true'
-For xfce??
+st: allow use of page up/down keys without shift
 
 vscode settings:
 Control-s saves all. Remove other binding;
@@ -50,9 +40,12 @@ Duplicate lines not working
 Intellij Settings:
 keymap - gnome
 
-
 myrepos:
 insert single entry
 load from remote
 
 tmux installation file
+
+vim: fix the problem with the accents
+digraphs
+something is fucking it up and it's not utf-8
