@@ -551,10 +551,12 @@ autocmd FileType html nnoremap ,html <Esc>:-1read
 "*.sh
 autocmd FileType sh nnoremap ,sh :-1read $HOME/.vim/snippets/shebang.sh<CR>o
 
-" Temp
+" Temp this should not be needed...
 inoremap í í
 " set keymap=accents
 " you can use temporarely <C-K>a> or <C-K>a^
 " inoremap â <C-K>a^
 inoremap ^a Â<Esc>vua
+inoremap â â
+inoremap ć ç
 

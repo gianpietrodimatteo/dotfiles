@@ -12,9 +12,9 @@ sudo apt-get install mysql-server
 
 # First login, allow with no password to root
 # (there is an alternative where you set it to yourself)
-sudo mysql -u "root" < "mysql-first-login.sql"
-service mysql restart
+sudo mysql -u root < mysql-first-login.sql
+sudo service mysql restart
 
 # Create test database
-mysql -u "root" -p < "mysql-create-test-db.sql"
+mysql -u root -p < mysql-create-test-db.sql
 

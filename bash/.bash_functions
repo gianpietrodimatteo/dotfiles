@@ -253,5 +253,20 @@ keycode() {
 }
 
 vims() {
-  vim $(find . -name "$1")
+  vim $(find . -iname "$1")
+}
+
+exists_partial_name() {
+  for name in *$1*; do
+    if [ -f "$name" ]; then
+      printf 'at least one file exists (%s)\n' "$name"
+      break
+    fi
+  done
+}
+
+loop_args() {
+  for arg in "$@"; do
+    echo "$arg"
+  done
 }
