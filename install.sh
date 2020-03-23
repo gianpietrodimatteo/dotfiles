@@ -17,6 +17,7 @@ sudo apt install imagemagick
 sudo apt install highlight
 sudo apt install tree
 sudo apt install xbacklight
+sudo apt install xinput
 
 # Basic services
 sudo apt install xfce4
@@ -96,6 +97,9 @@ bash install_scripts/mysqlinstall.sh
 
 # tmux
 bash install_scripts/tmuxinstall.sh
+
+# mongodb
+bash install_scripts/mongoinstall.sh
 
 # Apply configuration
 bash apply.sh

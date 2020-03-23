@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Adjust extra quickfire keyboard
+bash ~/bin/adjust_quickfire_keyboard.sh
+
 export PATH="$HOME/bin:$HOME/.config/i3:$PATH"
 xmodmap ~/.xmodmaprc
 

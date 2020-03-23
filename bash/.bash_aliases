@@ -17,7 +17,7 @@ alias cu="cd .."
 alias cpr="cp -r"
 
 alias rmi="rm -i"
-alias rmrf="rm -rf"
+alias rmr="rm -rf"
 
 alias findr="sudo find / -name"
 alias findh="find ~ -name"
@@ -81,6 +81,9 @@ alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 alias sob="source ~/.bashrc"
 alias ethdevices="nmcli device status"
 alias vpn_pitang="cd /etc/openvpn/;sudo openvpn pitang.ovpn"
+alias ssh_pitang="ssh-add ~/.ssh/id_rsa_pitang"
+alias ssh_rsa_email="ssh-keygen -t rsa -b 4096 -C"
+alias ppa_remove="sudo add-apt-repository --remove ppa:"
 
 # Misc
 alias space2underscore='echo "${1// /_}"'

@@ -123,7 +123,7 @@ bindsym $mod+Control+Up resize shrink height 30
 bindsym $mod+Control+Right resize grow width 30
 
 # Multiple screens
-bindsym $mod+Shift+o move workspace to output $s11a; move workspace to output $s12
+bindsym $mod+Shift+o move workspace to output $s11; move workspace to output $s12
 bindsym $mod+Shift+p move workspace to output $s21; move workspace to output $s22; move workspace to output $s23
 
 # -----------------------------------------------------------------------------

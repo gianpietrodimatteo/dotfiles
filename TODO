@@ -15,12 +15,9 @@ Divide vim's configuration into multiple files
 separate the basic configuration
 
 upgrade bashaliases and bashfunctions with examples from the web
-(do it using git merge)
 
 change gdo to python, (or go?) - all bash scripts that are too big must be like
 that.
-
-make the i3 configuration file accept the bash variables
 
 make the vim function sorting thing (or even terminal as well)
 hint: adjust identation, then make it based on the indentation
@@ -31,28 +28,17 @@ then revert the compactation of each function
 turn vim into a real markdown writter
 latex?
 
-st: allow use of page up/down keys
-
-
-swap fn keys (system bios, perhaps impossible)
-Disable the Control-Alt-L locking screen
--- gnome and xfce4 does that
-for gnome is
-gsettings set org.gnome.desktop.lockdown disable-lock-screen 'true'
-For xfce??
-
-vscode settings:
+vscode settings: Save them - global and workspaces
 Control-s saves all. Remove other binding;
 Missing: escape parenthesis/move foward thing
-vim? vim easymotion?
-Duplicate lines not working
-
-Intellij Settings:
-keymap - gnome
-
 
 myrepos:
 insert single entry
-load from remote
 
 tmux installation file
+
+make display not dim nor suspend while watching movies (how to detect if i'm
+watching something?)
+evaluate a better suspension, without disconnecting from the internet
+
+i3: put headers on floating windows programs

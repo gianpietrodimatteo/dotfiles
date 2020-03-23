@@ -552,7 +552,7 @@ autocmd FileType sh nnoremap ,sh :-1read $HOME/.vim/snippets/shebang.sh<CR>o
 
 
 " Temp
-map í í
-map â â
-
+inoremap í í
+inoremap â â
+inoremap ć ç
 

@@ -1,0 +1,25 @@
+#!/bin/bash
+# Custom aliases and commands specific to home
+
+# Aliases
+alias lwallet="$WORKSPACE/pitang/wallet-dashboard/launch.sh"
+alias lprompt="$WORKSPACE/pitang/prompt/launch.sh"
+
+# Functions
+gitp () {
+  gitpc "$@";
+  gitps "$@";
+}
+
+gitpc () {
+  echo "# Prompt Client: ";
+  dir="$WORKSPACE/pitang/prompt/prompt-client";
+  gitdir "$dir" "$@";
+}
+
+gitps () {
+  echo "# Prompt Server: ";
+  dir="$WORKSPACE/pitang/prompt/prompt-server";
+  gitdir "$dir" "$@";
+}
+
