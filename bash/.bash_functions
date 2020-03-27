@@ -270,3 +270,8 @@ loop_args() {
     echo "$arg"
   done
 }
+
+co() {
+  conf "$@"
+  source ~/.bashrc
+}

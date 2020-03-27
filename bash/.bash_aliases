@@ -90,5 +90,3 @@ alias dates="date +%F-%T"
 alias space2underscore='echo "${1// /_}"'
 alias rm_empty_lines="sed -r '/^\s*$/d'"
 
-
-
