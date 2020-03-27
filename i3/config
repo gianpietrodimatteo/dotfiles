@@ -328,6 +328,8 @@ assign [class="jetbrains-idea-ce"] $ws4
 assign [class="libreoffice"] $ws5
 assign [class="DBeaver"] $ws6
 assign [class="Gimp"] $ws6
+assign [class="Postman"] $ws7
+assign [class="Thunar"] $ws8
 assign [class="Spotify"] $ws10
 
 # Startup Executions
@@ -335,7 +337,7 @@ exec google-chrome
 exec $term -n cmd -e tmux
 # exec urxvt -name file -e ranger Workspace/
 # exec --no-startup-id spotify
-exec --no-startup-id dropbox start # if you used the deb package is just dropbox
+exec --no-startup-id dropbox start # if you used the deb package is just dropbox could be also dropbox.py
 # exec --no-startup-id wicd-client -t
 # exec code
 # exec libreoffice
@@ -344,24 +346,22 @@ exec $term -n note -e sh -c "cd ~/Dropbox/Textos && vim -c CtrlP -c 'silent Togg
 
 # Move classes and instances
 for_window [instance="cmd"] move workspace $ws2
-for_window [instance="file"] move workspace $ws4
+# for_window [instance="file"] move workspace $ws4
 for_window [instance="project"] move workspace $ws5
 for_window [instance="note"] move workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
 for_window [title="GIMP Startup"] move workspace $ws6
-
 for_window [window_role="gimp-toolbox"] floating enable border normal resize shrink height 30
-
 for_window [window_role="gimp-dock"] floating enable border normal resize shrink height 30
-
 for_window [window_role="gimp-toolbox-color-dialog"] floating enable border normal
 
 # Floating windows by default
 for_window [class="Pavucontrol"] floating enable
 
 # exec even when you restart i3
-exec_always feh --bg-fill ~/dotfiles/wallpaper.jpg
+exec_always ~/bin/random-wallpaper.sh
+# exec_always feh --bg-fill ~/dotfiles/wallpaper.jpg
 
 # XF86Display
 # from arandr - change when using multiple monitors

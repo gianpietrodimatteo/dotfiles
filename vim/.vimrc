@@ -349,6 +349,8 @@ nnoremap <leader><leader>i :setlocal spell! spelllang=pt<CR>
 
 " Correct indentation and apply line wrap
 nnoremap <m-f> V=Vgq<CR>
+" Correctly indent the whole file motherfuckerrr
+nnoremap <leader>f :g/./ normal gqq<CR>
 
 " F7 corrects indentation
 nnoremap <F7> gg=G<C-o><C-o>
@@ -405,8 +407,8 @@ map <M-u> :ALEToggle<CR>
 " Open close explorer
 nnoremap <M-e> :NERDTreeToggle<CR>
 
-" Ctrlp igonring files
-set wildignore+=*/target/*,*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip
+" Ctrlp ignoring files
+set wildignore+=/*/dist/*,*/target/*,*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip
 " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 

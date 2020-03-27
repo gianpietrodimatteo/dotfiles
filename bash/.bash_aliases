@@ -84,6 +84,7 @@ alias vpn_pitang="cp /etc/resolv.conf ~/resolv-backup.conf;sudo cp ~/resolv.conf
 alias ssh_pitang="ssh-add ~/.ssh/id_rsa_pitang"
 alias ssh_rsa_email="ssh-keygen -t rsa -b 4096 -C"
 alias ppa_remove="sudo add-apt-repository --remove ppa:"
+alias dates="date +%F-%T"
 
 # Misc
 alias space2underscore='echo "${1// /_}"'

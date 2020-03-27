@@ -10,31 +10,31 @@ fi
 case "$1" in
   'alias')
     $EDITOR "${HOME}/.bash_aliases"
-    source "${HOME}/.bash_aliases"
+    source ~/.bashrc
     ;;
   'custom')
     $EDITOR "${HOME}/.bash_custom"
-    source "${HOME}/.bash_custom"
+    source ~/.bashrc
     ;;
   'function')
     $EDITOR "${HOME}/.bash_functions"
-    source "${HOME}/.bash_functions"
+    source ~/.bashrc
     ;;
   'variable')
     $EDITOR "${HOME}/.bash_variables"
-    source "${HOME}/.bash_variables"
+    source ~/.bashrc
     ;;
   'completion')
     $EDITOR "${HOME}/.bash_completion"
-    source "${HOME}/.bash_completion"
+    source ~/.bashrc
     ;;
   'bash')
     $EDITOR "${HOME}/.bashrc"
-    source "${HOME}/.bashrc"
+    source ~/.bashrc
     ;;
   'profile')
     $EDITOR "${HOME}/.profile"
-    source "${HOME}/.profile"
+    source ~/.profile
     ;;
   'input')
     $EDITOR "${HOME}/.inputrc"
@@ -57,7 +57,7 @@ case "$1" in
     ;;
   'resource')
     $EDITOR "${HOME}/.Xresources"
-    xrdb .Xresources
+    xrdb ~/.Xresources
     ;;
   'session')
     $EDITOR "${HOME}/.xsessionrc"
