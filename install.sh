@@ -50,13 +50,15 @@ ln -sv /opt $HOME/Applications
 # vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# package managed
+# Package managed
 sudo apt install snapd
 sudo snap install dbeaver-ce
 sudo snap install spotify
 sudo snap install vlc
 
+# Misc software
 sudo apt install calibre
+sudo apt install cheese
 
 # Chrome, IDEs, deb packages
 #chrome

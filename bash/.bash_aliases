@@ -24,6 +24,8 @@ alias findh="find ~ -name"
 alias finda="find . -name"
 alias findi="find . -iname"
 
+alias hgrep="history | grep"
+
 # Quick vim
 alias vime="vim -c NERDTreeToggle"
 alias vimp="vim -c CtrlP"
@@ -80,8 +82,8 @@ alias lessh="less -m -N -g -i -J --line-numbers --underline-special"
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 alias sob="source ~/.bashrc"
 alias ethdevices="nmcli device status"
-alias vpn_pitang="cp /etc/resolv.conf ~/resolv-backup.conf;sudo cp ~/resolv.conf /etc/resolv.conf;cd /etc/openvpn/;sudo openvpn pitang.ovpn"
-alias override_resolv="cp /etc/resolv.conf ~/resolv-backup.conf;sudo cp ~/resolv.conf /etc/resolv.conf"
+alias override_resolv="cp /etc/resolv.conf ~/tmp/resolv-backup.conf;sudo cp ~/Dropbox/Programacao/Pitang/vpn/resolv.conf /etc/resolv.conf"
+alias vpn_pitang="cp /etc/resolv.conf ~/tmp/resolv-backup.conf;sudo cp ~/Dropbox/Programacao/Pitang/vpn/resolv.conf /etc/resolv.conf;cd /etc/openvpn/;sudo openvpn pitang.ovpn"
 alias ssh_pitang="ssh-add ~/.ssh/id_rsa_pitang"
 alias ssh_rsa_email="ssh-keygen -t rsa -b 4096 -C"
 alias ppa_remove="sudo add-apt-repository --remove ppa:"
@@ -91,3 +93,4 @@ alias dates="date +%F-%T"
 alias space2underscore='echo "${1// /_}"'
 alias rm_empty_lines="sed -r '/^\s*$/d'"
 
+alias sot="source ~/.bash_test"

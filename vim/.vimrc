@@ -358,6 +358,14 @@ nnoremap <F7> gg=G<C-o><C-o>
 " Print time stamp
 nnoremap <F2> :read !date<CR>
 
+" Quick Notes
+nnoremap <leader>3 I# <Esc>
+nnoremap <leader>1 I1. <Esc>
+nnoremap <leader>8 I* <Esc>
+nnoremap <leader>- o---<CR><CR><Esc>
+
+" Uppercase first letter of line
+nnoremap <leader>u 0vU
 "------------------------------------------------------------------------------
 " Plugin settings
 "------------------------------------------------------------------------------

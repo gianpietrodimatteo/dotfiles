@@ -17,6 +17,8 @@ complete -W "alias \
   resource \
   session \
   i3 \
+  test \
+  install \
   " co
 # .bash_aliases
 # .bash_custom

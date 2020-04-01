@@ -1,13 +1,24 @@
 #!/bin/bash
 
 # Gian's ticketing system
+# gt <project> [ <title> ]
 
 # Open ticket(s) for a project with title(s), a number and a description in a
 # pretty text file, then open them up so you can write the subactivities
 # missing: autocompletion, edit if already exists
-# yep it's getting sorta complex... Maybe go? I don't know...
 
-# gt <project> [ <title> ]
+while getopts "d:t:n:" flag; do
+case "$flag" in
+    d) DIRECTORY=$OPTARG;;
+    t) TYPE=$OPTARG;;
+    n) STARTNUM=$OPTARG;;
+esac
+done
+# And then you can get your positional arguments like this:
+
+ARG1=${@:$OPTIND:1}
+ARG2=${@:$OPTIND+1:1}
+
 
 # Tickets directory
 tdir="$HOME/Dropbox/Tickets"

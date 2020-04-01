@@ -26,6 +26,9 @@ case "$1" in
   'bash')
     $EDITOR "${HOME}/.bashrc"
     ;;
+  'test')
+    $EDITOR "${HOME}/.bash_test"
+    ;;
   'profile')
     $EDITOR "${HOME}/.profile"
     ;;
@@ -58,6 +61,9 @@ case "$1" in
   'i3')
     $EDITOR "${HOME}/.config/i3/config"
     i3-msg restart
+    ;;
+  'install')
+    $EDITOR "${HOME}/dotfiles/install.sh"
     ;;
   *)
     if [[ "$(readlink -f "$1")" != ${HOME}/* ]]; then
