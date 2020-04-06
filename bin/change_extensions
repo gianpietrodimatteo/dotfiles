@@ -17,7 +17,28 @@ ARG1=${@:$OPTIND:1}
 ARG2=${@:$OPTIND+1:1}
 
 
+# Options is what you need m8
+foo () {
+    local flag=0
 
+    while getopts 't' opt; do
+        case $opt in
+            t) flag=1 ;;
+            *) echo 'Error in command line parsing' >&2
+               exit 1
+        esac
+    done
+    shift "$(( OPTIND - 1 ))"
+
+    local param1=$1
+    local param2=$2
+
+    if [ "$flag" -eq 1 ]; then
+        # do things for "foo -t blah blah"
+    else
+        # do things for "foo blah blah"
+    fi
+}
 
 
 
@@ -36,9 +57,10 @@ change_extensions() {
 # usage: add_extension <extension>
 add_extension() {
   local extension="$1";
+  local all=true;
   for file in *
   do
-    if [[ $file != *.* ]] ;
+    if [[ $file != *.* ]] || [[ "$all" = true ]];
     then
       mv "$file" "$file.$extension"
     fi

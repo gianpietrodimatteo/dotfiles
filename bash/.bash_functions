@@ -288,3 +288,9 @@ lowercase() {
   echo "$@" | tr '[:upper:]' '[:lower:]'
 }
 
+spring_init() {
+  mv $HOME/Downloads/$1.zip $WORKSPACE/spring/
+  cd $WORKSPACE/spring/
+  unzip $1.zip
+  rm $1.zip
+}

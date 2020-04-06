@@ -16,8 +16,8 @@
   sa = stash
   df = diff
   cp = cherry-pick
-  pl = pull
-  pu = push
+  p = pull
+  ps = push
   pr = pull --rebase
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all

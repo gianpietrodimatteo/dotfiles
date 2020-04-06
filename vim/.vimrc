@@ -363,6 +363,8 @@ nnoremap <leader>3 I# <Esc>
 nnoremap <leader>1 I1. <Esc>
 nnoremap <leader>8 I* <Esc>
 nnoremap <leader>- o---<CR><CR><Esc>
+" Markdown
+nnoremap <leader>9 I[](<Esc>A)<Esc>F[a
 
 " Uppercase first letter of line
 nnoremap <leader>u 0vU

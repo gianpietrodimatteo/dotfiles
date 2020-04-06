@@ -15,18 +15,18 @@ alias x="xmodmap ~/.xmodmaprc"
 
 
 # Functions
-gitp () {
-  gitpc "$@";
-  gitps "$@";
+gitpp () {
+  gitppc "$@";
+  gitpps "$@";
 }
 
-gitpc () {
+gitppc () {
   echo "# Prompt Client: ";
   dir="`wherisp prompt-client`";
   gitdir "$dir" "$@";
 }
 
-gitps () {
+gitpps () {
   echo "# Prompt Server: ";
   dir="`wherisp prompt-server`";
   gitdir "$dir" "$@";

@@ -66,6 +66,7 @@ case "$1" in
     $EDITOR "${HOME}/dotfiles/install.sh"
     ;;
   *)
+    echo "Not an existing configuration file."
     if [[ "$(readlink -f "$1")" != ${HOME}/* ]]; then
       sudo -E $EDITOR "$1"
     else
