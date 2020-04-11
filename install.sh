@@ -18,6 +18,7 @@ sudo apt install highlight
 sudo apt install tree
 sudo apt install xbacklight
 sudo apt install xinput
+sudo apt install gnuplot
 
 # Basic services
 sudo apt install xfce4

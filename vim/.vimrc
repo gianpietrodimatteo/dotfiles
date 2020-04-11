@@ -363,6 +363,7 @@ nnoremap <leader>3 I# <Esc>
 nnoremap <leader>1 I1. <Esc>
 nnoremap <leader>8 I* <Esc>
 nnoremap <leader>- o---<CR><CR><Esc>
+nnoremap <leader><Tab> I<Tab><Esc>
 " Markdown
 nnoremap <leader>9 I[](<Esc>A)<Esc>F[a
 

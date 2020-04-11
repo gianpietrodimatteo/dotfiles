@@ -43,9 +43,7 @@ m2d() {
   ln -sv ~/dotfiles/$fileName .
 }
 
-# vimep - vim nerd tree and ctrl p
-# usage: vimep <target>
-vimep() {
+goto() {
   if [ -z "$1" ]
   then
     dir=.;
@@ -53,7 +51,27 @@ vimep() {
     dir=$1;
   fi
   cd $dir;
+}
+
+# vimep - vim nerd tree and ctrl p
+# usage: vimep <target>
+vimep() {
+  goto "$1"
   vim -c NERDTreeToggle -c CtrlP
+}
+
+# vimp - vim ctrl p
+# usage: vimp <target>
+vimp() {
+  goto "$1"
+  vim -c CtrlP
+}
+
+# vime - vim nerd tree
+# usage: vimp <target>
+vime() {
+  goto "$1"
+  vim -c NERDTreeToggle
 }
 
 wherisp() {
@@ -293,4 +311,68 @@ spring_init() {
   cd $WORKSPACE/spring/
   unzip $1.zip
   rm $1.zip
+}
+
+# gitinit - initialize existing repository
+# usage: gitinit
+gitinit() {
+  git init
+  git add .
+  git commit -m "Initial commit"
+}
+
+# gitrinit - initialize existing repository and add it's remote
+# usage: gitrinit <remote>
+gitrinit() {
+  gitinit
+  git remote add origin "$1"
+  git push -u origin master
+}
+
+# githinit - initialize existing repository and add it's github remote for my account
+# usage: githinit <remote-repository-name>
+githinit() {
+  gitinit
+  git remote add origin https://github/gianpietrodimatteo/"$1"
+  git push -u origin master
+}
+
+# amigo - add my github repo to the remotes with a specific name
+# usage: amigo <remote-name> <remote-repository-name>
+amigo() {
+  git remote add "$1" https://github.com/gianpietrodimatteo/"$2"
+}
+
+initkden() {
+  mkdir -p ~/video_workspace/$1/Videos ~/video_workspace/$1/Audio
+}
+
+initrecord() {
+  mkdir -p ~/recordings/$1 ~/audio_workspace/$1
+}
+
+initall() {
+  initkden $1
+  initrecord $1
+}
+
+taudiokden() {
+  cp ${@:2} ~/audio_workspace/$1
+}
+
+tmickden() {
+  cp ~/audio_workspace/$1/* ~/video_workspace/$1/Audio
+}
+
+tvideokden() {
+  cp ${@:2} ~/video_workspace/$1/Video
+}
+
+tcamkden() {
+  cp ~/recordings/$1/* ~/video_workspace/$1/Video
+}
+
+rmppa() {
+  PPA_Name="$1"
+  sudo add-apt-repository --remove ppa:$PPA_Name/ppa
 }

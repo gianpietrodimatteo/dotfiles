@@ -27,11 +27,10 @@ alias findi="find . -iname"
 alias hgrep="history | grep"
 
 # Quick vim
-alias vime="vim -c NERDTreeToggle"
-alias vimp="vim -c CtrlP"
 alias viq="vim $DONTCARE"
 alias vimupdate="vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc"
 alias vimo="vim -O"
+alias suvim="sudo -E vim"
 
 # Quick git
 alias gitco="git checkout"
@@ -61,6 +60,9 @@ alias gitcm="git commit -m"
 alias gitam="gita;gitcm"
 alias gitpo="git push -u origin"
 
+# Gitutil
+alias amogre="git remote add origin https://github.com/gianpietrodimatteo/"
+
 # Quick tmux
 alias tml="tmux list-sessions"
 alias tma="tmux attach-session -t"
@@ -78,6 +80,7 @@ alias curly="curl -sSL"
 alias tailf="tail -F"
 alias trash="mv -t $HOME/.local/share/Trash/files/"
 alias tara="tar zxvf"
+alias tarz="tar -xvjf"
 alias lessh="less -m -N -g -i -J --line-numbers --underline-special"
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 alias sob="source ~/.bashrc"
@@ -88,6 +91,8 @@ alias ssh_pitang="ssh-add ~/.ssh/id_rsa_pitang"
 alias ssh_rsa_email="ssh-keygen -t rsa -b 4096 -C"
 alias ppa_remove="sudo add-apt-repository --remove ppa:"
 alias dates="date +%F-%T"
+alias home_lg_monitor="sh ~/bin/arandr-home-lg-layout.sh"
+alias sysver="uname -a; lsb_release -a; hostnamectl;"
 
 # Misc
 alias space2underscore='echo "${1// /_}"'
