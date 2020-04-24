@@ -19,6 +19,8 @@ sudo apt install tree
 sudo apt install xbacklight
 sudo apt install xinput
 sudo apt install gnuplot
+sudo apt install locate
+sudo apt install unrar-free
 
 # Basic services
 sudo apt install xfce4

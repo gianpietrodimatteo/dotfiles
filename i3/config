@@ -365,7 +365,8 @@ exec_always ~/bin/random-wallpaper.sh
 
 # XF86Display
 # from arandr - change when using multiple monitors
-exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
+# exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
+exec_always xrandr --output VIRTUAL1 --off --output eDP1 --mode 1366x768 --pos 272x1080 --rotate normal --output DP1 --off --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI1 --off --output DP2 --off
 
 # compton allows transparent windows and also the transition
 exec_always compton #-f

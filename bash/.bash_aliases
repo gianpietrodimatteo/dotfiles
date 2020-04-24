@@ -60,7 +60,7 @@ alias gitcm="git commit -m"
 alias gitam="gita;gitcm"
 alias gitpo="git push -u origin"
 
-# Gitutil
+# GitUtil
 alias amogre="git remote add origin https://github.com/gianpietrodimatteo/"
 
 # Quick tmux
@@ -74,28 +74,37 @@ alias e="exit"
 alias allow="chmod u+x"
 alias allall="chmod a+x"
 alias deb="sudo dpkg -i"
+alias ethdevices="nmcli device status"
+alias sysver="uname -a; lsb_release -a; hostnamectl;"
+alias ppa_remove="sudo add-apt-repository --remove ppa:"
 
 # Util
 alias curly="curl -sSL"
 alias tailf="tail -F"
 alias trash="mv -t $HOME/.local/share/Trash/files/"
-alias tara="tar zxvf"
-alias tarz="tar -xvjf"
 alias lessh="less -m -N -g -i -J --line-numbers --underline-special"
+alias ssh_rsa_email="ssh-keygen -t rsa -b 4096 -C"
+alias dates="date +%F-%T"
+alias smartree="tree -I 'node_modules|dist'"
+
+# Bash
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
 alias sob="source ~/.bashrc"
-alias ethdevices="nmcli device status"
+alias sot="source ~/.bash_test"
+
+# Pitang
 alias override_resolv="cp /etc/resolv.conf ~/tmp/resolv-backup.conf;sudo cp ~/Dropbox/Programacao/Pitang/vpn/resolv.conf /etc/resolv.conf"
 alias vpn_pitang="cp /etc/resolv.conf ~/tmp/resolv-backup.conf;sudo cp ~/Dropbox/Programacao/Pitang/vpn/resolv.conf /etc/resolv.conf;cd /etc/openvpn/;sudo openvpn pitang.ovpn"
 alias ssh_pitang="ssh-add ~/.ssh/id_rsa_pitang"
-alias ssh_rsa_email="ssh-keygen -t rsa -b 4096 -C"
-alias ppa_remove="sudo add-apt-repository --remove ppa:"
-alias dates="date +%F-%T"
-alias home_lg_monitor="sh ~/bin/arandr-home-lg-layout.sh"
-alias sysver="uname -a; lsb_release -a; hostnamectl;"
+
+# Package/Unpackage
+alias targz="tar zxvf"
+alias tarbz2="tar -xvjf"
+alias tarxz="tar -Jxxvf"
+alias unrar="unrar x"
 
 # Misc
 alias space2underscore='echo "${1// /_}"'
 alias rm_empty_lines="sed -r '/^\s*$/d'"
+alias moveToImageLibrary="mv *.jpg *.webm *.gif *.png ~/Pictures/Image\ Library/"
 
-alias sot="source ~/.bash_test"

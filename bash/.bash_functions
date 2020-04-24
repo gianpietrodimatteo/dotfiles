@@ -348,7 +348,7 @@ initkden() {
 }
 
 initrecord() {
-  mkdir -p ~/recordings/$1 ~/audio_workspace/$1
+  mkdir -p ~/recordings/$1 ~/audio_workspace/$1/Audio
 }
 
 initall() {
@@ -356,23 +356,41 @@ initall() {
   initrecord $1
 }
 
+tallkden() {
+  tmickden "$1"
+  tcamkden "$1"
+}
+
 taudiokden() {
-  cp ${@:2} ~/audio_workspace/$1
+  mv ${@:2} ~/video_workspace/$1/Audio/
 }
 
 tmickden() {
-  cp ~/audio_workspace/$1/* ~/video_workspace/$1/Audio
+  if [[ -n $1 ]]; then
+    cp ~/audio_workspace/$1/Audio/* ~/video_workspace/$1/Audio/
+  fi
 }
 
 tvideokden() {
-  cp ${@:2} ~/video_workspace/$1/Video
+  mv ${@:2} ~/video_workspace/$1/Videos/
 }
 
 tcamkden() {
-  cp ~/recordings/$1/* ~/video_workspace/$1/Video
+  if [[ -n $1 ]]; then
+    cp ~/recordings/$1/* ~/video_workspace/$1/Videos/
+  fi
 }
 
 rmppa() {
   PPA_Name="$1"
   sudo add-apt-repository --remove ppa:$PPA_Name/ppa
+}
+
+
+vf() {
+  vim -O $(find . -iname "*$1*")
+}
+
+findfunc() {
+  find . -type f \( -path '*/target/*' -o -path '*/node_modules/*' -o -path '*/dist/*' \) -prune -o -iname "*$1*" -print
 }

@@ -141,3 +141,8 @@ shopt -s dirspell direxpand
 export NVM_DIR="$HOME/.config"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# GoLang
+export GOROOT=/home/gianpietro/workspace/.go
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/home/gianpietro/Workspace/go
+export PATH=$GOPATH/bin:$PATH
