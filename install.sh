@@ -21,6 +21,7 @@ sudo apt install xinput
 sudo apt install gnuplot
 sudo apt install locate
 sudo apt install unrar-free
+sudo apt install playerctl
 
 # Basic services
 sudo apt install xfce4

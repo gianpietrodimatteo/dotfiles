@@ -23,3 +23,20 @@ gitpps () {
   gitdir "$dir" "$@";
 }
 
+gitw () {
+  gitwc "$@";
+  gitws "$@";
+}
+
+gitwc () {
+  echo "# Wallet Dashboard Client: ";
+  dir="$WORKSPACE/pitang/wallet-dashboard/wallet-dashboard-client";
+  gitdir "$dir" "$@";
+}
+
+gitws () {
+  echo "# Wallet Dashboard Server: ";
+  dir="$WORKSPACE/pitang/wallet-dashboard/wallet-dashboard-server";
+  gitdir "$dir" "$@";
+}
+

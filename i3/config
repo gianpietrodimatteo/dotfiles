@@ -291,22 +291,27 @@ bar {
 # Multimedia controls
 # -----------------------------------------------------------------------------
 # Pulse Audio controls
-#increase sound volume (with upper limit)
+# Increase sound volume (with upper limit)
 bindsym XF86AudioRaiseVolume exec --no-startup-id smartvolup
-#decrease sound volume
+# Decrease sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-# mute sound
+# Mute sound
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Sreen brightness controls
-# increase screen brightness
+# Increase screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-# decrease screen brightness
+# Decrease screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
-# sticky window
-bindsym $mod+Shift+s sticky toggle
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
+# Sticky window
+bindsym $mod+Shift+s sticky toggle
 
 # -----------------------------------------------------------------------------
 # Initialization and assignments
@@ -363,10 +368,8 @@ for_window [class="Pavucontrol"] floating enable
 exec_always ~/bin/random-wallpaper.sh
 # exec_always feh --bg-fill ~/dotfiles/wallpaper.jpg
 
-# XF86Display
-# from arandr - change when using multiple monitors
-# exec_always xrandr --output LVDS-1 --primary --mode 1366x768 --pos 0x768 --rotate normal --output DP-1 --off --output HDMI-1 --off --output VGA-1 --mode 1366x768 --pos 0x0 --rotate normal
-exec_always xrandr --output VIRTUAL1 --off --output eDP1 --mode 1366x768 --pos 272x1080 --rotate normal --output DP1 --off --output HDMI2 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI1 --off --output DP2 --off
+# Display
+exec_always --no-startup-id ~/bin/arandr-home-lg-layout.sh
 
 # compton allows transparent windows and also the transition
 exec_always compton #-f

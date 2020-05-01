@@ -34,6 +34,7 @@ alias suvim="sudo -E vim"
 
 # Quick git
 alias gitco="git checkout"
+alias gitcob="git checkout -b"
 alias gitb="git branch"
 alias gitc="git commit"
 alias gits="git status"
@@ -61,7 +62,7 @@ alias gitam="gita;gitcm"
 alias gitpo="git push -u origin"
 
 # GitUtil
-alias amogre="git remote add origin https://github.com/gianpietrodimatteo/"
+alias amogre="git remote add origin https://github.com/gianpietrodimatteo/$1"
 
 # Quick tmux
 alias tml="tmux list-sessions"

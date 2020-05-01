@@ -388,9 +388,13 @@ rmppa() {
 
 
 vf() {
-  vim -O $(find . -iname "*$1*")
+  vim -O $(findfuncsafe "$1" | head -n 3)
 }
 
 findfunc() {
   find . -type f \( -path '*/target/*' -o -path '*/node_modules/*' -o -path '*/dist/*' \) -prune -o -iname "*$1*" -print
+}
+
+findfuncsafe() {
+  findfunc "$1" | grep -v "/node_modules"| grep -v "/dist"| grep -v "/target"
 }
