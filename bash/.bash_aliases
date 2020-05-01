@@ -63,6 +63,7 @@ alias gitpo="git push -u origin"
 
 # GitUtil
 alias amogre="git remote add origin https://github.com/gianpietrodimatteo/$1"
+alias pullall="find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;"
 
 # Quick tmux
 alias tml="tmux list-sessions"
@@ -108,4 +109,6 @@ alias unrar="unrar x"
 alias space2underscore='echo "${1// /_}"'
 alias rm_empty_lines="sed -r '/^\s*$/d'"
 alias moveToImageLibrary="mv *.jpg *.webm *.gif *.png ~/Pictures/Image\ Library/"
+
+alias lmao="touch ayy{lmao,lmio,lon,loff,lobino,lobarito}{chuahili,suhali,bengali,mombojo}"
 

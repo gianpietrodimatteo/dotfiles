@@ -45,7 +45,7 @@ case "$1" in
     $EDITOR "${HOME}/.tmux.conf"
     ;;
   'vim')
-    $EDITOR "${HOME}/.vimrc"
+    $EDITOR "${HOME}/.vim/custom.vim"
     ;;
   'map')
     $EDITOR "${HOME}/.xmodmaprc"
