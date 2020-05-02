@@ -1,5 +1,8 @@
 #!/bin/bash
 
+################################################################################
+# Gians bash functions
+################################################################################
 
 # functions - summary of custom user functions
 # usage: functions
@@ -7,9 +10,10 @@ functions() {
   cat "${HOME}/.bash_functions" | grep -v ignore-from-help | grep -B 1 usage;
 }
 
-#
-# navigation and basic operations
-#
+################################################################################
+# Navigation and basic operations
+################################################################################
+
 # mkcd - makedir and cd in it
 # usage: mkcd <dir>
 mkcd() {
@@ -22,10 +26,14 @@ cdl() {
   cd $1 && ls -a;
 }
 
+# cdi - cd and git status
+# usage: cdi <dir>
 cdi() {
   cd "$1"; git status
 }
 
+# cath - cat for displaying with syntax highlighting
+# usage: cath <dir>
 cath() {
   if [[ -n "$2" ]]; then
     highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light --syntax "$2";
@@ -34,15 +42,15 @@ cath() {
   fi
 }
 
-# For now, to be executed AT THE FOLDER OF THE FILE
 # m2d - moves to dotfiles and creates symlink
 # usage: m2d <target>
 m2d() {
-  fileName=$1;
-  mv $fileName ~/dotfiles/;
+  fileName=$(readlink -f $1);
+  mv -vp $fileName ~/dotfiles/;
   ln -sv ~/dotfiles/$fileName .
 }
 
+# TODO
 goto() {
   if [ -z "$1" ]
   then
@@ -74,6 +82,7 @@ vime() {
   vim -c NERDTreeToggle
 }
 
+# TODO
 wherisp() {
   cat ~/.myrepos | grep "$1" | cut -d "|" -f 2 | envsubst;
 }
@@ -250,8 +259,10 @@ gitff() {
   fi
 }
 
+# notebook - Open up the notebook
+# usage: notebook
 notebook() {
-  $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave"'
+  $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave" &'
 }
 
 keycode() {
@@ -259,6 +270,7 @@ keycode() {
   xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 }
 
+# TODO
 vims() {
   vim $(find . -iname "$1")
 }
@@ -398,3 +410,5 @@ findfunc() {
 findfuncsafe() {
   findfunc "$1" | grep -v "/node_modules"| grep -v "/dist"| grep -v "/target"
 }
+
+# TODO remove specific functions from the general one
