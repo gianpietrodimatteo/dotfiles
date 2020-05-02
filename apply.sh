@@ -46,7 +46,7 @@ apply_dot_change () {
 echo "Start applying these configuration files..."
 
 # misc
-apply_dot ~/.fonts .
+apply_dot_change ~/.fonts . fonts
 
 # i3
 apply_dot ~/.config/i3 .
@@ -58,12 +58,13 @@ apply_dot ~/.vim/snippets vim
 apply_dot ~/.vimrc vim
 
 # bash
-apply_dot ~/.bash_aliases bash
-apply_dot ~/.bash_functions bash
-apply_dot ~/.bashrc bash
-apply_dot ~/.inputrc bash
-apply_dot ~/.profile bash
-apply_dot ~/.bash_completion bash
+apply_dot_change ~/.bash . bash
+apply_dot ~/.bash_aliases bash/bashrcs
+apply_dot ~/.bash_functions bash/bashrcs
+apply_dot ~/.bashrc bash/bashrcs
+apply_dot ~/.inputrc bash/other
+apply_dot ~/.profile bash/other
+apply_dot ~/.bash_completion bash/bashrcs
 
 echo "Select your environment"
 select varfile in home pitang; do

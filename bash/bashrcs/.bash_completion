@@ -1,7 +1,13 @@
 #/usr/bin/env bash
 
+# Source all files in completion folder
+ls ~/.bash/completion/ |while read file; do
+  source $file
+done
+
 # co - wrapper for configuraiton files
-complete -W "alias \
+complete -W " \
+  alias \
   custom  \
   function \
   variable \
@@ -20,19 +26,4 @@ complete -W "alias \
   test \
   install \
   " co
-# .bash_aliases
-# .bash_custom
-# .bash_functions
-# .bash_variables
-# .bash_completion
-# .bashrc
-# .profile
-# .inputrc
-# .gitconfig
-# .myrepos
-# .tmux.conf
-# .vimrc
-# .xmodmaprc
-# .Xresources
-# .xsessionrc
-# .config/i3/config
+
