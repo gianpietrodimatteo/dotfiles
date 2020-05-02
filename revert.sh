@@ -31,11 +31,6 @@ revert_bkp ~/.fonts .
 revert_bkp ~/.config/i3 .
 revert_bkp ~/.i3status.conf i3
 
-# vim
-revert_bkp ~/.vim/colors vim
-revert_bkp ~/.vim/snippets vim
-revert_bkp ~/.vimrc vim
-
 # bash
 revert_bkp ~/.bash_aliases bash
 revert_bkp ~/.bash_functions bash

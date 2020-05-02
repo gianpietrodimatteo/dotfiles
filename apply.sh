@@ -52,11 +52,6 @@ apply_dot_change ~/.fonts . fonts
 apply_dot ~/.config/i3 .
 apply_dot ~/.i3status.conf i3
 
-# vim
-apply_dot ~/.vim/colors vim
-apply_dot ~/.vim/snippets vim
-apply_dot ~/.vimrc vim
-
 # bash
 apply_dot_change ~/.bash . bash
 apply_dot ~/.bash_aliases bash/bashrcs

@@ -2,7 +2,7 @@
 
 # Source all files in completion folder
 ls ~/.bash/completion/ |while read file; do
-  source $file
+  source ~/.bash/completion/$file
 done
 
 # co - wrapper for configuraiton files
