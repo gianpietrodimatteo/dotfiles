@@ -4,10 +4,15 @@
 # Gians bash functions
 ################################################################################
 
+# Source all files in function folder
+ls ~/.bash/function/ |while read file; do
+source ~/.bash/function/$file
+done
+
 # functions - summary of custom user functions
 # usage: functions
 functions() {
-  cat "${HOME}/.bash_functions" | grep -v ignore-from-help | grep -B 1 usage;
+  cat ${HOME}/.bash_functions ${HOME}/.bash/function/* | grep -v ignore-from-help | grep -B 1 usage;
 }
 
 ################################################################################
@@ -82,60 +87,8 @@ vime() {
   vim -c NERDTreeToggle
 }
 
-# TODO
-wherisp() {
-  cat ~/.myrepos | grep "$1" | cut -d "|" -f 2 | envsubst;
-}
-
-gitdj() {
-  gitd "$@";
-  gitr "$@";
-}
-
-gitd() {
-  local proj_path="$HOME/dotfiles";
-  echo '# Dotfiles:';
-  gitdir "$proj_path" "$@";
-}
-
-gitr() {
-  local proj_path="$HOME/resources";
-  echo '# Resources:';
-  gitdir "$proj_path" "$@";
-}
-
-gitdir() {
-  if [ -d "$1" ]; then
-    serverDir="$1";
-    git --git-dir=$serverDir/.git --work-tree=$serverDir "${@:2}";
-  else
-    echo "ERROR: gitdir() - Must provide an existant directory.";
-  fi
-  echo -e;
-}
-
-# gitme - execute command or download on all repositories listed in myrepos
-# usage: gitme [ <command> ]
-gitme() {
-  # Read ~/.myreppos
-  while read -u 10 p; do
-    # If line is not a comment
-    if [[ "$p" != \#* ]] && [ "$p" ] ; then
-      echo "About project $(echo "$p" | cut -d "|" -f 1)";
-          path=$(echo "$p" | cut -d "|" -f 2 | envsubst);
-          remote=$(echo "$p" | cut -d "|" -f 3);
-          # If no arguments were passed, install repositories
-          if [ -z "$1" ]; then
-            if [ ! -d "$path" ] ; then
-              git clone "$remote" "$path";
-            fi
-          else
-            gitdir "$path" "$@";
-          fi
-    fi
-  done 10<$HOME/.myrepos
-}
-
+# hibkp - history install backup - file at ~/tmp/hsitory-install-backup.txt
+# usage: hibkp
 hibkp() {
   rm -f $HOME/tmp/history-install-backup.txt;
   while read p; do
@@ -143,10 +96,14 @@ hibkp() {
   done < $HOME/src/history-install-grephelp
 }
 
+# findc - find file on folder without error print
+# usage: findc <directory> <name> TODO
 findc() {
   find "$1" -iname "$2" 2> "$DONTCARE";
 }
 
+# c2r - copy file to resources
+# usage: c2r TODO
 c2r() {
   if [ -z "$1" ]; then
     echo "Must specify filename";
@@ -214,22 +171,14 @@ smartuniq() {
   echo "TODO";
 }
 
-# gitpull - pull into a local branch without checking out. Remote and local branchnames must be the same
-# usage: gitpull <branchname>
-gitpull() {
-  if [ -n "$2" ]; then
-    git fetch "$1" "$2":"$2";
-  else
-    git fetch origin "$1":"$1";
-  fi
-}
-
 # asa - quickly search apt repositories. Shows only lines with a word match
 # usage: asa <searchphrase>
 asa() {
   apt-cache search $1 | grep $1
 }
 
+# killport - kill process using port
+# usage: killport <port>
 killport() {
   sudo kill -9 $(sudo fuser -n tcp $1 2> /dev/null);
 }
@@ -238,33 +187,14 @@ grepa() {
   grep -r "$@" .
 }
 
-gitremotes() {
-  # Credit http://stackoverflow.com/a/2514279
-  for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r
-  }
-
-# gitff - git fast foward one commit
-# usage: gitff <reference_commit>
-gitff() {
-  if [[ -n "$1" ]]; then
-    local child_commit="$(git rev-list --topo-order HEAD.."$*" | tail -1)"
-    if [[ -n "$child_commit" ]]; then
-      git checkout "$child_commit"
-    else
-      echo "Already in latest commit on stated reference, checking it out instead"
-      git checkout "$1"
-    fi
-  else
-    echo "Must provide a reference commit."
-  fi
-}
-
 # notebook - Open up the notebook
 # usage: notebook
 notebook() {
   $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave" &'
 }
 
+# keycode - view input keycode on the terminal
+# usage: keycode
 keycode() {
   echo "Ctrl+C on the terminal to stop. Move mouse to display."
   xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
@@ -275,6 +205,8 @@ vims() {
   vim $(find . -iname "$1")
 }
 
+# exists_partial_name - Exists a file with name containing the search
+# usage: exists_partial_name <search>
 exists_partial_name() {
   for name in *$1*; do
     if [ -f "$name" ]; then
@@ -284,17 +216,22 @@ exists_partial_name() {
   done
 }
 
+# loop_args - loop all arguments given to this function afterwards
+# usage: loop_args
 loop_args() {
   for arg in "$@"; do
     echo "$arg"
   done
 }
 
+# co - shortcuts for your configurations, check completion
+# usage: co <configuration>
 co() {
   conf "$@"
   source ~/.bashrc
 }
 
+# TODO
 flatenize() {
   local name="$(basename $(lowercase $1))"
   if [[ -n $2 ]]; then
@@ -310,14 +247,19 @@ flatenize() {
   done
 }
 
+# TODO
 nesterize() {
   echo TODO
 }
 
+# lowercase - print folowing arguments in lowercase
+# usage: lowercase[<name>]
 lowercase() {
   echo "$@" | tr '[:upper:]' '[:lower:]'
 }
 
+# spring_init - Extract recently downloaded spring project with the spring initialzr
+# usage: spring_init <project-name>
 spring_init() {
   mv $HOME/Downloads/$1.zip $WORKSPACE/spring/
   cd $WORKSPACE/spring/
@@ -325,90 +267,28 @@ spring_init() {
   rm $1.zip
 }
 
-# gitinit - initialize existing repository
-# usage: gitinit
-gitinit() {
-  git init
-  git add .
-  git commit -m "Initial commit"
-}
-
-# gitrinit - initialize existing repository and add it's remote
-# usage: gitrinit <remote>
-gitrinit() {
-  gitinit
-  git remote add origin "$1"
-  git push -u origin master
-}
-
-# githinit - initialize existing repository and add it's github remote for my account
-# usage: githinit <remote-repository-name>
-githinit() {
-  gitinit
-  git remote add origin https://github/gianpietrodimatteo/"$1"
-  git push -u origin master
-}
-
-# amigo - add my github repo to the remotes with a specific name
-# usage: amigo <remote-name> <remote-repository-name>
-amigo() {
-  git remote add "$1" https://github.com/gianpietrodimatteo/"$2"
-}
-
-initkden() {
-  mkdir -p ~/video_workspace/$1/Videos ~/video_workspace/$1/Audio
-}
-
-initrecord() {
-  mkdir -p ~/recordings/$1 ~/audio_workspace/$1/Audio
-}
-
-initall() {
-  initkden $1
-  initrecord $1
-}
-
-tallkden() {
-  tmickden "$1"
-  tcamkden "$1"
-}
-
-taudiokden() {
-  mv ${@:2} ~/video_workspace/$1/Audio/
-}
-
-tmickden() {
-  if [[ -n $1 ]]; then
-    cp ~/audio_workspace/$1/Audio/* ~/video_workspace/$1/Audio/
-  fi
-}
-
-tvideokden() {
-  mv ${@:2} ~/video_workspace/$1/Videos/
-}
-
-tcamkden() {
-  if [[ -n $1 ]]; then
-    cp ~/recordings/$1/* ~/video_workspace/$1/Videos/
-  fi
-}
-
+# rmppa - remove ppa
+# usage: rmppa <ppa-name>
 rmppa() {
   PPA_Name="$1"
   sudo add-apt-repository --remove ppa:$PPA_Name/ppa
 }
 
-
+# vf - vimfind - open in vim the 3 first results of a recursive partial search
+# usage: vf <search>
 vf() {
-  vim -O $(findfuncsafe "$1" | head -n 3)
+  vim -O $(ffs "$1" | head -n 3)
 }
 
-findfunc() {
+# ff - find function recursively with partial search
+# usage: ff <search>
+ff() {
   find . -type f \( -path '*/target/*' -o -path '*/node_modules/*' -o -path '*/dist/*' \) -prune -o -iname "*$1*" -print
 }
 
-findfuncsafe() {
+# ffs - find function with grep for further cleaning results
+# usage: ffs <search>
+ffs() {
   findfunc "$1" | grep -v "/node_modules"| grep -v "/dist"| grep -v "/target"
 }
 
-# TODO remove specific functions from the general one
