@@ -4,11 +4,6 @@
 # Gians bash functions
 ################################################################################
 
-# Source all files in function folder
-ls ~/.bash/function/ |while read file; do
-source ~/.bash/function/$file
-done
-
 # functions - summary of custom user functions
 # usage: functions
 functions() {
@@ -85,6 +80,17 @@ vimp() {
 vime() {
   goto "$1"
   vim -c NERDTreeToggle
+}
+
+# vimall - concatenate all files of folder and open up in vim
+# usage: vimall [<directory>]
+vimall() {
+  if [ -n $1 ]; then
+    dir=$(pwd)/$1
+  else
+    dir=.
+  fi
+  vim <(cat $dir/*)
 }
 
 # hibkp - history install backup - file at ~/tmp/hsitory-install-backup.txt
@@ -291,4 +297,23 @@ ff() {
 ffs() {
   findfunc "$1" | grep -v "/node_modules"| grep -v "/dist"| grep -v "/target"
 }
+
+# jave - java and javac. Name it without .class
+# usage: jave <java-file>
+jave() {
+  javac $1.java; java $1
+}
+
+# sourcedir - source all files in directory
+# usage: sourcedir <directory>
+sourcedir() {
+  for f in $1/*; do source $f; done
+}
+
+################################################################################
+# Other function files
+################################################################################
+
+# Source all files in functions folder
+for f in ~/.bash/functions/*; do source $f; done
 

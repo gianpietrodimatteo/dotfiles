@@ -26,6 +26,8 @@ alias findi="find . -iname"
 
 alias hgrep="history | grep"
 
+alias book="vim ~/Dropbox/Escritos/Livro/livro-rascunho.txt"
+
 # Quick vim
 alias viq="vim $DONTCARE"
 alias vimupdate="vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc"
@@ -104,6 +106,7 @@ alias targz="tar zxvf"
 alias tarbz2="tar -xvjf"
 alias tarxz="tar -Jxxvf"
 alias unrar="unrar x"
+alias 7zip="7z e"
 
 # Misc
 alias space2underscore='echo "${1// /_}"'

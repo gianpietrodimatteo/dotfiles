@@ -361,6 +361,8 @@ for_window [window_role="gimp-toolbox"] floating enable border normal resize shr
 for_window [window_role="gimp-dock"] floating enable border normal resize shrink height 30
 for_window [window_role="gimp-toolbox-color-dialog"] floating enable border normal
 
+for_window [class="PCSXR"] floating enable
+
 # Floating windows by default
 for_window [class="Pavucontrol"] floating enable
 
@@ -369,7 +371,7 @@ exec_always ~/bin/random-wallpaper.sh
 # exec_always feh --bg-fill ~/dotfiles/wallpaper.jpg
 
 # Display
-exec_always --no-startup-id ~/bin/arandr-home-lg-layout.sh
+# exec_always --no-startup-id ~/bin/arandr-home-lg-layout.sh
 
 # compton allows transparent windows and also the transition
 exec_always compton #-f

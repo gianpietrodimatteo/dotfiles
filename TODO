@@ -1,18 +1,15 @@
-Install/Revert script:
+# Install/Revert script:
 Add options to what do you want to install
 
-consider experimenting with zsh (+ohmyzsh)
-
-vim - consider vim sensible
+migration to zsh
 
 CONFIGURE NEW GIT PLUGINS
 git - explore commit templates
 
-Test the old man's ultimate vim configuration
-Divide vim's configuration into multiple files
-separate the basic configuration
-
 upgrade bashaliases and bashfunctions with examples from the web
+
+adjust new vim configurations
+merge custom with other guys files
 
 change gdo to python, (or go?) - all bash scripts that are too big must be like
 that.
@@ -27,21 +24,11 @@ turn vim into a real markdown writter
 latex?
 
 vscode settings: Save them - global and workspaces
-Control-s saves all. Remove other binding;
-Missing: escape parenthesis/move foward thing
 
-myrepos:
-insert single entry
+vim: fix the problem with the accents digraphs something is fucking it up and it's not utf-8
 
-tmux installation file
-
-vim: fix the problem with the accents
-digraphs
-something is fucking it up and it's not utf-8
-
-make display not dim nor suspend while watching movies (how to detect if i'm
-watching something?)
-evaluate a better suspension, without disconnecting from the internet
+make display not dim nor suspend while watching movies (how to detect if i'm watching something?)
+evaluate a better suspension, without disconnecting from the internet (or faster reconnection)
 
 i3: put headers on floating windows programs
 

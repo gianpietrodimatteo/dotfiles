@@ -1,9 +1,7 @@
 #/usr/bin/env bash
 
 # Source all files in completion folder
-ls ~/.bash/completion/ |while read file; do
-  source ~/.bash/completion/$file
-done
+for f in ~/.bash/completions/*; do source $f; done
 
 # co - wrapper for configuraiton files
 complete -W " \

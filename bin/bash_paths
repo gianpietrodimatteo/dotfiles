@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Bash path decomposition:
+if [ -n $1 ]; then
+  dir=$(pwd)/$1
+else
+  dir=.
+fi
+
+# Prints directory of execution
+echo pwd $(pwd $dir)
+
+# Prints filename
+echo basename $(basename $dir)
+
+# Prints path to file
+echo dirname $(dirname $dir)

@@ -127,3 +127,4 @@ bash install_scripts/goinstall.sh
 echo "Install by hand: "
 echo "java eclipse intellij"
 
+echo "mongod compass"

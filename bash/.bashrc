@@ -138,3 +138,6 @@ export GOROOT=/home/gianpietro/workspace/.go
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=/home/gianpietro/Workspace/go
 export PATH=$GOPATH/bin:$PATH
+
+export MIACYPA="Meu caralho"
+
