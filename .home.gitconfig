@@ -30,6 +30,7 @@
   cm = commit -m
   a = add .
   po = push -u origin
+  pom = push -u origin master
 [color]
   ui = auto
   branch = auto
