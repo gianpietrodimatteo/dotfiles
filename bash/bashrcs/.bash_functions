@@ -196,7 +196,7 @@ grepa() {
 # notebook - Open up the notebook
 # usage: notebook
 notebook() {
-  $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave" &'
+  $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave"'
 }
 
 # keycode - view input keycode on the terminal
@@ -310,10 +310,38 @@ sourcedir() {
   for f in $1/*; do source $f; done
 }
 
+# rmdq - remove double quotes
+# usage: rmdq <string>
+rmdq() {
+  sed -e 's/^"//' -e 's/"$//' <<<"$1"
+}
+
+# rmsq - remove single quotes
+# usage: rmsq <string>
+rmsq() {
+  sed -e "s/^'//" -e "s/'$//" <<<"$1"
+}
+
+nesquick() {
+  echo "generate module"
+  while getopts "scm" OPT; do
+    case "$OPT" in
+      "s") echo "generate service";;
+      "c") echo "generate controller";;
+      "m") echo "generate middleware";;
+    esac
+  done
+  # nest g module "$@"
+  # nest g service "$@"
+  # nest g controller "$@"
+}
+
 ################################################################################
 # Other function files
 ################################################################################
 
 # Source all files in functions folder
 for f in ~/.bash/functions/*; do source $f; done
+
+
 

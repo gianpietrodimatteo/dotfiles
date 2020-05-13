@@ -3,11 +3,6 @@
 # Adjust extra quickfire keyboard
 bash ~/bin/adjust_quickfire_keyboard.sh
 
-# Home lg layout:
-bash ~/bin/arandr-home-lg-layout.sh
-
-export KEYSHELL="1234567891234567"
-
 export PATH="$HOME/bin:$HOME/.config/i3:$PATH"
 xmodmap ~/.xmodmaprc
 

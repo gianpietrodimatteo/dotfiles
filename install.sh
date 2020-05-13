@@ -22,6 +22,7 @@ sudo apt install gnuplot
 sudo apt install locate
 sudo apt install unrar-free
 sudo apt install playerctl
+sudo apt install jq
 
 # Basic services
 sudo apt install xfce4
@@ -128,3 +129,5 @@ echo "Install by hand: "
 echo "java eclipse intellij"
 
 echo "mongod compass"
+echo "balena etcher"
+echo "steam"

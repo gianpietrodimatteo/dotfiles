@@ -90,6 +90,7 @@ alias lessh="less -m -N -g -i -J --line-numbers --underline-special"
 alias ssh_rsa_email="ssh-keygen -t rsa -b 4096 -C"
 alias dates="date +%F-%T"
 alias smartree="tree -I 'node_modules|dist'"
+alias wclass="xprop | grep WM_CLASS "
 
 # Bash
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
@@ -107,6 +108,7 @@ alias tarbz2="tar -xvjf"
 alias tarxz="tar -Jxxvf"
 alias unrar="unrar x"
 alias 7zip="7z e"
+alias uniso="7z e"
 
 # Misc
 alias space2underscore='echo "${1// /_}"'

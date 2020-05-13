@@ -65,6 +65,9 @@ case "$1" in
   'install')
     $EDITOR "${HOME}/dotfiles/install.sh"
     ;;
+  'secret')
+    $EDITOR "${HOME}/.bash/secret.sh"
+    ;;
   *)
     echo "Not an existing configuration file."
     if [[ "$(readlink -f "$1")" != ${HOME}/* ]]; then

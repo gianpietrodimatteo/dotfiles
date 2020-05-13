@@ -23,5 +23,6 @@ complete -W " \
   i3 \
   test \
   install \
+  secret \
   " co
 

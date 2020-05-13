@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Periodically update my ip
+# crontab -e
+# 0 */6 * * * /home/USERNAME/bin/gians_home >/dev/null 2>&1
+
+name="$GIANS_DEVICE"
+ip="$(hostname -I | awk '{print $1}')"
+appurl="$GIANS_HOME/address"
+
+curl -sSd "{\"name\":\"$name\", \"address\":\"$ip\", \"user\":\"$USER\"}" -H "Content-Type: application/json" -X PUT "$appurl"
+
