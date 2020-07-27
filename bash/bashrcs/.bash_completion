@@ -24,5 +24,6 @@ complete -W " \
   test \
   install \
   secret \
+  ssh \
   " co
 

@@ -68,6 +68,9 @@ case "$1" in
   'secret')
     $EDITOR "${HOME}/.bash/secret.sh"
     ;;
+  'ssh')
+    $EDITOR "${HOME}/.ssh/config"
+    ;;
   *)
     echo "Not an existing configuration file."
     if [[ "$(readlink -f "$1")" != ${HOME}/* ]]; then

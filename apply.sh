@@ -28,7 +28,7 @@ apply_dot () {
   file=`basename $1`
   filePath=`dirname $1`
   backupFolder="$DBF/$2"
-  mkdir -vp $backupFolder
+  mkdir -v $backupFolder
   mv -v $1 $backupFolder
   ln -sv $DF/$2/$file $filePath
 }
@@ -38,7 +38,7 @@ apply_dot_change () {
   filePath=`dirname $1`
   original_file_name="$3"
   backupFolder="$DBF/$2"
-  mkdir -vp $backupFolder
+  mkdir -v $backupFolder
   mv -v $1 $backupFolder
   ln -sv $DF/$2/$original_file_name $filePath/$new_file_name
 }
