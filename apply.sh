@@ -28,7 +28,7 @@ apply_dot () {
   file=`basename $1`
   filePath=`dirname $1`
   backupFolder="$DBF/$2"
-  mkdir -v $backupFolder
+  mkdir -vp $backupFolder
   mv -v $1 $backupFolder
   ln -sv $DF/$2/$file $filePath
 }
@@ -38,12 +38,12 @@ apply_dot_change () {
   filePath=`dirname $1`
   original_file_name="$3"
   backupFolder="$DBF/$2"
-  mkdir -v $backupFolder
+  mkdir -vp $backupFolder
   mv -v $1 $backupFolder
   ln -sv $DF/$2/$original_file_name $filePath/$new_file_name
 }
 
-echo "Start applying these configuration files..."
+echo "Start applying all configuration files..."
 
 # misc
 apply_dot_change ~/.fonts . fonts
@@ -54,12 +54,7 @@ apply_dot ~/.i3status.conf i3
 
 # bash
 apply_dot_change ~/.bash . bash
-apply_dot ~/.bash_aliases bash/bashrcs
-apply_dot ~/.bash_functions bash/bashrcs
-apply_dot ~/.bashrc bash/bashrcs
-apply_dot ~/.inputrc bash/other
-apply_dot ~/.profile bash/other
-apply_dot ~/.bash_completion bash/bashrcs
+bash ~/.bash/apply.sh "$DBF"
 
 echo "Select your environment"
 select varfile in home pitang; do
@@ -68,17 +63,6 @@ select varfile in home pitang; do
     echo "myrepos"
     apply_dot_change ~/.myrepos . .$varfile.myrepos
   fi
-  # aliases and functions
-  if [ -f "$DF/bash/.$varfile.bash_custom" ]; then
-    echo "custom"
-    apply_dot_change ~/.bash_custom bash .$varfile.bash_custom
-  fi
-  # variables
-  if [ -f "$DF/bash/.$varfile.bash_variables" ]; then
-    echo "variable"
-    apply_dot_change ~/.bash_variables bash .$varfile.bash_variables
-  fi
-  # git
   if [ -f "$DF/.$varfile.gitconfig" ]; then
     echo "git"
     apply_dot_change ~/.gitconfig . .$varfile.gitconfig
