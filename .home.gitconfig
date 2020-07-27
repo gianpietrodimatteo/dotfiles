@@ -7,9 +7,12 @@
   branch = false
 [alias]
   co = checkout
+  cob = checkout -b
   b = branch
   c = commit
+  ca = commit --amend
   s = status
+  v = status -vv
   unstage = reset HEAD --
   last = log -1 HEAD
   mt = mergetool

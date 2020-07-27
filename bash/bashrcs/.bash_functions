@@ -82,6 +82,12 @@ vime() {
   vim -c NERDTreeToggle
 }
 
+# Open all regular files in current folder windowed
+# usage: vimh
+vimh() {
+  vim -O $(find ./* -maxdepth 0 -type f)
+}
+
 # vimall - concatenate all files of folder and open up in vim
 # usage: vimall [<directory>]
 vimall() {
@@ -295,7 +301,7 @@ ff() {
 # ffs - find function with grep for further cleaning results
 # usage: ffs <search>
 ffs() {
-  findfunc "$1" | grep -v "/node_modules"| grep -v "/dist"| grep -v "/target"
+  ff "$1" | grep -v "/node_modules"| grep -v "/dist"| grep -v "/target"
 }
 
 # jave - java and javac. Name it without .class
@@ -339,6 +345,13 @@ nesquick() {
 gitamp() {
   gitam "$@"; git pom
 }
+
+gif4avi() {
+  # -r gives framerate
+  convert $1.gif $1%05d.jpg
+  ffmpeg -r 10 -i $1%05d.jpg -y -an $1.avi
+}
+
 
 ################################################################################
 # Other function files

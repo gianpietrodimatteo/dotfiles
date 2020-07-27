@@ -23,6 +23,9 @@ sudo apt install locate
 sudo apt install unrar-free
 sudo apt install playerctl
 sudo apt install jq
+sudo apt install expect
+sudo apt install openvpn
+sudo apt install p7zip p7zip-full
 
 # Basic services
 sudo apt install xfce4
@@ -60,10 +63,17 @@ sudo apt install snapd
 sudo snap install dbeaver-ce
 sudo snap install spotify
 sudo snap install vlc
+sudo snap install --classic heroku
+
+sudo snap install retroarch
 
 # Misc software
 sudo apt install calibre
 sudo apt install cheese
+sudo apt install gtk-recordmydesktop
+sudo apt install kdenlive
+sudo apt install audacity
+sudo apt install gimp
 
 # Chrome, IDEs, deb packages
 #chrome
@@ -108,12 +118,21 @@ bash install_scripts/tmuxinstall.sh
 # mongodb
 bash install_scripts/mongoinstall.sh
 
+# Kodi
+bash install_scripts/kodiinstall.sh
+
+# Etcher
+bash install_scripts/balenaetcherinstall.sh
+
+###############################################################################
 # Apply configuration
 bash apply.sh
 
 # Post environment variables installations: These must come after apply.sh
 echo "Starting post configuration installations."
 mkdir -p "$WORKSPACE"
+
+###############################################################################
 
 # Install vim
 bash install_scripts/viminstall.sh
@@ -124,10 +143,11 @@ bash install_scripts/stinstall.sh
 # Golang
 bash install_scripts/goinstall.sh
 
+###############################################################################
 # manual installations...TODO make it all automatic - thanks oracle
 echo "Install by hand: "
 echo "java eclipse intellij"
 
 echo "mongod compass"
-echo "balena etcher"
 echo "steam"
+echo "inkscape"

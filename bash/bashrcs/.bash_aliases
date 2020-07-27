@@ -28,11 +28,16 @@ alias hgrep="history | grep"
 
 alias book="vim ~/Dropbox/Escritos/Livro/livro-rascunho.txt"
 
+alias sai="sudo apt install"
+alias ai="apt install"
+
 # Quick vim
 alias viq="vim $DONTCARE"
 alias vimupdate="vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc"
 alias vimo="vim -O"
 alias suvim="sudo -E vim"
+# Open all regular files in current folder windowed
+alias vimhp="find ./* -maxdepth 0 -type f -exec vim {} +"
 
 # Quick git
 alias gitco="git co"
@@ -76,6 +81,7 @@ alias tmns="tmux new -s"
 # System
 alias e="exit"
 alias allow="chmod u+x"
+alias alle="chmod +x"
 alias allall="chmod a+x"
 alias deb="sudo dpkg -i"
 alias ethdevices="nmcli device status"
@@ -90,7 +96,12 @@ alias lessh="less -m -N -g -i -J --line-numbers --underline-special"
 alias ssh_rsa_email="ssh-keygen -t rsa -b 4096 -C"
 alias dates="date +%F-%T"
 alias smartree="tree -I 'node_modules|dist'"
-alias wclass="xprop | grep WM_CLASS "
+alias wclass="xprop | grep WM_CLASS"
+alias ga="ffmpeg -r 10 -i"
+alias liquidate="date +\"%Y%m%d%H%M%S\""
+alias cooldate="date +\"%Y/%m/%d:%H:%M:%S\""
+alias namedate="date +\"%Y-%m-%d-%H-%M-%S\""
+alias mongoreplica="sudo mongod --port 27017 --dbpath /var/lib/mongodb --replSet rs0 --bind_ip localhost"
 
 # Bash
 alias hbkp="sort -u ~/.bash_history > ~/tmp/history-backup.txt"
@@ -117,3 +128,8 @@ alias moveToImageLibrary="mv *.jpg *.webm *.gif *.png ~/Pictures/Image\ Library/
 
 alias lmao="touch ayy{lmao,lmio,lon,loff,lobino,lobarito}{chuahili,suhali,bengali,mombojo}"
 
+alias adevices="cat /proc/asound/cards"
+alias ain="alsa_in -d hw:"
+alias aou="alsa_out -d hw:"
+
+alias hello="echo \"Hello to you too.\""

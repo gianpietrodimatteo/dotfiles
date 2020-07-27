@@ -8,5 +8,7 @@ name="$GIANS_DEVICE"
 ip="$(hostname -I | awk '{print $1}')"
 appurl="$GIANS_HOME/address"
 
+curl -sSd "{\"name\":\"$name\", \"address\":\"$ip\", \"user\":\"$USER\"}" -H "Content-Type: application/json" -X POST "$appurl"
+
 curl -sSd "{\"name\":\"$name\", \"address\":\"$ip\", \"user\":\"$USER\"}" -H "Content-Type: application/json" -X PUT "$appurl"
 

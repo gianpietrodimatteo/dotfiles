@@ -231,6 +231,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# toggle workspaces
+bindsym $mod+Tab workspace back_and_forth
+
 
 # -----------------------------------------------------------------------------
 # Theming
@@ -332,6 +335,8 @@ assign [class="Code"] $ws3
 assign [class="jetbrains-idea-ce"] $ws4
 assign [class="libreoffice"] $ws5
 assign [class="DBeaver"] $ws6
+assign [class="MongoDB Compass"] $ws6
+assign [instance="java"] $ws6
 assign [class="Gimp"] $ws6
 assign [class="Postman"] $ws7
 assign [class="Thunar"] $ws8
@@ -354,7 +359,7 @@ for_window [instance="cmd"] move workspace $ws2
 # for_window [instance="file"] move workspace $ws4
 for_window [instance="project"] move workspace $ws5
 for_window [instance="note"] move workspace $ws9
-for_window [class="Spotify"] move to workspace $ws10
+# for_window [class="Spotify"] move to workspace $ws10
 
 for_window [title="GIMP Startup"] move workspace $ws6
 for_window [window_role="gimp-toolbox"] floating enable border normal resize shrink height 30
@@ -365,6 +370,7 @@ for_window [class="PCSXR"] floating enable
 
 # Floating windows by default
 for_window [class="Pavucontrol"] floating enable
+for_window [class="qjackctl"] floating enable border normal
 
 # exec even when you restart i3
 exec_always ~/bin/random-wallpaper.sh

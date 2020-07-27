@@ -1,0 +1,175 @@
+#!/bin/bash
+
+###############################################################################
+# Liquibesta
+# Substituto do liquibase
+# Sendo que melhor
+###############################################################################
+
+version="0.1"
+
+user="root"
+db="testdb"
+
+usage() {
+  echo "Liquibesta v$version"
+  echo "Usage:"
+  echo "liquibesta init - initialize directory"
+  echo "liquibesta new - create new sql file"
+  echo "liquibesta - run pending scripts"
+  echo "liquibesta reset - delete already executed scripts file"
+}
+
+liquibesta_new() {
+  echo "Enter script name (what does it do?):"
+  read fname
+  actual_name="$(date +"%Y-%m-%d-%H-%M-%S")-$fname.sql"
+  touch "liquibesta/$actual_name"
+  $EDITOR "liquibesta/$actual_name"
+}
+
+is_it_liquidated() {
+  if [ -f liquibesta/.liquidated ]; then
+    for script in $( cat liquibesta/.liquidated ); do
+      if [ "$script" ==  "$1" ]; then
+        is_new=false
+        break
+      fi
+    done
+  fi
+}
+
+end_messages() {
+  if [ $nothing_done == true ]; then
+    echo "No new unexecuted scripts found."
+  fi
+  if [ $no_errors == true ]; then
+    exit 0
+  else
+    exit 1
+  fi
+}
+
+init_liquidir() {
+  if [ ! -d liquibesta ]; then
+    mkdir liquibesta
+  fi
+}
+
+init_liquimaster() {
+  echo "State what db technology you're using"
+  select dbtech in mysql postgres oracle
+  do
+    case $dbtech in
+      mysql)
+        break
+        ;;
+      postgres)
+        break
+        ;;
+      oracle)
+        break
+        ;;
+      *)
+        echo "Not an option, please try again"
+        ;;
+    esac
+  done
+
+  echo "State database user"
+  read dbuser
+  echo "State database user's password"
+  read dbpass
+  echo "State database name"
+  read dbname
+
+  echo "dbtech=$dbtech" > liquibesta/.liquimaster
+  echo "dbuser=$dbuser" >> liquibesta/.liquimaster
+  echo "dbpass=$dbpass" >> liquibesta/.liquimaster
+  echo "dbname=$dbname" >> liquibesta/.liquimaster
+}
+
+read_liquimaster() {
+  liquitech=$(cat liquibesta/.liquimaster | grep "dbtech=" | cut -d "=" -f 2)
+  liquiuser=$(cat liquibesta/.liquimaster | grep "dbuser=" | cut -d "=" -f 2)
+  liquipass=$(cat liquibesta/.liquimaster | grep "dbpass=" | cut -d "=" -f 2)
+  liquiname=$(cat liquibesta/.liquimaster | grep "dbname=" | cut -d "=" -f 2)
+}
+
+init_liquifile() {
+  if [ ! -f liquibesta/.liquimaster ]; then
+    init_liquimaster
+  else
+    echo "A liquibesta/.liquimaster file already exists. Ovewrite? [s/N]"
+    read option
+    if [ "$option" == "s"  ]; then
+      rm liquibesta/.liquimaster
+    else
+      exit 0
+    fi
+    init_liquimaster
+  fi
+}
+
+run_script() {
+  case $liquitech in
+    mysql)
+      mysql -u $liquiuser -D $liquiname < "$1"
+      ;;
+    postgres)
+      ;;
+    oracle)
+      ;;
+  esac
+}
+
+if [ -n "$1" ]; then
+  if [ "$1" == "new" ]; then
+    init_liquidir
+    liquibesta_new
+  elif [ "$1" == "init" ]; then
+    init_liquidir
+    init_liquifile
+  elif [ "$1" == "reset" ]; then
+    if [ -f liquibesta/.liquidated ]; then
+      rm liquibesta/.liquidated
+    else
+      echo "liquibesta/.liquidated not found."
+    fi
+  else
+    echo "Unknown command $1"
+    usage
+  fi
+else
+  if [ -d liquibesta ]; then
+    nothing_done=true
+    no_errors=true
+    OIFS="$IFS"
+    IFS=$'\n'
+    for f in $( ls -v liquibesta/*.sql ); do
+      is_new=true
+      is_it_liquidated "$f"
+
+      if [ $is_new == true ]; then
+        nothing_done=false
+        echo "Running: $f"
+        read_liquimaster
+        run_script "$f"
+
+        if [ "$?" == 0 ]; then
+          echo "$f" >> liquibesta/.liquidated
+        else
+          echo "Error executing $f";
+          no_errors=false
+        fi
+      fi
+    done
+    IFS="$OIFS"
+    end_messages
+  else
+    echo "No liquibesta directory found. Did you mean liquibesta init?"
+    usage
+    exit 1
+  fi
+fi
+
