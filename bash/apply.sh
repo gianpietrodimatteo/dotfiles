@@ -69,6 +69,7 @@ select varfile in home pitang; do
     echo "variable"
     apply_dot_change ~/.bash_variables . .$varfile.bash_variables
   fi
+  break
 done
 
 # Apply bash

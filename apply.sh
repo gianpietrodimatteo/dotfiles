@@ -66,8 +66,8 @@ select varfile in home pitang; do
   if [ -f "$DF/.$varfile.gitconfig" ]; then
     echo "git"
     apply_dot_change ~/.gitconfig . .$varfile.gitconfig
-  break
   fi
+  break
 done
 
 # x_window_system
