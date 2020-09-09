@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Gian's ticketing system
+# gt <project> [ <title> ]
+
+# Open ticket(s) for a project with title(s), a number and a description in a
+# pretty text file, then open them up so you can write the subactivities
+# missing: autocompletion, edit if already exists
+
+while getopts "d:t:n:" flag; do
+case "$flag" in
+    d) DIRECTORY=$OPTARG;;
+    t) TYPE=$OPTARG;;
+    n) STARTNUM=$OPTARG;;
+esac
+done
+# And then you can get your positional arguments like this:
+
+ARG1=${@:$OPTIND:1}
+ARG2=${@:$OPTIND+1:1}
+
+
+# Tickets directory
+tdir="$HOME/Dropbox/Tickets"
+declare -a created_files
+
+exists_partial_name() {
+  for name in *$1*; do
+    if [ -f "$name" ]; then
+      echo 1
+      break
+    fi
+    echo 0
+  done
+}
+
+new_ticket () {
+  i=1;
+  cd $tdir
+  while true
+  do
+    base_name="$1-$i"
+    exists=$(exists_partial_name "$base_name")
+    if [[ $exists == 0 ]]; then
+      if [ -z $2 ]; then
+        # touch "$base_name"
+        created_files+=( "$base_name.txt" )
+      else
+        if [ -z $3 ]; then
+          # touch "$base_name-$2"
+          created_files+=( "$base_name-$2.txt" )
+        else
+          for arg in "${@:2}"; do
+            new_ticket "$1" "$arg"
+          done
+        fi
+      fi
+      break
+    else
+      i="$(($i+1))"
+    fi
+  done
+}
+
+if [[ -z "$1" ]]; then
+  echo "Must provide at least a project's title"
+else
+  if [[ -z "$2" ]]; then
+    new_ticket "$1"
+    vim -O "${created_files[@]}"
+  else
+    new_ticket "$@"
+    vim -O "${created_files[@]}"
+  fi
+fi
+
+

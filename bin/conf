@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# co - wrapper for configuration files
+# usage: conf <alias-or-filename>
+
+if [[ -z "$1" ]]; then
+  echo "Missing arguments. Syntax: {FILE|ALIAS}"
+  return 1
+fi
+case "$1" in
+  'alias')
+    $EDITOR "${HOME}/.bash_aliases"
+    ;;
+  'custom')
+    $EDITOR "${HOME}/.bash_custom"
+    ;;
+  'function')
+    $EDITOR "${HOME}/.bash_functions"
+    ;;
+  'variable')
+    $EDITOR "${HOME}/.bash_variables"
+    ;;
+  'completion')
+    $EDITOR "${HOME}/.bash_completion"
+    ;;
+  'bash')
+    $EDITOR "${HOME}/.bashrc"
+    ;;
+  'test')
+    $EDITOR "${HOME}/.bash_test"
+    ;;
+  'profile')
+    $EDITOR "${HOME}/.profile"
+    ;;
+  'input')
+    $EDITOR "${HOME}/.inputrc"
+    ;;
+  'git')
+    $EDITOR "${HOME}/.gitconfig"
+    ;;
+  'repository')
+    $EDITOR "${HOME}/.myrepos"
+    ;;
+  'tmux')
+    $EDITOR "${HOME}/.tmux.conf"
+    ;;
+  'vim')
+    $EDITOR "${HOME}/.vim/custom.vim"
+    ;;
+  'map')
+    $EDITOR "${HOME}/.xmodmaprc"
+    xmodmap "${HOME}/.xmodmaprc"
+    ;;
+  'resource')
+    $EDITOR "${HOME}/.Xresources"
+    xrdb ~/.Xresources
+    ;;
+  'session')
+    $EDITOR "${HOME}/.xsessionrc"
+    ;;
+  'i3')
+    $EDITOR "${HOME}/.config/i3/config"
+    i3-msg restart
+    ;;
+  'install')
+    $EDITOR "${HOME}/dotfiles/install.sh"
+    ;;
+  'secret')
+    $EDITOR "${HOME}/.bash/secret.sh"
+    ;;
+  'ssh')
+    $EDITOR "${HOME}/.ssh/config"
+    ;;
+  *)
+    echo "Not an existing configuration file."
+    if [[ "$(readlink -f "$1")" != ${HOME}/* ]]; then
+      sudo -E $EDITOR "$1"
+    else
+      $EDITOR "$1"
+    fi
+    ;;
+esac
+
+
+

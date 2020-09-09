@@ -1,5 +1,65 @@
-vim:
-check out the theming with the new terminal
-update: stterm is gonna take more work than I thought
-check out if you need airline theme
+# Install/Revert script:
+Add options to what do you want to install
+
+migration to zsh
+
+CONFIGURE NEW GIT PLUGINS
+git - explore commit templates
+
+upgrade bashaliases and bashfunctions with examples from the web
+
+adjust new vim configurations
+merge custom with other guys files
+
+change gdo to python, (or go?) - all bash scripts that are too big must be like
+that.
+
+make the vim function sorting thing (or even terminal as well)
+hint: adjust identation, then make it based on the indentation
+you can compact each function in a line,
+then sort alphabetically normally (may even remove the duplicates),
+then revert the compactation of each function
+
+turn vim into a real markdown writter
+latex?
+
+vscode settings: Save them - global and workspaces
+
+vim: fix the problem with the accents digraphs something is fucking it up and it's not utf-8
+
+make display not dim nor suspend while watching movies (how to detect if i'm watching something?)
+evaluate a better suspension, without disconnecting from the internet (or faster reconnection)
+
+i3: put headers on floating windows programs
+
+do that guy's thunar tune up thingy thing
+Setup the vim book on the ebook reader
+
+UNIX
+Only after finishing the linux saga
+As a desktop:
+Change to Arch Linux
+- Gentoo?
+buld the minimalistic design
+
+As a server:
+Docker during/after the course
+Basic server:
+Java server
+npm registry* dont kwnow whatis
+maven registry
+sonar
+git
+
+Setup the debian server
++ docker and kubernetes
+
+raspi ip setup
+ssh over unknown local ip thingy thing
+
+
+configure vscode workspaces
+Configure and version controll vscode
+adjust annoying intellij shortcuts
+configure and version control intellij
 

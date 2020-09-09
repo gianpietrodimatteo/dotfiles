@@ -1,0 +1,7 @@
+sudo apt install
+sudo apt-get install
+sudo dpkg -i
+sudo snap install
+sudo apt remove
+sudo apt-get remove
+sudo snap remove

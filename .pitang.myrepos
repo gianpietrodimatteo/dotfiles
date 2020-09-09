@@ -1,0 +1,23 @@
+# My repositories
+# Format:
+# project-name|project-folder|remote-repository
+
+# General
+dotfiles|$HOME/dotfiles|https://github.com/gianpietrodimatteo/dotfiles.git
+resources|$HOME/resources|https://github.com/gianpietrodimatteo/resources.git
+
+# Angular
+angular-tour-of-heroes|$HOME/workspace/angular/angular-tour-of-heroes|https://github.com/gianpietrodimatteo/angular-tour-of-heroes.git
+
+# Java
+example-maven-spring|$HOME/workspace/java/example-maven-spring|https://github.com/gianpietrodimatteo/example-maven-spring.git
+
+# Other
+st|$HOME/workspace/src/st_gian|https://github.com/gianpietrodimatteo/st.git
+
+# Pitang
+prompt-client|$HOME/workspace/prompt/prompt-client
+prompt-server|$HOME/workspace/prompt/prompt-server
+
+example-spring-boot|$HOME/workspace/java/example-spring-boot
+

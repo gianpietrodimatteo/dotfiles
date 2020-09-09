@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Execute command on all files of folder
+
+ls |while read file; do
+  $1 $file
+done
+

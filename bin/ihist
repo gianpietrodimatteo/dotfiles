@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Enable history on non interactive shell
+HISTFILE=~/.bash_history
+set -o history
+
+# Extract history about installations and removals and display the result
+history | grep "sudo apt install" > $HOME/installation-history.txt 
+history | grep "sudo apt-get install" >> $HOME/installation-history.txt 
+history | grep "sudo dpkg -i" >> $HOME/installation-history.txt 
+history | grep "sudo apt remove" >> $HOME/installation-history.txt 
+history | grep "sudo apt-get remove" >> $HOME/installation-history.txt 
+grep -v "history" $HOME/installation-history.txt > $HOME/tempfile
+mv $HOME/tempfile $HOME/installation-history.txt
+cat $HOME/installation-history.txt 

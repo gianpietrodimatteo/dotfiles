@@ -1,0 +1,42 @@
+# cut and paste (don't copy!) the same settings from ~/.inputrc to /etc/inputrc which contains the system-wide settings, making this available to all users on your system
+# $INPUTRC or ~/.inputrc or, lastly, /etc/inputrc
+
+# vi mode - needs more configurations
+set editing-mode vi
+# set keymap vi
+
+# mappings to have up and down arrow searching through history:
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+# mappings to have left and right arrow go left and right:
+"\e[C": forward-char
+"\e[D": backward-char
+
+# Completion
+# mapping to have [Tab] and [Shift]+[Tab] to cycle through all the possible completions:
+"\t": menu-complete
+"\e[Z": menu-complete-backward
+
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set skip-completed-text on
+set menu-complete-display-prefix on
+
+$if mode=vi
+  set show-mode-in-prompt on
+  # colors: main: 1;32m dir: 1;34m
+  set vi-cmd-mode-string "\1\e[1;34m\2:\1\e[0m\2"
+  set vi-ins-mode-string "\1\e[1;34m\2+\1\e[0m\2"
+
+  set keyseq-timeout 50
+  # vi command mode keybindings:
+  set keymap vi-command
+  "gg": beginning-of-history
+  "G": end-of-history
+  # vi insert mode keybindings:
+  set keymap vi-insert
+  "jj": vi-movement-mode
+  "\C-w": backward-kill-word
+  "\C-p": history-search-backward
+$endif

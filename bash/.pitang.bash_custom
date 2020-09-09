@@ -1,0 +1,34 @@
+#!/bin/bash
+# Custom aliases and commands specific to pitang
+
+# Aliases
+alias lprompt="$WORKSPACE/prompt/launch.sh"
+alias lwallet="$WORKSPACE/wallet-dashboard/launch.sh"
+
+# Motherfucking docker and it's huge syntax
+alias dockerl="docker container ls -a"
+alias dockeri="docker image ls -a"
+alias dockerb="docker exec -it $1 bash"
+alias docker0="docker exec -it $(echo `docker container ls -a` | cut -d " " -f 9) bash"
+
+alias x="xmodmap ~/.xmodmaprc"
+
+
+# Functions
+gitpp () {
+  gitppc "$@";
+  gitpps "$@";
+}
+
+gitppc () {
+  echo "# Prompt Client: ";
+  dir="`wherisp prompt-client`";
+  gitdir "$dir" "$@";
+}
+
+gitpps () {
+  echo "# Prompt Server: ";
+  dir="`wherisp prompt-server`";
+  gitdir "$dir" "$@";
+}
+

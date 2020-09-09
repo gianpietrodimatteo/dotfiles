@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Get homed
+
+addfile=$HOME/tmp/gians-home
+
+curl -s "$GIANS_HOME/address" >$addfile 2>&1
+
+echo "To what device do you want to connect?"
+cat $addfile | jq '.[].name'
+
+select place in $(cat $addfile | jq '.[].name')
+do
+  echo "You selected: $place"
+  address=$(sed -e 's/^"//' -e 's/"$//' <<<$(cat $addfile | jq ".[] | select( .name == $place )" | jq '.address'))
+  # address=$(cat $addfile | jq ".[] | select( .name == $place )" | jq '.address')
+  # user=$(cat $addfile | jq ".[] | select( .name == $place )" | jq '.user')
+  user=$(sed -e 's/^"//' -e 's/"$//' <<<$(cat $addfile | jq ".[] | select( .name == $place )" | jq '.user'))
+  echo "With access: $user@$address"
+  echo "Connecting..."
+  ssh $user@$address
+  break
+done
+
