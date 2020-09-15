@@ -5,131 +5,62 @@
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+# Oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # Command line stuff
-sudo apt install software-properties-common
-sudo apt install git
-sudo apt install curl
-sudo apt install xclip
-sudo apt install feh
-sudo apt install imagemagick
-sudo apt install highlight
-sudo apt install tree
-sudo apt install xbacklight
-sudo apt install xinput
-sudo apt install gnuplot
-sudo apt install locate
-sudo apt install unrar-free
-sudo apt install playerctl
-sudo apt install jq
-sudo apt install expect
-sudo apt install openvpn
-sudo apt install p7zip p7zip-full
-
-
+brew install tree
+brew install expect
+brew install wget
+brew install tmux
 brew install vim
-
-# Install macvim
 brew install cmake macvim
 brew link --overwrite macvim
+brew install neovim
+brew install gh
 
-# Python pip
-sudo apt install python-pip python3-pip
-
-# Vim temporary directories
+# Create directories
 mkdir -p $HOME/.vim/tmp/{.backup,.swp,.undo}
-
-mkdir -p $HOME/tmp
-ln -sv /opt $HOME/Applications
+mkdir -p $HOME/Trash
+mkdir -p $HOME/Workspace
 
 # vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Package managed
-sudo apt install snapd
-sudo snap install dbeaver-ce
-sudo snap install spotify
-sudo snap install vlc
-sudo snap install --classic heroku
+# Missing:
+echo "Do it by hand:"
 
-sudo snap install retroarch
-
-# Misc software
-sudo apt install calibre
-sudo apt install cheese
-sudo apt install gtk-recordmydesktop
-sudo apt install kdenlive
-sudo apt install audacity
-sudo apt install gimp
-
-# Chrome, IDEs, deb packages
-
-echo "Missing:"
+echo "Sequel pro"
+echo "Spotify"
+echo "Vlc"
+echo "System preferences keyboard modifier keys"
+echo "Adjust custom shortcuts"
+echo "Gimp and inkscape equivalent"
+echo "JAVA"
 echo "chrome"
 echo "vscode"
+echo "intellij"
 echo "dropbox"
 echo "google cloud"
-
-
-echo "chrome"
-echo "chrome"
-echo "chrome"
-echo "chrome"
+echo "mongod + mongodbcompass"
+echo "cheatsheet"
+echo "mysql server and client + add to path?"
 
 # nvm and node
-cd ~ && wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+cd ~ && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 command -v nvm # check installation
+# we source it to run continuously
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
 nvm install node # latest
 # npm installations
 npm -g install typescript
 npm -g install prettier
-
 # yarn
-cd ~/Downloads && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install yarn
+npm install -g yarn
 
-# docker
-bash install_scripts/dockerinstall.sh
-
-# mysql
-bash install_scripts/mysqlinstall.sh
-
-# tmux
-bash install_scripts/tmuxinstall.sh
-
-# mongodb
-bash install_scripts/mongoinstall.sh
-
-# Kodi
-bash install_scripts/kodiinstall.sh
-
-# Etcher
-bash install_scripts/balenaetcherinstall.sh
-
-###############################################################################
-# Apply configuration
+# Apply configurations
 bash apply.sh
 
-# Post environment variables installations: These must come after apply.sh
-echo "Starting post configuration installations."
-mkdir -p "$WORKSPACE"
-
-###############################################################################
-
-# Install vim
-bash install_scripts/viminstall.sh
-
-# Install st
-bash install_scripts/stinstall.sh
-
-# Golang
-bash install_scripts/goinstall.sh
-
-###############################################################################
-# manual installations...TODO make it all automatic - thanks oracle
-echo "Install by hand: "
-echo "java eclipse intellij"
-
-echo "mongod compass"
-echo "steam"
-echo "inkscape"

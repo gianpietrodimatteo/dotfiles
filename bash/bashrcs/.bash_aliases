@@ -133,3 +133,8 @@ alias ain="alsa_in -d hw:"
 alias aou="alsa_out -d hw:"
 
 alias hello="echo \"Hello to you too.\""
+
+# CESAR
+alias elasticsearch="/opt/elasticsearch-7.9.1/bin/elasticsearch"
+alias kibana="/opt/kibana-7.9.1-darwin-x86_64/bin/kibana"
+alias logstash="/opt/logstash-7.9.1/bin/logstash -f logstash.conf"

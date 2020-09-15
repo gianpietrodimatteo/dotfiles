@@ -1,8 +1,5 @@
 [core]
   editor = vim
-[user]
-  name = Gianpietro Cavalcante Di Matteo
-  email = gianpietro.dimatteo@gmail.com
 [pager]
   branch = false
 [alias]
