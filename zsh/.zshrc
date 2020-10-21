@@ -101,10 +101,12 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:/usr/local/mysql/bin"
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
-export MVN_HOME="/opt/apache-maven-3.6.3"
+export M2_HOME="/opt/apache-maven-3.6.3"
 
-export PATH="$PATH:$JAVA_HOME/bin:$MVN_HOME/bin"
+export PATH="$PATH:$JAVA_HOME/bin:$M2_HOME/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. ~/secret.sh

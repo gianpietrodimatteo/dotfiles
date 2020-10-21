@@ -52,8 +52,12 @@ apply_dot_change ~/.fonts . fonts
 apply_dot_change ~/.bash . bash
 bash ~/.bash/apply.sh "$DBF"
 
+# zsh
+apply_dot_change ~/.zsh . zsh
+apply_dot ~/.zshrc zsh
+
 # git
-apply_dot ~/.gitconfig . 
+apply_dot ~/.gitconfig .
 
 # bin
 apply_dot ~/bin .

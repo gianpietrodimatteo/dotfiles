@@ -7,12 +7,15 @@
 # Basic
 alias mkdirp="mkdir -p"
 
-alias ll="ls -l"
-alias la="ls -lath"
-alias lc="ls -CF"
+alias ls="ls -G"
+
+alias ll="ls -lG"
+alias la="ls -lathG"
+alias lc="ls -CFG"
 
 alias cb="cd -"
 alias cu="cd .."
+alias ..="cd .."
 
 alias cpr="cp -r"
 
@@ -67,6 +70,9 @@ alias gita="git a"
 alias gitam="gita;gitcm"
 alias gitpo="git po"
 alias gitpom="git pom"
+
+alias gitconfig="git config user.name \"Gianpietro Di Matteo\"; git config user.email \"gianpietro.dimatteo@gmail.com\";"
+alias gitemail="git config user.email "
 
 # GitUtil
 alias amogre="git remote add origin https://github.com/gianpietrodimatteo/$1"

@@ -346,6 +346,11 @@ gitamp() {
   gitam "$@"; git pom
 }
 
+gitcredentials() {
+  git config user.name "Gianpietro Di Matteo"
+  git config user.email "gianpietro.dimatteo@gmail.com"
+}
+
 gif4avi() {
   # -r gives framerate
   convert $1.gif $1%05d.jpg

@@ -37,5 +37,7 @@
   diff = auto
   interactive = auto
   status = auto
-[credential]
-  helper = store
+[user]
+	name = Gianpietro Di Matteo
+[pull]
+	rebase = false

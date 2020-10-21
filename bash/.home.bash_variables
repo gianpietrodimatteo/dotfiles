@@ -5,49 +5,28 @@ if [ -f ~/.bash/secret.sh ]; then
   . ~/.bash/secret.sh
 fi
 
-export NVM_DIR="$HOME/.config"
+export PATH="$PATH:/usr/local/mysql/bin"
+
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export JRE_HOME="$JAVA_HOME/jre"
+export M2_HOME="/opt/apache-maven-3.6.3"
+export PATH="$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$M2_HOME/bin"
+
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export TERMINAL=st
 
 export MYVIMRC="$HOME/.vimrc"
 
 export NOTESPATH="$HOME/Dropbox/Textos"
 
-export JAVA_HOME="/usr/local/java/jdk1.8.0_221"
-export JRE_HOME="/usr/local/java/jdk1.8.0_221/jre"
-export M2_HOME="/opt/apache-maven-3.6.2"
-export PATH="$PATH:$JAVA_HOME/bin:$JRE_HOME/bin:$M2_HOME/bin"
-
-export JBOSS_HOME="/opt/wildfly-18.0.0.Final"
-export PATH="$PATH:$JBOSS_HOME/bin"
-
-export PATH="$PATH:/opt/idea-IC-193.6911.18/bin"
-# export PATH="$PATH:$HOME/eclipse/jee-2019-09/eclipse"
-# export PATH="$PATH:$HOME/workspace/local/TIB_js-studiocomm_6.11.0"
-
-# export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
-
-export PATH="$PATH:/usr/local/go/bin"
-export GOPATH="$HOME/Workspace/go"
-export PATH="$PATH:$GOPATH/bin"
-
 export DONTCARE="$HOME/tmp/dontcare"
-
-# Pipe Highlight to less
-export LESSOPEN="| $(which highlight) %s --out-format xterm256 --line-numbers --quiet --force --style solarized-light"
-export LESS=" -R"
-
-export PATH="$PATH:/snap/bin"
 
 export PATH="$PATH:$HOME/node_modules/.bin"
 
-export WORKSPACE="$HOME/workspace"
-export CLOUDSPACE="$HOME/Dropbox/workspace"
-
-export GDO_PROJSPATH="$WORKSPACE/gdo_projects"
-export GDO_NOTESPATH="$CLOUDSPACE/gdo_notes"
+export WORKSPACE="$HOME/Workspace"
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
