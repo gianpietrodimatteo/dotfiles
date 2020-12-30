@@ -313,6 +313,8 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+bindsym Print exec scrot
+
 # Sticky window
 bindsym $mod+Shift+s sticky toggle
 
@@ -383,5 +385,5 @@ exec_always ~/bin/random-wallpaper.sh
 exec_always compton #-f
 
 # Security and power management
-exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
+# exec_always --no-startup-id xautolock -detectsleep -time 15 -locker "i3exit lock" -killtime 20 -killer "systemctl suspend" &
 

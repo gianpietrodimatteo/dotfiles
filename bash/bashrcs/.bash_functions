@@ -7,8 +7,9 @@
 # functions - summary of custom user functions
 # usage: functions
 functions() {
-  cat ${HOME}/.bash_functions ${HOME}/.bash/function/* | grep -v ignore-from-help | grep -B 1 usage;
-}
+  cat ${HOME}/.bash_functions ${HOME}/.bash/functions/* | grep -v \
+    ignore-from-help | grep -B 1 usage;
+  }
 
 ################################################################################
 # Navigation and basic operations
@@ -32,13 +33,28 @@ cdi() {
   cd "$1"; git status
 }
 
+# wgs - workspace git status
+# usage: wgs <dir>
+wgs() {
+  for x in $(find . -name .git); do cd $x/.. && pwd; git status; cd - > ~/tmp/uselessfile; done
+}
+
+wgso() {
+  wgs | grep -v "On branch master" \
+    | grep -v "nothing to commit, working tree clean" \
+    | grep -v "Your branch is up to date with 'origin/master'." \
+    | sed '/^[[:space:]]*$/d'
+}
+
 # cath - cat for displaying with syntax highlighting
 # usage: cath <dir>
 cath() {
   if [[ -n "$2" ]]; then
-    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light --syntax "$2";
+    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style
+    solarized-light --syntax "$2";
   else
-    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light;
+    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style
+    solarized-light;
   fi
 }
 
@@ -48,6 +64,13 @@ m2d() {
   fileName=$(readlink -f $1);
   mv -vp $fileName ~/dotfiles/;
   ln -sv ~/dotfiles/$fileName .
+}
+
+# m2t - moves to notes path
+# usage: m2t <target>
+m2t() {
+  mv -v "$1" $NOTESPATH
+  ls "$NOTESPATH/$1"
 }
 
 # TODO
@@ -130,7 +153,8 @@ c2r() {
   fi;
 }
 
-# new_version - creates a directory and returns it's path creating some crude versioning at the end of the name
+# new_version - creates a directory and returns it's path creating some crude
+# versioning at the end of the name
 # usage: new_version <dir> <dir>
 new_version() {
   proj="$1";
@@ -150,7 +174,8 @@ new_version() {
   fi
 }
 
-# smartconcat - concatenate two text files keeping everything from the destination and addind from the origin avoiding duplicates
+# smartconcat - concatenate two text files keeping everything from the
+# destination and addind from the origin avoiding duplicates
 # usage: smartconcat <origin> <destination>
 smartconcat() {
   origin=$1;
@@ -163,7 +188,8 @@ smartconcat() {
   while read -u 10 o; do
     already_exists=false;
 
-    # For each line of the origin we compare it to each line of the destination for duplicates
+    # For each line of the origin we compare it to each line of the destination
+    # for duplicates
     while read -u 10 d; do
       if [[ "$o" == "$d" ]]; then
         already_exists=true;
@@ -177,7 +203,8 @@ smartconcat() {
   done 10<$origin
 }
 
-# smartuniq - delete the duplicate lines of a text file, keeping the first or the last ocurrence
+# smartuniq - delete the duplicate lines of a text file, keeping the first or
+# the last ocurrence
 # usage: smartuniq [ <option> ] <file>
 smartuniq() {
   echo "TODO";
@@ -197,6 +224,12 @@ killport() {
 
 grepa() {
   grep -r "$@" .
+}
+
+# notehere - Open the notebook here
+# usage: notehere
+notehere() {
+  cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave"
 }
 
 # notebook - Open up the notebook
@@ -270,7 +303,8 @@ lowercase() {
   echo "$@" | tr '[:upper:]' '[:lower:]'
 }
 
-# spring_init - Extract recently downloaded spring project with the spring initialzr
+# spring_init - Extract recently downloaded spring project with the spring
+# initialzr
 # usage: spring_init <project-name>
 spring_init() {
   mv $HOME/Downloads/$1.zip $WORKSPACE/spring/
@@ -295,7 +329,8 @@ vf() {
 # ff - find function recursively with partial search
 # usage: ff <search>
 ff() {
-  find . -type f \( -path '*/target/*' -o -path '*/node_modules/*' -o -path '*/dist/*' \) -prune -o -iname "*$1*" -print
+  find . -type f \( -path '*/target/*' -o -path '*/node_modules/*' -o -path
+  '*/dist/*' \) -prune -o -iname "*$1*" -print
 }
 
 # ffs - find function with grep for further cleaning results
@@ -333,7 +368,7 @@ nesquick() {
   while getopts "scm" OPT; do
     case "$OPT" in
       "s") echo "generate service";;
-      "c") echo "generate controller";;
+      "/c") echo "generate controller";;
       "m") echo "generate middleware";;
     esac
   done
@@ -350,6 +385,10 @@ gif4avi() {
   # -r gives framerate
   convert $1.gif $1%05d.jpg
   ffmpeg -r 10 -i $1%05d.jpg -y -an $1.avi
+}
+
+prependir() {
+  for x in *; do mv $x "$1$x"; done
 }
 
 

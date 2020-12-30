@@ -8,11 +8,13 @@
 alias mkdirp="mkdir -p"
 
 alias ll="ls -l"
-alias la="ls -lath"
+alias la="ls -lathr"
 alias lc="ls -CF"
+alias lr="ls -1lhtrp | grep -v /"
 
 alias cb="cd -"
 alias cu="cd .."
+alias ..="cd .."
 
 alias cpr="cp -r"
 
@@ -26,7 +28,12 @@ alias findi="find . -iname"
 
 alias hgrep="history | grep"
 
-alias book="vim ~/Dropbox/Escritos/Livro/livro-rascunho.txt"
+# Note taking
+alias indice="vim $NOTESPATH/indice.txt"
+alias pessoal="vim $NOTESPATH/pessoal.txt"
+alias blog="vim $NOTESPATH/blog.txt"
+alias prog="vim $NOTESPATH/prog.txt"
+alias livro="vim $NOTESPATH/livro.txt"
 
 alias sai="sudo apt install"
 alias ai="apt install"
@@ -124,7 +131,7 @@ alias uniso="7z e"
 # Misc
 alias space2underscore='echo "${1// /_}"'
 alias rm_empty_lines="sed -r '/^\s*$/d'"
-alias moveToImageLibrary="mv *.jpg *.webm *.gif *.png ~/Pictures/Image\ Library/"
+alias moveToImageLibrary="mv *.mp4 *.jpg *.webm *.gif *.png ~/Pictures/Image\ Library/"
 
 alias lmao="touch ayy{lmao,lmio,lon,loff,lobino,lobarito}{chuahili,suhali,bengali,mombojo}"
 
