@@ -31,6 +31,7 @@
   a = add .
   po = push -u origin
   pom = push -u origin master
+  e = config user.email
 [color]
   ui = auto
   branch = auto

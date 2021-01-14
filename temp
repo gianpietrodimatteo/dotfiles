@@ -1,0 +1,17 @@
+pagination OK
+more documentation OK
+organization OK
+finals OK
+department accepts list now OK
+bug if empty list OK
+
+adjust validations?
+  backend validation
+  dto validation
+tudo tem a ver com custom error exceptions RADARADO
+
+add readme
+escriptar liquibase stuff
+
+add site(somente site?) to activity RADARADO
+

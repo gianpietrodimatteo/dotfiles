@@ -7,7 +7,8 @@
 # functions - summary of custom user functions
 # usage: functions
 functions() {
-  cat ${HOME}/.bash_functions ${HOME}/.bash/function/* | grep -v ignore-from-help | grep -B 1 usage;
+  cat ${HOME}/.bash_functions ${HOME}/.bash/function/* | grep -v
+  ignore-from-help | grep -B 1 usage;
 }
 
 ################################################################################
@@ -36,9 +37,11 @@ cdi() {
 # usage: cath <dir>
 cath() {
   if [[ -n "$2" ]]; then
-    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light --syntax "$2";
+    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style
+    solarized-light --syntax "$2";
   else
-    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style solarized-light;
+    highlight "$1" --out-format xterm256 --line-numbers --quiet --force --style
+    solarized-light;
   fi
 }
 
@@ -130,7 +133,8 @@ c2r() {
   fi;
 }
 
-# new_version - creates a directory and returns it's path creating some crude versioning at the end of the name
+# new_version - creates a directory and returns it's path creating some crude
+# versioning at the end of the name
 # usage: new_version <dir> <dir>
 new_version() {
   proj="$1";
@@ -150,7 +154,8 @@ new_version() {
   fi
 }
 
-# smartconcat - concatenate two text files keeping everything from the destination and addind from the origin avoiding duplicates
+# smartconcat - concatenate two text files keeping everything from the
+# destination and addind from the origin avoiding duplicates
 # usage: smartconcat <origin> <destination>
 smartconcat() {
   origin=$1;
@@ -163,7 +168,8 @@ smartconcat() {
   while read -u 10 o; do
     already_exists=false;
 
-    # For each line of the origin we compare it to each line of the destination for duplicates
+    # For each line of the origin we compare it to each line of the destination
+    # for duplicates
     while read -u 10 d; do
       if [[ "$o" == "$d" ]]; then
         already_exists=true;
@@ -177,7 +183,8 @@ smartconcat() {
   done 10<$origin
 }
 
-# smartuniq - delete the duplicate lines of a text file, keeping the first or the last ocurrence
+# smartuniq - delete the duplicate lines of a text file, keeping the first or
+# the last ocurrence
 # usage: smartuniq [ <option> ] <file>
 smartuniq() {
   echo "TODO";
@@ -195,6 +202,14 @@ killport() {
   sudo kill -9 $(sudo fuser -n tcp $1 2> /dev/null);
 }
 
+# killport2 - kill process using port
+# usage: killport <port>
+killport2() {
+  local x=$(lsof -Fp -i :$1);
+  local y=$(echo ${x##p} | cut -f 1 -d ' ');
+  sudo kill -9 "$y";
+}
+
 grepa() {
   grep -r "$@" .
 }
@@ -202,14 +217,16 @@ grepa() {
 # notebook - Open up the notebook
 # usage: notebook
 notebook() {
-  $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c "silent ToggleAutosave"'
+  $TERMINAL -n note -e sh -c 'cd $NOTESPATH && vim -c CtrlP -c ToggleWrap -c
+  "silent ToggleAutosave"'
 }
 
 # keycode - view input keycode on the terminal
 # usage: keycode
 keycode() {
   echo "Ctrl+C on the terminal to stop. Move mouse to display."
-  xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+  xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n",
+  $5, $8 }'
 }
 
 # TODO
@@ -270,7 +287,8 @@ lowercase() {
   echo "$@" | tr '[:upper:]' '[:lower:]'
 }
 
-# spring_init - Extract recently downloaded spring project with the spring initialzr
+# spring_init - Extract recently downloaded spring project with the spring
+# initialzr
 # usage: spring_init <project-name>
 spring_init() {
   mv $HOME/Downloads/$1.zip $WORKSPACE/spring/
@@ -295,7 +313,8 @@ vf() {
 # ff - find function recursively with partial search
 # usage: ff <search>
 ff() {
-  find . -type f \( -path '*/target/*' -o -path '*/node_modules/*' -o -path '*/dist/*' \) -prune -o -iname "*$1*" -print
+  find . -type f \( -path '*/target/*' -o -path '*/node_modules/*' -o -path
+  '*/dist/*' \) -prune -o -iname "*$1*" -print
 }
 
 # ffs - find function with grep for further cleaning results
@@ -363,7 +382,28 @@ gif4avi() {
 ################################################################################
 
 # Source all files in functions folder
-for f in ~/.bash/functions/*; do source $f; done
+sourceall() {
+  for f in ~/.bash/functions/*; do source $f; done
+}
 
+rmidea() {
+  rm -rvf .idea
+  rm -v *.iws *.iml *.ipr
+}
 
+rmideadir() {
+  cd "${1}" && rmidea
+}
 
+rmallidea() {
+  rmidea
+  for d in */ ; do
+    rmideadir "$d" &
+  done
+}
+
+loopFolders() {
+  for d in */ ; do
+    cd "$d" && echo $PWD && cd ..
+  done
+}

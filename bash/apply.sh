@@ -37,16 +37,6 @@ apply_dot () {
   ln -sv $DF/$2/$file $filePath
 }
 
-apply_dot_change () {
-  new_file_name=`basename $1`
-  filePath=`dirname $1`
-  original_file_name="$3"
-  backupFolder="$DBF/$2"
-  mkdir -v $backupFolder
-  mv -v $1 $backupFolder
-  ln -sv $DF/$2/$original_file_name $filePath/$new_file_name
-}
-
 echo "Applying bash configuration files..."
 
 # bash
@@ -56,21 +46,8 @@ apply_dot ~/.bashrc .
 apply_dot ~/.inputrc other
 apply_dot ~/.profile other
 apply_dot ~/.bash_completion bashrcs
-
-echo "Select your environment"
-select varfile in home pitang; do
-  # aliases and functions
-  if [ -f "$DF/bash/.$varfile.bash_custom" ]; then
-    echo "custom"
-    apply_dot_change ~/.bash_custom . .$varfile.bash_custom
-  fi
-  # variables
-  if [ -f "$DF/bash/.$varfile.bash_variables" ]; then
-    echo "variable"
-    apply_dot_change ~/.bash_variables . .$varfile.bash_variables
-  fi
-  break
-done
+apply_dot ~/.bash_variables bashrcs
+apply_dot ~/.bash_custom bashrcs
 
 # Apply bash
 . ~/.bashrc
