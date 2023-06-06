@@ -376,6 +376,14 @@ gif4avi() {
   ffmpeg -r 10 -i $1%05d.jpg -y -an $1.avi
 }
 
+gitdiffdevelop() {
+  git diff develop $(gitbranchname)
+}
+
+gitdifffinda() {
+  gitdiffdevelop -- $(finda "$1")
+}
+
 
 ################################################################################
 # Other function files
@@ -407,3 +415,10 @@ loopFolders() {
     cd "$d" && echo $PWD && cd ..
   done
 }
+
+# Remove duplicate lines
+sortUniq() {
+  sort "$1" | uniq
+}
+
+

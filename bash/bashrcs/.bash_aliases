@@ -10,7 +10,7 @@ alias mkdirp="mkdir -p"
 alias ls="ls -G"
 
 alias ll="ls -lG"
-alias la="ls -lathG"
+alias la="ls -lathGr"
 alias lc="ls -CFG"
 
 alias cb="cd -"
@@ -39,6 +39,7 @@ alias viq="vim $DONTCARE"
 alias vimupdate="vim -c 'source % | PlugClean | PlugInstall' $HOME/.vimrc"
 alias vimo="vim -O"
 alias suvim="sudo -E vim"
+alias vimc="vim --clean"
 # Open all regular files in current folder windowed
 alias vimhp="find ./* -maxdepth 0 -type f -exec vim {} +"
 
@@ -73,6 +74,8 @@ alias gitpom="git pom"
 
 alias gitconfig="git config user.name \"Gianpietro Di Matteo\"; git config user.email \"gianpietro.dimatteo@gmail.com\";"
 alias gitemail="git config user.email "
+
+alias gitbranchname="git rev-parse --abbrev-ref HEAD"
 
 # GitUtil
 alias amogre="git remote add origin https://github.com/gianpietrodimatteo/$1"

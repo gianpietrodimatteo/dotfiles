@@ -5,6 +5,7 @@
 [alias]
   co = checkout
   cob = checkout -b
+  back = checkout -
   b = branch
   c = commit
   ca = commit --amend
@@ -32,6 +33,16 @@
   po = push -u origin
   pom = push -u origin master
   e = config user.email
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  skip = update-index --skip-worktree
+  unskip = update-index --no-skip-worktree
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  skipped = "!git ls-files -v | grep ^S | cut -c 3-"
+  ignored = !git ls-files -v | grep "^[[:lower:]]"
+  when = log -S
+  delete-local-merged = "!git fap && git branch --merged | egrep -v 'master|dev|main|staging|develop' >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
+	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f"
 [color]
   ui = auto
   branch = auto
@@ -42,3 +53,8 @@
 	name = Gianpietro Di Matteo
 [pull]
 	rebase = false
+[credential]
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
